@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mFPfV+Kns8dUXdTUWvD+r6b4iJBzbucD1dNOyv+/RINUCyaaRcJFr/TkVQ3FtvPOt5IV2YUvrInvJFlfRVJbdA==",
+  "dgSpecHash": "5RYcjb4YdhtBTooUclTRCynQ6J+SVxS8AIR5qZtsla+47N6JHJwguQHi6hEmeb1Jgm7f2XvDgkviRtzhdVTrBw==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\Astor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj",
+  "projectFilePath": "C:\\Projetos\\Astor\\GitCodigoFonte\\SistemaAstor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andre\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

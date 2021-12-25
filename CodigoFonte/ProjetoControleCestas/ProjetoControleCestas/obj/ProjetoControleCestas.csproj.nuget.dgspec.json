@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\Astor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj": {}
+    "C:\\Projetos\\Astor\\GitCodigoFonte\\SistemaAstor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\Astor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj": {
+    "C:\\Projetos\\Astor\\GitCodigoFonte\\SistemaAstor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\Astor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj",
+        "projectUniqueName": "C:\\Projetos\\Astor\\GitCodigoFonte\\SistemaAstor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj",
         "projectName": "ProjetoControleCestas",
-        "projectPath": "C:\\Projetos\\Astor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj",
+        "projectPath": "C:\\Projetos\\Astor\\GitCodigoFonte\\SistemaAstor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\ProjetoControleCestas.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\Astor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\obj\\",
+        "outputPath": "C:\\Projetos\\Astor\\GitCodigoFonte\\SistemaAstor\\CodigoFonte\\ProjetoControleCestas\\ProjetoControleCestas\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\DevExpress 21.1\\Components\\Offline Packages",
