@@ -122,6 +122,8 @@ namespace ProjetoControleCestas
             this.panelFundoDocumentos = new System.Windows.Forms.Panel();
             this.panelListagemDocumentos = new System.Windows.Forms.Panel();
             this.dataGridViewDocumentos = new System.Windows.Forms.DataGridView();
+            this.ColumnTipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelCabecalhoDocumentos = new System.Windows.Forms.Panel();
             this.buttonExcluirDocumento = new System.Windows.Forms.Button();
             this.buttonAlterarDocumento = new System.Windows.Forms.Button();
@@ -129,8 +131,7 @@ namespace ProjetoControleCestas
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.ColumnTipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBoxResponsavelFamilia = new System.Windows.Forms.CheckBox();
             this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.tabControlInformacoesPessoa.SuspendLayout();
@@ -205,6 +206,7 @@ namespace ProjetoControleCestas
             // 
             // tabPageInformacoesGerais
             // 
+            this.tabPageInformacoesGerais.Controls.Add(this.checkBoxResponsavelFamilia);
             this.tabPageInformacoesGerais.Controls.Add(this.textBoxAreaInteresseProfissional);
             this.tabPageInformacoesGerais.Controls.Add(this.labelAreaInteresseProfissional);
             this.tabPageInformacoesGerais.Controls.Add(this.groupBoxProblemaSaude);
@@ -1155,6 +1157,22 @@ namespace ProjetoControleCestas
             this.dataGridViewDocumentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDocumentos_CellClick);
             this.dataGridViewDocumentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDocumentos_CellContentClick);
             // 
+            // ColumnTipoDocumento
+            // 
+            this.ColumnTipoDocumento.DataPropertyName = "TipoDocumento";
+            this.ColumnTipoDocumento.HeaderText = "Tipo de Documento";
+            this.ColumnTipoDocumento.Name = "ColumnTipoDocumento";
+            this.ColumnTipoDocumento.ReadOnly = true;
+            this.ColumnTipoDocumento.Width = 250;
+            // 
+            // ColumnNumeroDocumento
+            // 
+            this.ColumnNumeroDocumento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnNumeroDocumento.DataPropertyName = "NumeroDocumento";
+            this.ColumnNumeroDocumento.HeaderText = "Número do Documento";
+            this.ColumnNumeroDocumento.Name = "ColumnNumeroDocumento";
+            this.ColumnNumeroDocumento.ReadOnly = true;
+            // 
             // panelCabecalhoDocumentos
             // 
             this.panelCabecalhoDocumentos.Controls.Add(this.buttonExcluirDocumento);
@@ -1226,21 +1244,15 @@ namespace ProjetoControleCestas
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
-            // ColumnTipoDocumento
+            // checkBoxResponsavelFamilia
             // 
-            this.ColumnTipoDocumento.DataPropertyName = "TipoDocumento";
-            this.ColumnTipoDocumento.HeaderText = "Tipo de Documento";
-            this.ColumnTipoDocumento.Name = "ColumnTipoDocumento";
-            this.ColumnTipoDocumento.ReadOnly = true;
-            this.ColumnTipoDocumento.Width = 250;
-            // 
-            // ColumnNumeroDocumento
-            // 
-            this.ColumnNumeroDocumento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnNumeroDocumento.DataPropertyName = "NumeroDocumento";
-            this.ColumnNumeroDocumento.HeaderText = "Número do Documento";
-            this.ColumnNumeroDocumento.Name = "ColumnNumeroDocumento";
-            this.ColumnNumeroDocumento.ReadOnly = true;
+            this.checkBoxResponsavelFamilia.AutoSize = true;
+            this.checkBoxResponsavelFamilia.Location = new System.Drawing.Point(801, 377);
+            this.checkBoxResponsavelFamilia.Name = "checkBoxResponsavelFamilia";
+            this.checkBoxResponsavelFamilia.Size = new System.Drawing.Size(148, 19);
+            this.checkBoxResponsavelFamilia.TabIndex = 26;
+            this.checkBoxResponsavelFamilia.Text = "Responsável da Família";
+            this.checkBoxResponsavelFamilia.UseVisualStyleBackColor = true;
             // 
             // FormEditarPessoa
             // 
@@ -1405,5 +1417,6 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.Label labelAreaInteresseProfissional;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTipoDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNumeroDocumento;
+        private System.Windows.Forms.CheckBox checkBoxResponsavelFamilia;
     }
 }

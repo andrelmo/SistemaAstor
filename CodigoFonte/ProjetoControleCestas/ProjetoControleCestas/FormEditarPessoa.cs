@@ -160,6 +160,12 @@ namespace ProjetoControleCestas
             else
                 this.radioButtonVinculoFamiliarResponsavel.Checked = true;
 
+            //Verificar se a pessoa é o responsável da família
+            if (_pessoaEdicao.IsResponsavelFamilia)
+                this.checkBoxResponsavelFamilia.Checked = true;
+            else
+                this.checkBoxResponsavelFamilia.Checked = false;
+
             //Carregar a lista de problemas de saúde
             this.CarregarProblemasSaude(this._codigoPessoaAtual);
 
@@ -283,6 +289,7 @@ namespace ProjetoControleCestas
             this.radioButtonIdosoNao.Checked = true;
             this.radioButtonSexoMasculino.Checked = true;
             this.radioButtonVinculoFamiliarDependente.Checked = true;
+            this.checkBoxResponsavelFamilia.Checked = false;
         }
 
         private void HabilitarControles()
@@ -304,6 +311,7 @@ namespace ProjetoControleCestas
             this.groupBoxIdoso.Enabled = _habilitarControle;
             this.groupBoxSexo.Enabled = _habilitarControle;
             this.groupBoxVinculoFamiliar.Enabled = _habilitarControle;
+            this.checkBoxResponsavelFamilia.Enabled = _habilitarControle;
         }
 
         private void buttonSalvar_Click(object sender, System.EventArgs e)
@@ -387,7 +395,8 @@ namespace ProjetoControleCestas
                 Idoso = this.GetIdoso(),
                 VinculoFamiliar = this.GetVinculoFamiliar(),
                 Deficiencia = this.GetTextoDeficiencia(),
-                ProblemaSaude = this.GetProblemaSaude()
+                ProblemaSaude = this.GetProblemaSaude(),
+                IsResponsavelFamilia = this.checkBoxResponsavelFamilia.Checked
             });
         }
 

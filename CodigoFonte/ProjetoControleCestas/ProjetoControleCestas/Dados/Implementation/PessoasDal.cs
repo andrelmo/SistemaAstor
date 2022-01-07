@@ -159,7 +159,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                       Parentesco = @Parentesco,
                                       CodFamilia = @CodFamilia,
                                       VinculoFamiliar = @VinculoFamiliar,
-                                      ProblemaSaude = @ProblemaSaude
+                                      ProblemaSaude = @ProblemaSaude,
+                                      IsResponsavelFamilia = @IsResponsavelFamilia
                                  where
                                      codPessoas = @CodPessoas";
 
@@ -187,7 +188,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      pessoa.CodFamilia,
                                      pessoa.VinculoFamiliar,
                                      pessoa.ProblemaSaude,
-                                     pessoa.CodPessoas
+                                     pessoa.CodPessoas,
+                                     pessoa.IsResponsavelFamilia
                                  },
                                  null,
                                  this.TimeoutPadrao,
@@ -207,11 +209,11 @@ namespace ProjetoControleCestas.Dados.Implementation
             var _cmdInserir = @"insert into tbPessoas(nome,identidade,cpf,situacaoCivil,nomeMae,nomePai,naturalidade,
                                                       atividadeDesenvolvida,areaInteresseProfissional,deficiencia,
                                                       idoso,sexo,escolaridade,parentesco,codFamilia,vinculoFamiliar,
-                                                      problemaSaude) 
+                                                      problemaSaude,IsResponsavelFamilia) 
                                 values (@Nome,@Identidade,@Cpf,@SituacaoCivil,@NomeMae,@NomePai,@Naturalidade,
                                         @AtividadeDesenvolvida,@AreaInteresseProfissional,@Deficiencia,
                                         @Idoso,@Sexo,@Escolaridade,@Parentesco,@CodFamilia,@VinculoFamiliar,
-                                        @ProblemaSaude)";
+                                        @ProblemaSaude,@IsResponsavelFamilia)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -243,7 +245,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                       pessoa.Parentesco,
                                                       pessoa.CodFamilia,
                                                       pessoa.VinculoFamiliar,
-                                                      pessoa.ProblemaSaude
+                                                      pessoa.ProblemaSaude,
+                                                      pessoa.IsResponsavelFamilia
                                                   },
                                                   _transacao,
                                                   this.TimeoutPadrao,

@@ -25,5 +25,6 @@ namespace ProjetoControleCestas.Modelo
         public int CodFamilia { get; set; }
         public VinculoFamiliar VinculoFamiliar { get; set; }
         public string ProblemaSaude { get; set; }
+        public bool IsResponsavelFamilia { get; set; }
     }
 }
