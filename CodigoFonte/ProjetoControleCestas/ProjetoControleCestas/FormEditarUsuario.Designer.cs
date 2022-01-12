@@ -31,6 +31,7 @@ namespace ProjetoControleCestas
         {
             this.panelFundo = new System.Windows.Forms.Panel();
             this.panelEdicao = new System.Windows.Forms.Panel();
+            this.textBoxCep = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxStatus = new System.Windows.Forms.GroupBox();
             this.radioButtonStatusInativo = new System.Windows.Forms.RadioButton();
             this.radioButtonStatusAtivo = new System.Windows.Forms.RadioButton();
@@ -60,7 +61,6 @@ namespace ProjetoControleCestas
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.textBoxCep = new System.Windows.Forms.MaskedTextBox();
             this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
@@ -107,6 +107,15 @@ namespace ProjetoControleCestas
             this.panelEdicao.Name = "panelEdicao";
             this.panelEdicao.Size = new System.Drawing.Size(800, 385);
             this.panelEdicao.TabIndex = 1;
+            // 
+            // textBoxCep
+            // 
+            this.textBoxCep.Location = new System.Drawing.Point(661, 99);
+            this.textBoxCep.Mask = "00000-000";
+            this.textBoxCep.Name = "textBoxCep";
+            this.textBoxCep.Size = new System.Drawing.Size(100, 23);
+            this.textBoxCep.TabIndex = 11;
+            this.textBoxCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // groupBoxStatus
             // 
@@ -410,14 +419,6 @@ namespace ProjetoControleCestas
             this.buttonSalvar.Text = "Salvar";
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
-            // 
-            // textBoxCep
-            // 
-            this.textBoxCep.Location = new System.Drawing.Point(661, 99);
-            this.textBoxCep.Mask = "00000-000";
-            this.textBoxCep.Name = "textBoxCep";
-            this.textBoxCep.Size = new System.Drawing.Size(100, 23);
-            this.textBoxCep.TabIndex = 11;
             // 
             // FormEditarUsuario
             // 
