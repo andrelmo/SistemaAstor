@@ -3,7 +3,7 @@
 namespace ProjetoControleCestas.Modelo
 {
     [Table("tbDeficiencia")]
-    public class DeficienciaModel
+    public class DeficienciaModel: EntidadeBaseModel
     {
         [Key]
         public int CodDeficiencia { get; set; }

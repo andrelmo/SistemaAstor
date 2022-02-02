@@ -104,9 +104,13 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public TipoBeneficioModel Atualizar(TipoBeneficioModel tipoBeneficio)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualiza o tipo de benefício
             var _cmdAtualizar = @"update tbTipoBeneficios
-                                  set beneficio = @Beneficio
+                                  set beneficio = @Beneficio,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                       codTipoBeneficio = @CodTipoBeneficio";
 
@@ -118,6 +122,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                  new 
                                  { 
                                      tipoBeneficio.Beneficio, 
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
                                      tipoBeneficio.CodTipoBeneficio
                                  },
                                  null, 
@@ -134,8 +140,10 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public TipoBeneficioModel Adicionar(TipoBeneficioModel tipoBeneficio)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adciona um novo tipo de benefício
-            var _cmdInserir = @"insert into tbTipoBeneficios(beneficio) values (@Beneficio)";
+            var _cmdInserir = @"insert into tbTipoBeneficios(beneficio,codusuariocriacao,datacriacao) values (@Beneficio,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -151,7 +159,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                     _transacao.Connection.Execute(_cmdInserir, 
                                                   new 
                                                   { 
-                                                      tipoBeneficio.Beneficio
+                                                      tipoBeneficio.Beneficio,
+                                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                                      DataCriacao
                                                   }, 
                                                   _transacao, 
                                                   this.TimeoutPadrao, 

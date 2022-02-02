@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ProjetoControleCestas.Modelo
 {
     [Table("tbRenda")]
-    public class RendaModel
+    public class RendaModel: EntidadeBaseModel
     {
         [Key]
         public int CodRenda { get; set; }

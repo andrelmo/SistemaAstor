@@ -140,24 +140,110 @@ namespace ProjetoControleCestas.Dados.Implementation
             }
         }
 
-        public List<FamiliaModel> BuscarTodos()
+        public List<FamiliaModel> PesquisarPorCpfResponsavel(string cpf)
         {
             //Buscar todas as famílias
-            var _cmdBuscar = @"select *
-                               from tbFamilia
-                               order by codFamilia";
+            var _cmdBuscar = @"select f.*
+                               from tbFamilia f
+                               inner join tbPessoas p
+                               on f.codFamilia = p.codFamilia
+                               where
+                                  p.cpf = @cpf 
+                               order by f.codFamilia";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
 
             try
             {
-                return (_conexao.Query<FamiliaModel>(_cmdBuscar,
-                                                    commandTimeout: this.TimeoutPadrao,
-                                                    commandType: CommandType.Text).ToList());
+                var _listaFamilias = _conexao.Query<FamiliaModel>(_cmdBuscar,
+                                                                  new { cpf },
+                                                                  commandTimeout: this.TimeoutPadrao,
+                                                                  commandType: CommandType.Text).ToList();
+
+                //Preencher as informações com os dados do responsável
+                foreach (var _familia in _listaFamilias)
+                    this.CarregarResponsavelFamilia(_familia);
+
+                return (_listaFamilias);
             }
             finally
             {
                 _conexao.Close();
+            }
+        }
+
+        public List<FamiliaModel> PesquisarPorNomeResponsavel(string nomeResponsavel)
+        {
+            //Buscar todas as famílias
+            var _cmdBuscar = @"select f.*
+                               from tbFamilia f
+                               inner join tbPessoas p
+                               on f.codFamilia = p.codFamilia
+                               where
+                                  p.nome like '" + nomeResponsavel + "%' " + 
+                               " order by f.codFamilia";
+
+            using var _conexao = new MySqlConnection(this.GetConnecitonString());
+
+            try
+            {
+                var _listaFamilias = _conexao.Query<FamiliaModel>(_cmdBuscar,
+                                                                    commandTimeout: this.TimeoutPadrao,
+                                                                    commandType: CommandType.Text).ToList();
+
+                //Preencher as informações com os dados do responsável
+                foreach (var _familia in _listaFamilias)
+                    this.CarregarResponsavelFamilia(_familia);
+
+                return (_listaFamilias);
+            }
+            finally
+            {
+                _conexao.Close();
+            }
+        }
+
+        public List<FamiliaModel> BuscarTodos()
+        {
+            //Buscar todas as famílias
+            var _cmdBuscar = @"select f.*
+                               from tbFamilia f
+                               order by f.codFamilia";
+
+            using var _conexao = new MySqlConnection(this.GetConnecitonString());
+
+            try
+            {
+                var _listaFamilias = _conexao.Query<FamiliaModel>(_cmdBuscar,
+                                                                    commandTimeout: this.TimeoutPadrao,
+                                                                    commandType: CommandType.Text).ToList();
+
+                //Preencher as informações com os dados do responsável
+                foreach (var _familia in _listaFamilias)
+                    this.CarregarResponsavelFamilia(_familia);
+
+                return (_listaFamilias);
+            }
+            finally
+            {
+                _conexao.Close();
+            }
+        }
+
+        private void CarregarResponsavelFamilia(FamiliaModel familia)
+        {
+            //Buscar todas as pessoas da familia
+            var _listaPessoas = _pessoaDal.BuscarTodos(familia.CodFamilia);
+
+            //Verifica se na lista de pessoas existe alguma marcada como responsável
+            var _responsavelFamilia = _listaPessoas.Where(i => i.IsResponsavelFamilia).FirstOrDefault();
+
+            if (_responsavelFamilia != null)
+            {
+                //Armazena os dados do responsável
+                familia.IsResponsavelFamilia = true;
+                familia.NomeResponsavel = _responsavelFamilia.Nome;
+                familia.CpfResponsavel = _responsavelFamilia.Cpf;
             }
         }
 
@@ -173,14 +259,20 @@ namespace ProjetoControleCestas.Dados.Implementation
 
             try
             {
-                return (_conexao.QueryFirstOrDefault<FamiliaModel>(_cmdBuscar,
-                                                                   new
-                                                                   {
-                                                                       codFamilia
-                                                                   },
-                                                                   null,
-                                                                   this.TimeoutPadrao,
-                                                                   CommandType.Text));
+                var _familia = _conexao.QueryFirstOrDefault<FamiliaModel>(_cmdBuscar,
+                                                                          new
+                                                                          {
+                                                                              codFamilia
+                                                                          },
+                                                                          null,
+                                                                          this.TimeoutPadrao,
+                                                                          CommandType.Text);
+
+                //Verificar se a família foi retornada
+                if (_familia != null)
+                    this.CarregarResponsavelFamilia(_familia);
+
+                return (_familia);
             }
             finally
             {
@@ -190,6 +282,8 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public FamiliaModel Atualizar(FamiliaModel familia, IDbTransaction transacao)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualiza uma familia
             var _cmdAtualizar = @"update tbFamilia
                                   set tipoLogradouro = @TipoLogradouro,
@@ -200,7 +294,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                       cep = @Cep,
                                       municipio = @Municipio,
                                       referencia = @Referencia,
-                                      onibus = @Onibus
+                                      onibus = @Onibus,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                         codFamilia = @CodFamilia";
 
@@ -216,6 +312,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                  familia.Municipio,
                                  familia.Referencia,
                                  familia.Onibus,
+                                 SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                 DataModificacao,
                                  familia.CodFamilia
                              },
                              transacao,
@@ -236,11 +334,13 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public FamiliaModel Adicionar(FamiliaModel familia, IDbTransaction transacao)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adiciona uma nova familia            
             var _cmdInserir = @"insert into tbFamilia (tipoLogradouro,logradouro,numero,complemento,
-                                                       bairro,cep,municipio,referencia,onibus) 
+                                                       bairro,cep,municipio,referencia,onibus,codusuariocriacao,datacriacao) 
                                 values (@TipoLogradouro,@Logradouro,@Numero,@Complemento,@Bairro,@Cep,
-                                        @Municipio,@Referencia,@Onibus)";
+                                        @Municipio,@Referencia,@Onibus,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             transacao.Connection.Execute(_cmdInserir,
@@ -254,7 +354,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                               familia.Cep,
                                               familia.Municipio,
                                               familia.Referencia,
-                                              familia.Onibus
+                                              familia.Onibus,
+                                              SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                              DataCriacao
                                           },
                                           transacao,
                                           this.TimeoutPadrao,

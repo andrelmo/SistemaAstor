@@ -93,11 +93,15 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public FaltasModel Atualizar(FaltasModel faltas)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualizar uma falta
             var _cmdAtualizar = @"update tbFaltas
                                   set codigoAberturaFamilia = @CodigoAberturaFamilia,
                                       dataFalta = @DataFalta,
-                                      justificativa = @Justificativa
+                                      justificativa = @Justificativa,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao 
                                   where
                                        codigoFaltas = @CodigoFaltas";
 
@@ -111,6 +115,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      faltas.CodigoAberturaFamilia,
                                      faltas.DataFalta,
                                      faltas.Justificativa,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
                                      faltas.CodigoFaltas
                                  }, 
                                  null, 
@@ -127,9 +133,11 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public FaltasModel Adicionar(FaltasModel faltas)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adicionar uma nova falta ao cadastro de abertura de família
-            var _cmdInserir = @"insert into tbFaltas (codigoAberturaFamilia,dataFalta,justificativa) 
-                                              values (@CodigoAberturaFamilia,@DataFalta,@Justificativa)";
+            var _cmdInserir = @"insert into tbFaltas (codigoAberturaFamilia,dataFalta,justificativa,codusuariocriacao,datacriacao) 
+                                              values (@CodigoAberturaFamilia,@DataFalta,@Justificativa,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -147,7 +155,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                   {
                                                       faltas.CodigoAberturaFamilia,
                                                       faltas.DataFalta,
-                                                      faltas.Justificativa
+                                                      faltas.Justificativa,
+                                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                                      DataCriacao
                                                   }, 
                                                   _transacao, 
                                                   this.TimeoutPadrao, 

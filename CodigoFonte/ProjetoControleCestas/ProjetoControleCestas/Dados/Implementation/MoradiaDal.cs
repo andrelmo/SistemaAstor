@@ -95,13 +95,17 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public MoradiaModel Atualizar(MoradiaModel moradia)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualizar as informações de uma moradia
             var _cmdAtualizar = @"update tbMoradia
                                   set codFamilia = @CodFamilia,
                                       condicaoMoradia = @CondicaoMoradia,
                                       numeroComodos = @NumeroComodos,
                                       numeroQuartos = @NumeroQuartos,
-                                      banheiro = @Banheiro
+                                      banheiro = @Banheiro,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                        codCaracteristicasMoradia = @CodCaracteristicasMoradia";
 
@@ -117,6 +121,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                     moradia.NumeroComodos,
                                     moradia.NumeroQuartos,
                                     moradia.Banheiro,
+                                    SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                    DataModificacao,
                                     moradia.CodCaracteristicasMoradia
                                  }, 
                                  null, 
@@ -133,9 +139,11 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public MoradiaModel Adicionar(MoradiaModel moradia)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adiciona uma nova moradia
-            var _cmdInserir = @"insert into tbMoradia(codFamilia,condicaoMoradia,numeroComodos,numeroQuartos,banheiro) 
-                                values (@CodFamilia,@CondicaoMoradia,@NumeroComodos,@NumeroQuartos,@Banheiro)";
+            var _cmdInserir = @"insert into tbMoradia(codFamilia,condicaoMoradia,numeroComodos,numeroQuartos,banheiro,codusuariocriacao,datacriacao) 
+                                values (@CodFamilia,@CondicaoMoradia,@NumeroComodos,@NumeroQuartos,@Banheiro,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -155,7 +163,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                       moradia.CondicaoMoradia,
                                                       moradia.NumeroComodos,
                                                       moradia.NumeroQuartos,
-                                                      moradia.Banheiro
+                                                      moradia.Banheiro,
+                                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                                      DataCriacao
                                                   },
                                                   _transacao,
                                                   this.TimeoutPadrao,

@@ -105,10 +105,14 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public DeficienciaModel Atualizar(DeficienciaModel deficiencia)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualizar uma deficiência associada a uma pessoa
             var _cmdAtualizar = @"update tbDeficiencia
                                   set codPessoa = @CodPessoa,
-                                      deficiencia = @Deficiencia
+                                      deficiencia = @Deficiencia,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                         codDeficiencia = @CodDeficiencia";
 
@@ -121,6 +125,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                  {
                                      deficiencia.CodPessoa,
                                      deficiencia.Deficiencia,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
                                      deficiencia.CodDeficiencia
                                  },
                                  null,
@@ -137,8 +143,10 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public DeficienciaModel Adicionar(DeficienciaModel deficiencia)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adiciona uma nova deficieência
-            var _cmdInserir = @"insert into tbDeficiencia(codPessoa,deficiencia) values (@CodPessoa,@Deficiencia)";
+            var _cmdInserir = @"insert into tbDeficiencia(codPessoa,deficiencia,codusuariocriacao,datacriacao) values (@CodPessoa,@Deficiencia,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -155,7 +163,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                   new
                                                   {
                                                       deficiencia.CodPessoa,
-                                                      deficiencia.Deficiencia
+                                                      deficiencia.Deficiencia,
+                                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                                      DataCriacao
                                                   },
                                                   _transacao,
                                                   this.TimeoutPadrao,

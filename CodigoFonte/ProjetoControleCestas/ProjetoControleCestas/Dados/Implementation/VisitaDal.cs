@@ -97,6 +97,8 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public VisitaModel Atualizar(VisitaModel visita)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualizar as informações de uma visita
             var _cmdAtualizar = @"update tbVisita
                                   set codFamilia = @CodFamilia,
@@ -112,7 +114,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                       higieneLimpeza = @HigieneLimpeza,
                                       relacaoFamiliar = @RelacaoFamiliar,
                                       confinamento = @Confinamento,
-                                      observacoes = @Observacoes
+                                      observacoes = @Observacoes,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                  where
                                       codigoVisita = @CodigoVisita";
 
@@ -138,6 +142,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      visita.RelacaoFamiliar,
                                      visita.Confinamento,
                                      visita.Observacoes,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
                                      visita.CodigoVisita
                                  },
                                  null,
@@ -153,15 +159,17 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public VisitaModel Adicionar(VisitaModel visita)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adiciona uma nova visita
             var _cmdInserir = @"insert into tbVisita (codFamilia,codVoluntario,dataVisita,alimentacao,
                                                       religiaoPredominante,aguaTratada,esgotoSanitario,
                                                       energiaEletrica,servicosPublicos,moradia,
-                                                      higieneLimpeza,relacaoFamiliar,confinamento,observacoes) 
+                                                      higieneLimpeza,relacaoFamiliar,confinamento,observacoes,codusuariocriacao,datacriacao) 
                                 values (@CodFamilia,@CodVoluntario,@DataVisita,@Alimentacao,
                                         @ReligiaoPredominante,@AguaTratada,@EsgotoSanitario,
                                         @EnergiaEletrica,@ServicosPublicos,@Moradia,
-                                        @HigieneLimpeza,@RelacaoFamiliar,@Confinamento,@Observacoes)";
+                                        @HigieneLimpeza,@RelacaoFamiliar,@Confinamento,@Observacoes,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -190,7 +198,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                       visita.HigieneLimpeza,
                                                       visita.RelacaoFamiliar,
                                                       visita.Confinamento,
-                                                      visita.Observacoes
+                                                      visita.Observacoes,
+                                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                                      DataCriacao
                                                   },
                                                   _transacao,
                                                   this.TimeoutPadrao,

@@ -15,5 +15,7 @@ namespace ProjetoControleCestas.Dados.Interface
         decimal GetTotalRendas(int codFamilia);
         decimal GetTotalBeneficiosRecebidos(int codFamilia);
         IDbConnection CriarConexao();
+        List<FamiliaModel> PesquisarPorCpfResponsavel(string cpf);
+        List<FamiliaModel> PesquisarPorNomeResponsavel(string nomeResponsavel);
     }
 }

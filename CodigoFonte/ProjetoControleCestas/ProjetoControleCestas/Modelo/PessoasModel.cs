@@ -4,7 +4,7 @@ using ProjetoControleCestas.Enums;
 namespace ProjetoControleCestas.Modelo
 {
     [Table("tbPessoas")]
-    public class PessoasModel
+    public class PessoasModel: EntidadeBaseModel
     {
         [Key]
         public int CodPessoas { get; set; }

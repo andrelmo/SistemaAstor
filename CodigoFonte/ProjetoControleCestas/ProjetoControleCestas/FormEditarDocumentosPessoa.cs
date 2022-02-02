@@ -9,6 +9,9 @@ namespace ProjetoControleCestas
     public partial class FormEditarDocumentosPessoa : Form
     {
         private const string TIPO_DOCUMENTO_CPF = @"CPF";
+        private const string MASCARA_TIPO_DOCUMENTO_CPF = @"000.00.00.00/00";
+        private const int NUMERO_MAXIMO_CARACTERES_NUMERO_DOCUMENTO = 20;
+
         private readonly IDocumentosDal _documentosDal;
         private readonly ServiceProvider _serviceProvider;
         private DocumentosModel _documentoEdicao;
@@ -103,6 +106,14 @@ namespace ProjetoControleCestas
                     //Verificar se as informações obrigatórias foram preenchidas
                     if (this.VerificarInformacoesObrigatorias())
                     {
+                        //Verificar se o tamanho do campo de número do documento foi excedido
+                        if (this.textBoxNumeroDocumento.Text.Length > NUMERO_MAXIMO_CARACTERES_NUMERO_DOCUMENTO)
+                        {
+                            MessageBox.Show("Você pode digitar no máximo 20 caracteres!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                            return;
+                        }
+
                         //Verificar se foi selecionado o tipo de documento "CPF"
                         if (this.comboBoxTipoDocumento.Items[this.comboBoxTipoDocumento.SelectedIndex].ToString() == TIPO_DOCUMENTO_CPF)
                         {
@@ -181,6 +192,14 @@ namespace ProjetoControleCestas
         private void buttonCancelar_Click(object sender, System.EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboBoxTipoDocumento_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (this.comboBoxTipoDocumento.Items[this.comboBoxTipoDocumento.SelectedIndex].ToString() == TIPO_DOCUMENTO_CPF)
+                this.textBoxNumeroDocumento.Mask = MASCARA_TIPO_DOCUMENTO_CPF;
+            else
+                this.textBoxNumeroDocumento.Mask = string.Empty;
         }
     }
 }

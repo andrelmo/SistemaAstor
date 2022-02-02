@@ -98,13 +98,17 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public ProblemaSaudeModel Atualizar(ProblemaSaudeModel problema)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualizar as informações de saúde da pessoa
             var _cmdAtualizar = @"update tbProblemaSaude
                                   set codPessoa = @CodPessoa,
                                       problemaSaude = @ProblemaSaude,
                                       medicamento = @Medicamento,
                                       local = @Local,
-                                      periodicidade = @Periodicidade
+                                      periodicidade = @Periodicidade,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                         codProblemaSaude = @CodProblemaSaude";
 
@@ -120,6 +124,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      problema.Medicamento,
                                      problema.Local,
                                      problema.Periodicidade,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
                                      problema.CodProblemaSaude
                                  },
                                  null,
@@ -136,10 +142,12 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public ProblemaSaudeModel Adicionar(ProblemaSaudeModel problema)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adicionar um problema de saúde a pessoa
             var _cmdInserir = @"insert into tbProblemaSaude(codPessoa,problemaSaude,medicamento,
-                                local,periodicidade) 
-                                values (@CodPessoa,@ProblemaSaude,@Medicamento,@Local,@Periodicidade)";
+                                local,periodicidade,codusuariocriacao,datacriacao) 
+                                values (@CodPessoa,@ProblemaSaude,@Medicamento,@Local,@Periodicidade,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -158,7 +166,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                       problema.ProblemaSaude,
                                                       problema.Medicamento,
                                                       problema.Local,
-                                                      problema.Periodicidade
+                                                      problema.Periodicidade,
+                                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                                      DataCriacao
                                                   },
                                                   _transacao, 
                                                   this.TimeoutPadrao, 

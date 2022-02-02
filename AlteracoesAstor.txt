@@ -1,0 +1,12 @@
+1)No cadastro de família, precisamos ter no grid o número da família, nome do responsável e Documento do responsável. (feito)
+
+2)Precisamos também de um filtro para localizar a família.E isso acontece sempre pelo responsável ou pelo nome, pelo documento ou número da família. (feito)
+
+3)Precisamos de um botão consultar, para apenas consulta mesmo, e quando mandar alterar(uma vírgula que seja) obrigar o salvamento das alterações e salvar data e usuário que efetuou. (feito_
+
+4)Outro pedido é: Atrelar o cadastramento da moradia(condições de moradia) à visita.. 
+Sugestão, criar um número sequencial para a visita e assim no cadastramento das condições da moradia ser obrigatório o número da visita.
+
+5)Área de interesse profissional e atividade desenvolvida, tem que ser uma aba para cada, pois elas são atributos da pessoa e podem ter mais de uma.
+
+6)Se puder melhorar a máscara do CPF, eu agradeceria imensamente. (O sistema já tem máscara de CPF)

@@ -9,6 +9,7 @@ namespace ProjetoControleCestas
 {
     public partial class FormListarFamilia : Form
     {
+        private const string MASCARA_CPF = @"000.00.00.00/00";
         private readonly IFamiliaDal _familiaDal;
         private readonly ServiceProvider _serviceProvider;
         private FamiliaModel _registroAtual;
@@ -131,6 +132,60 @@ namespace ProjetoControleCestas
                     {
                         this.Cursor = Cursors.Default;
                     }
+                }
+            }
+        }
+
+        private void radioButtonPesqNome_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ConfigurarMascara();
+        }
+        
+        private void ConfigurarMascara()
+        {
+            if (this.radioButtonPesqNome.Checked)
+                this.maskedTextBoxPesquisar.Mask = "";
+            else
+                this.maskedTextBoxPesquisar.Mask = MASCARA_CPF;
+
+            this.maskedTextBoxPesquisar.Text = "";
+        }
+
+        private void radioButtonPesqCpf_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ConfigurarMascara();
+        }
+
+        private void buttonPesquisar_Click(object sender, EventArgs e)
+        {
+            if (this.radioButtonPesqCpf.Checked)
+            {
+                if (string.IsNullOrEmpty(this.maskedTextBoxPesquisar.Text))
+                    MessageBox.Show("Você deve informar o CPF para poder pesquisar!", "Atenção!",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    //Realizar a pesquisa pelo CPF do responsável
+                    var _listaResultado = this._familiaDal.PesquisarPorCpfResponsavel(this.maskedTextBoxPesquisar.Text);
+                    
+                    this.dataGridViewFamilias.DataSource = _listaResultado;
+
+                    if (_listaResultado.Count == 0)
+                        MessageBox.Show("Não foi encontrada nenhum resultado para a sua pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(this.maskedTextBoxPesquisar.Text))
+                    MessageBox.Show("Você deve informar o nome do responsável para poder pequisar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    //Realizar a pesquisa pelo Nome do responsável
+                    var _listaResultado = this._familiaDal.PesquisarPorNomeResponsavel(this.maskedTextBoxPesquisar.Text);
+
+                    this.dataGridViewFamilias.DataSource = _listaResultado;
+
+                    if (_listaResultado.Count == 0)
+                        MessageBox.Show("Não foi encontrada nenhum resultado para a sua pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }

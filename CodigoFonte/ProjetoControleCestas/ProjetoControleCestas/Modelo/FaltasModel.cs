@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ProjetoControleCestas.Modelo
 {
     [Table("tbFaltas")]
-    public class FaltasModel
+    public class FaltasModel: EntidadeBaseModel
     {
         [Key]
         public int CodigoFaltas { get; set; }

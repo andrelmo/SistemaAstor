@@ -12,9 +12,10 @@ namespace ProjetoControleCestas.Dados.Implementation
     {
         public AberturaFamiliaModel Adicionar(AberturaFamiliaModel aberturaFamilia, IDbTransaction transacao)
         {
+            var DataCriacao = DateTime.Now;
             //Adiciona uma nova abertura de família
-            var _cmdInserir = @"insert into tbAberturaFamilia (codFamilia,dataAbertura,dataFechamento,status,observacao,codVoluntario,tipoCesta,CorCesta) 
-                                                       values (@CodFamilia,@DataAbertura,@DataFechamento,@Status,@Observacao,@CodVoluntario,@TipoCesta,@CorCesta)";
+            var _cmdInserir = @"insert into tbAberturaFamilia (codFamilia,dataAbertura,dataFechamento,status,observacao,codVoluntario,tipoCesta,CorCesta,codusuariocriacao,datacriacao) 
+                                                       values (@CodFamilia,@DataAbertura,@DataFechamento,@Status,@Observacao,@CodVoluntario,@TipoCesta,@CorCesta,@CodigoUsuario,@DataCriacao)";
 
             var _cmdNovoId = "select last_insert_id();";
 
@@ -28,7 +29,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                               aberturaFamilia.Observacao,
                                               aberturaFamilia.CodVoluntario,
                                               aberturaFamilia.TipoCesta,
-                                              aberturaFamilia.CorCesta
+                                              aberturaFamilia.CorCesta,
+                                              SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                              DataCriacao
                                           },
                                           transacao,
                                           this.TimeoutPadrao,
@@ -42,9 +45,12 @@ namespace ProjetoControleCestas.Dados.Implementation
         public void Ativar(int codigoAberturaFamilia)
         {
             //Ativar o status da família para ativo
+            var DataModificacao = DateTime.Now;
             var novoStatus = ConstantesGlobais.STATUS_ABERTURA_FAMILIA_ATIVO;
             var _cmdAtivar = @"update tbAberturaFamilia
-                               set status = @novoStatus
+                               set status = @novoStatus,
+                                   codusuariomodificacao = @CodigoUsuario
+                                   datamodificacao = @DataModificacao
                                where
                                    codigoAberturaFamilia = @codigoAberturaFamilia";
 
@@ -52,7 +58,13 @@ namespace ProjetoControleCestas.Dados.Implementation
 
             try
             {
-                _conexao.Execute(_cmdAtivar, new { novoStatus, codigoAberturaFamilia }, null, this.TimeoutPadrao, CommandType.Text);
+                _conexao.Execute(_cmdAtivar, 
+                                 new 
+                                 { 
+                                     novoStatus, 
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
+                                     codigoAberturaFamilia }, null, this.TimeoutPadrao, CommandType.Text);
             }
             finally
             {
@@ -71,6 +83,7 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public AberturaFamiliaModel Atualizar(AberturaFamiliaModel aberturaFamilia, IDbTransaction transacao)
         {
+            var DataModificacao = DateTime.Now;
             //Atualizar as informações da família
             var _cmdAtualizar = @"update tbAberturaFamilia
                                   set codFamilia = @CodFamilia,
@@ -80,7 +93,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                       observacao = @Observacao,
                                       codVoluntario = @CodVoluntario,
                                       tipoCesta = @TipoCesta,
-                                      CorCesta = @CorCesta
+                                      CorCesta = @CorCesta,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                       codigoAberturaFamilia = @CodigoAberturaFamilia";
             transacao.Connection.Execute(_cmdAtualizar,
@@ -94,7 +109,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                  aberturaFamilia.CodVoluntario,
                                  aberturaFamilia.TipoCesta,
                                  aberturaFamilia.CorCesta,
-                                 aberturaFamilia.CodigoAberturaFamilia
+                                 aberturaFamilia.CodigoAberturaFamilia,
+                                 SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                 DataModificacao
                              },
                              transacao,
                              this.TimeoutPadrao,
@@ -145,10 +162,13 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public void Cancelar(int codigoAberturaFamilia)
         {
+            var DataModificacao = DateTime.Now;
             //Cancelar um registro de abertura de família
             var novoStatus = ConstantesGlobais.STATUS_ABERTURA_FAMILIA_CANCELADO;
             var _cmdCancelar = @"update tbAberturaFamilia
-                                 set status = @novoStatus
+                                 set status = @novoStatus,
+                                     codusuariomodificacao = @CodigoUsuario,
+                                     datamodificacao = @DataModificacao
                                  where
                                      codigoAberturaFamilia = @codigoAberturaFamilia";
 
@@ -160,7 +180,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                  new
                                  {
                                      novoStatus,
-                                     codigoAberturaFamilia
+                                     codigoAberturaFamilia,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao
                                  },
                                  null, this.TimeoutPadrao, CommandType.Text);
             }
@@ -172,10 +194,13 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public void Inativar(int codigoAberturaFamilia)
         {
+            var DataModificacao = DateTime.Now;
             //Inativar um registro de abertura de família específico
             var novoStatus = ConstantesGlobais.STATUS_ABERTURA_FAMILIA_INATIVO;
             var _cmdInativar = @"update tbAberturaFamilia
-                                 set status = @novoStatus
+                                 set status = @novoStatus,
+                                     codusuariomodificacao = @CodigoUsuario,
+                                     datamodificacao = @DataModificacao
                                  where
                                      codigoAberturaFamilia = @codigoAberturaFamilia";
 
@@ -187,7 +212,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                  new
                                  {
                                      novoStatus,
-                                     codigoAberturaFamilia
+                                     codigoAberturaFamilia,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao
                                  },
                                  null,
                                  this.TimeoutPadrao,

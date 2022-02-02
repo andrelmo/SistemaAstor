@@ -3,7 +3,7 @@
 namespace ProjetoControleCestas.Modelo
 {
     [Table("tbFamilia")]
-    public class FamiliaModel
+    public class FamiliaModel: EntidadeBaseModel
     {
         [Key]
         public int CodFamilia { get; set; }
@@ -16,5 +16,8 @@ namespace ProjetoControleCestas.Modelo
         public string Municipio { get; set; }
         public string Referencia { get; set; }
         public string Onibus { get; set; }
+        public bool IsResponsavelFamilia { get; set; }
+        public string CpfResponsavel { get; set; }
+        public string NomeResponsavel { get; set; }
     }
 }

@@ -119,11 +119,15 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public BeneficioModel Atualizar(BeneficioModel beneficio)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualizar o beneficio
             var _cmdAtualizar = @"update tbBeneficio
                                   set codPessoa = @CodPessoa,
                                       codTipoBeneficio = @CodTipoBeneficio,
-                                      valorBeneficio = @ValorBeneficio
+                                      valorBeneficio = @ValorBeneficio,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                        codBeneficio = @CodBeneficio";
 
@@ -137,7 +141,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      beneficio.CodPessoa,
                                      beneficio.CodTipoBeneficio,
                                      beneficio.ValorBeneficio,
-                                     beneficio.CodBeneficio
+                                     beneficio.CodBeneficio,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
                                  },
                                  null,
                                  this.TimeoutPadrao,
@@ -153,9 +159,10 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public BeneficioModel Adicionar(BeneficioModel beneficio)
         {
+            var DataCriacao = DateTime.Now;
             //Adicona um novo Beneficio
-            var _cmdInserir = @"insert into tbBeneficio (codPessoa,codTipoBeneficio,valorBeneficio)
-                                            values (@CodPessoa, @CodTipoBeneficio,@ValorBeneficio)";
+            var _cmdInserir = @"insert into tbBeneficio (codPessoa,codTipoBeneficio,valorBeneficio,codusuariocriacao,datacriacao)
+                                            values (@CodPessoa, @CodTipoBeneficio,@ValorBeneficio,@CodigoUsuario,@DataCriacao)";
 
             var _cmdNovoId = "select last_insert_id();";
 
@@ -174,7 +181,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      {
                                          beneficio.CodPessoa,
                                          beneficio.CodTipoBeneficio,
-                                         beneficio.ValorBeneficio
+                                         beneficio.ValorBeneficio,
+                                         SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                         DataCriacao
                                      },
                                      _transacao,
                                      this.TimeoutPadrao,

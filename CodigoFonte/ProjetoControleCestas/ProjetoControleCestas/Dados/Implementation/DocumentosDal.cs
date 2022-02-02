@@ -105,11 +105,15 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public DocumentosModel Atualizar(DocumentosModel documento)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualizar o documento
             var _cmdAtualizar = @"update tbDocumentos
                                   set codPessoas = @CodPessoas,
                                       tipodocumento = @TipoDocumento,
-                                      numeroDocumento = @NumeroDocumento
+                                      numeroDocumento = @NumeroDocumento,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                       codigoDocumento = @CodigoDocumento";
 
@@ -123,6 +127,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      documento.CodPessoas,
                                      documento.TipoDocumento,
                                      documento.NumeroDocumento,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
                                      documento.CodigoDocumento
                                  },
                                  null,
@@ -139,9 +145,11 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public DocumentosModel Adicionar(DocumentosModel documento)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adicionar um novo documento
-            var _cmdInserir = @"insert into tbDocumentos (codPessoas,tipodocumento,numeroDocumento) 
-                                values (@CodPessoas,@TipoDocumento,@NumeroDocumento)";
+            var _cmdInserir = @"insert into tbDocumentos (codPessoas,tipodocumento,numeroDocumento,codusuariocriacao,datacriacao) 
+                                values (@CodPessoas,@TipoDocumento,@NumeroDocumento,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -159,7 +167,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                   {
                                                       documento.CodPessoas,
                                                       documento.TipoDocumento,
-                                                      documento.NumeroDocumento
+                                                      documento.NumeroDocumento,
+                                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                                      DataCriacao
                                                   },
                                                   _transacao,
                                                   this.TimeoutPadrao,

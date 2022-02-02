@@ -30,17 +30,17 @@ namespace ProjetoControleCestas
         private void InitializeComponent()
         {
             this.panelFundo = new System.Windows.Forms.Panel();
+            this.panelEdicao = new System.Windows.Forms.Panel();
+            this.comboBoxTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.labelNumeroDocumento = new System.Windows.Forms.Label();
+            this.labelTipoDocumento = new System.Windows.Forms.Label();
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.labelTipoDocumento = new System.Windows.Forms.Label();
-            this.labelNumeroDocumento = new System.Windows.Forms.Label();
-            this.textBoxNumeroDocumento = new System.Windows.Forms.TextBox();
-            this.comboBoxTipoDocumento = new System.Windows.Forms.ComboBox();
-            this.panelEdicao = new System.Windows.Forms.Panel();
+            this.textBoxNumeroDocumento = new System.Windows.Forms.MaskedTextBox();
             this.panelFundo.SuspendLayout();
-            this.panelRodape.SuspendLayout();
             this.panelEdicao.SuspendLayout();
+            this.panelRodape.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelFundo
@@ -52,6 +52,53 @@ namespace ProjetoControleCestas
             this.panelFundo.Name = "panelFundo";
             this.panelFundo.Size = new System.Drawing.Size(800, 242);
             this.panelFundo.TabIndex = 0;
+            // 
+            // panelEdicao
+            // 
+            this.panelEdicao.Controls.Add(this.textBoxNumeroDocumento);
+            this.panelEdicao.Controls.Add(this.comboBoxTipoDocumento);
+            this.panelEdicao.Controls.Add(this.labelNumeroDocumento);
+            this.panelEdicao.Controls.Add(this.labelTipoDocumento);
+            this.panelEdicao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEdicao.Location = new System.Drawing.Point(0, 0);
+            this.panelEdicao.Name = "panelEdicao";
+            this.panelEdicao.Size = new System.Drawing.Size(800, 177);
+            this.panelEdicao.TabIndex = 1;
+            // 
+            // comboBoxTipoDocumento
+            // 
+            this.comboBoxTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTipoDocumento.FormattingEnabled = true;
+            this.comboBoxTipoDocumento.Items.AddRange(new object[] {
+            "Certidão de Nascimento",
+            "Certidão de Casamento",
+            "Identidade",
+            "CPF",
+            "CTPS",
+            "TE"});
+            this.comboBoxTipoDocumento.Location = new System.Drawing.Point(13, 39);
+            this.comboBoxTipoDocumento.Name = "comboBoxTipoDocumento";
+            this.comboBoxTipoDocumento.Size = new System.Drawing.Size(398, 23);
+            this.comboBoxTipoDocumento.TabIndex = 1;
+            this.comboBoxTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoDocumento_SelectedIndexChanged);
+            // 
+            // labelNumeroDocumento
+            // 
+            this.labelNumeroDocumento.AutoSize = true;
+            this.labelNumeroDocumento.Location = new System.Drawing.Point(13, 89);
+            this.labelNumeroDocumento.Name = "labelNumeroDocumento";
+            this.labelNumeroDocumento.Size = new System.Drawing.Size(54, 15);
+            this.labelNumeroDocumento.TabIndex = 2;
+            this.labelNumeroDocumento.Text = "Número:";
+            // 
+            // labelTipoDocumento
+            // 
+            this.labelTipoDocumento.AutoSize = true;
+            this.labelTipoDocumento.Location = new System.Drawing.Point(13, 20);
+            this.labelTipoDocumento.Name = "labelTipoDocumento";
+            this.labelTipoDocumento.Size = new System.Drawing.Size(33, 15);
+            this.labelTipoDocumento.TabIndex = 0;
+            this.labelTipoDocumento.Text = "Tipo:";
             // 
             // panelRodape
             // 
@@ -83,59 +130,13 @@ namespace ProjetoControleCestas
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
-            // labelTipoDocumento
-            // 
-            this.labelTipoDocumento.AutoSize = true;
-            this.labelTipoDocumento.Location = new System.Drawing.Point(13, 20);
-            this.labelTipoDocumento.Name = "labelTipoDocumento";
-            this.labelTipoDocumento.Size = new System.Drawing.Size(33, 15);
-            this.labelTipoDocumento.TabIndex = 0;
-            this.labelTipoDocumento.Text = "Tipo:";
-            // 
-            // labelNumeroDocumento
-            // 
-            this.labelNumeroDocumento.AutoSize = true;
-            this.labelNumeroDocumento.Location = new System.Drawing.Point(13, 89);
-            this.labelNumeroDocumento.Name = "labelNumeroDocumento";
-            this.labelNumeroDocumento.Size = new System.Drawing.Size(54, 15);
-            this.labelNumeroDocumento.TabIndex = 2;
-            this.labelNumeroDocumento.Text = "Número:";
-            // 
             // textBoxNumeroDocumento
             // 
-            this.textBoxNumeroDocumento.Location = new System.Drawing.Point(13, 108);
-            this.textBoxNumeroDocumento.MaxLength = 20;
+            this.textBoxNumeroDocumento.Location = new System.Drawing.Point(13, 107);
             this.textBoxNumeroDocumento.Name = "textBoxNumeroDocumento";
-            this.textBoxNumeroDocumento.Size = new System.Drawing.Size(137, 23);
+            this.textBoxNumeroDocumento.Size = new System.Drawing.Size(170, 23);
             this.textBoxNumeroDocumento.TabIndex = 3;
-            // 
-            // comboBoxTipoDocumento
-            // 
-            this.comboBoxTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTipoDocumento.FormattingEnabled = true;
-            this.comboBoxTipoDocumento.Items.AddRange(new object[] {
-            "Certidão de Nascimento",
-            "Certidão de Casamento",
-            "Identidade",
-            "CPF",
-            "CTPS",
-            "TE"});
-            this.comboBoxTipoDocumento.Location = new System.Drawing.Point(13, 39);
-            this.comboBoxTipoDocumento.Name = "comboBoxTipoDocumento";
-            this.comboBoxTipoDocumento.Size = new System.Drawing.Size(398, 23);
-            this.comboBoxTipoDocumento.TabIndex = 1;
-            // 
-            // panelEdicao
-            // 
-            this.panelEdicao.Controls.Add(this.comboBoxTipoDocumento);
-            this.panelEdicao.Controls.Add(this.textBoxNumeroDocumento);
-            this.panelEdicao.Controls.Add(this.labelNumeroDocumento);
-            this.panelEdicao.Controls.Add(this.labelTipoDocumento);
-            this.panelEdicao.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEdicao.Location = new System.Drawing.Point(0, 0);
-            this.panelEdicao.Name = "panelEdicao";
-            this.panelEdicao.Size = new System.Drawing.Size(800, 177);
-            this.panelEdicao.TabIndex = 1;
+            this.textBoxNumeroDocumento.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // FormEditarDocumentosPessoa
             // 
@@ -152,9 +153,9 @@ namespace ProjetoControleCestas
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Documento";
             this.panelFundo.ResumeLayout(false);
-            this.panelRodape.ResumeLayout(false);
             this.panelEdicao.ResumeLayout(false);
             this.panelEdicao.PerformLayout();
+            this.panelRodape.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -167,8 +168,8 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.Button buttonSalvar;
         private System.Windows.Forms.Panel panelEdicao;
         private System.Windows.Forms.ComboBox comboBoxTipoDocumento;
-        private System.Windows.Forms.TextBox textBoxNumeroDocumento;
         private System.Windows.Forms.Label labelNumeroDocumento;
         private System.Windows.Forms.Label labelTipoDocumento;
+        private System.Windows.Forms.MaskedTextBox textBoxNumeroDocumento;
     }
 }

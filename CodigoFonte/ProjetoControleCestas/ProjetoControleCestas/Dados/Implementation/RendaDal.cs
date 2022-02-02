@@ -103,11 +103,15 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public RendaModel Atualizar(RendaModel renda)
         {
+            var DataModificacao = DateTime.Now;
+
             //Atualizar as informações de renda
             var _cmdAtualizar = @"update tbRenda 
                                   set codPessoas = @CodPessoas,
                                       renda = @Renda,
-                                      valorRenda = @ValorRenda
+                                      valorRenda = @ValorRenda,
+                                      codusuariomodificacao = @CodigoUsuario,
+                                      datamodificacao = @DataModificacao
                                   where
                                        codRenda = @CodRenda";
 
@@ -121,6 +125,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      renda.CodPessoas,
                                      renda.Renda,
                                      renda.ValorRenda,
+                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                     DataModificacao,
                                      renda.CodRenda
                                  },
                                  null,
@@ -137,8 +143,10 @@ namespace ProjetoControleCestas.Dados.Implementation
 
         public RendaModel Adicionar(RendaModel renda)
         {
+            var DataCriacao = DateTime.Now;
+
             //Adicionar uma nova renda
-            var _cmdInserir = @"insert into tbRenda(codPessoas,renda,valorRenda) values (@CodPessoas,@Renda,@ValorRenda)";
+            var _cmdInserir = @"insert into tbRenda(codPessoas,renda,valorRenda,codusuariocriacao,datacriacao) values (@CodPessoas,@Renda,@ValorRenda,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -156,7 +164,9 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                   {
                                                       renda.CodPessoas,
                                                       renda.Renda,
-                                                      renda.ValorRenda
+                                                      renda.ValorRenda,
+                                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
+                                                      DataCriacao
                                                   },
                                                   _transacao,
                                                   this.TimeoutPadrao,

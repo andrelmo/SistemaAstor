@@ -4,7 +4,7 @@ using System;
 namespace ProjetoControleCestas.Modelo
 {
     [Table("tbVisita")]
-    public class VisitaModel
+    public class VisitaModel: EntidadeBaseModel
     {
         [Key]
         public int CodigoVisita { get; set; }

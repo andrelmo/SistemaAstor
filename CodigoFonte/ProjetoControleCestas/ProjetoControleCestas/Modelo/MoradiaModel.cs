@@ -4,7 +4,7 @@ using ProjetoControleCestas.Enums;
 namespace ProjetoControleCestas.Modelo
 {
     [Table("tbMoradia")]
-    public class MoradiaModel
+    public class MoradiaModel: EntidadeBaseModel
     {
         [Key]
         public int CodCaracteristicasMoradia { get; set; }
