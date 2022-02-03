@@ -105,7 +105,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                       numeroQuartos = @NumeroQuartos,
                                       banheiro = @Banheiro,
                                       codusuariomodificacao = @CodigoUsuario,
-                                      datamodificacao = @DataModificacao
+                                      datamodificacao = @DataModificacao,
+                                      codigovisita = @codigovisita
                                   where
                                        codCaracteristicasMoradia = @CodCaracteristicasMoradia";
 
@@ -123,6 +124,7 @@ namespace ProjetoControleCestas.Dados.Implementation
                                     moradia.Banheiro,
                                     SessaoSistema.UsuarioCorrente.CodigoUsuario,
                                     DataModificacao,
+                                    moradia.CodigoVisita,
                                     moradia.CodCaracteristicasMoradia
                                  }, 
                                  null, 
@@ -142,8 +144,8 @@ namespace ProjetoControleCestas.Dados.Implementation
             var DataCriacao = DateTime.Now;
 
             //Adiciona uma nova moradia
-            var _cmdInserir = @"insert into tbMoradia(codFamilia,condicaoMoradia,numeroComodos,numeroQuartos,banheiro,codusuariocriacao,datacriacao) 
-                                values (@CodFamilia,@CondicaoMoradia,@NumeroComodos,@NumeroQuartos,@Banheiro,@CodigoUsuario,@DataCriacao)";
+            var _cmdInserir = @"insert into tbMoradia(codFamilia,condicaoMoradia,numeroComodos,numeroQuartos,banheiro,codusuariocriacao,datacriacao,codigovisita) 
+                                values (@CodFamilia,@CondicaoMoradia,@NumeroComodos,@NumeroQuartos,@Banheiro,@CodigoUsuario,@DataCriacao,@codigovisita)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -165,7 +167,8 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                       moradia.NumeroQuartos,
                                                       moradia.Banheiro,
                                                       SessaoSistema.UsuarioCorrente.CodigoUsuario,
-                                                      DataCriacao
+                                                      DataCriacao,
+                                                      moradia.CodigoVisita
                                                   },
                                                   _transacao,
                                                   this.TimeoutPadrao,

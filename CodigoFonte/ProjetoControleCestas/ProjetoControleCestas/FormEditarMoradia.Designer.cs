@@ -31,6 +31,8 @@ namespace ProjetoControleCestas
         {
             this.panelFundo = new System.Windows.Forms.Panel();
             this.panelEdicao = new System.Windows.Forms.Panel();
+            this.textBoxCodigoVisita = new System.Windows.Forms.TextBox();
+            this.labelCodigoVisita = new System.Windows.Forms.Label();
             this.groupBoxBanheiro = new System.Windows.Forms.GroupBox();
             this.radioButtonBanheiroNaoPossui = new System.Windows.Forms.RadioButton();
             this.radioButtonBanheiroColetivo = new System.Windows.Forms.RadioButton();
@@ -60,11 +62,13 @@ namespace ProjetoControleCestas
             this.panelFundo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFundo.Location = new System.Drawing.Point(0, 0);
             this.panelFundo.Name = "panelFundo";
-            this.panelFundo.Size = new System.Drawing.Size(800, 275);
+            this.panelFundo.Size = new System.Drawing.Size(800, 319);
             this.panelFundo.TabIndex = 0;
             // 
             // panelEdicao
             // 
+            this.panelEdicao.Controls.Add(this.textBoxCodigoVisita);
+            this.panelEdicao.Controls.Add(this.labelCodigoVisita);
             this.panelEdicao.Controls.Add(this.groupBoxBanheiro);
             this.panelEdicao.Controls.Add(this.groupBoxTipoCondicaoMoradia);
             this.panelEdicao.Controls.Add(this.textBoxNumeroQuartos);
@@ -74,8 +78,25 @@ namespace ProjetoControleCestas
             this.panelEdicao.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEdicao.Location = new System.Drawing.Point(0, 0);
             this.panelEdicao.Name = "panelEdicao";
-            this.panelEdicao.Size = new System.Drawing.Size(800, 210);
+            this.panelEdicao.Size = new System.Drawing.Size(800, 254);
             this.panelEdicao.TabIndex = 1;
+            // 
+            // textBoxCodigoVisita
+            // 
+            this.textBoxCodigoVisita.Location = new System.Drawing.Point(13, 204);
+            this.textBoxCodigoVisita.Name = "textBoxCodigoVisita";
+            this.textBoxCodigoVisita.Size = new System.Drawing.Size(100, 23);
+            this.textBoxCodigoVisita.TabIndex = 7;
+            this.textBoxCodigoVisita.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigoVisita_KeyPress);
+            // 
+            // labelCodigoVisita
+            // 
+            this.labelCodigoVisita.AutoSize = true;
+            this.labelCodigoVisita.Location = new System.Drawing.Point(13, 186);
+            this.labelCodigoVisita.Name = "labelCodigoVisita";
+            this.labelCodigoVisita.Size = new System.Drawing.Size(96, 15);
+            this.labelCodigoVisita.TabIndex = 6;
+            this.labelCodigoVisita.Text = "Código da Visita:";
             // 
             // groupBoxBanheiro
             // 
@@ -208,7 +229,7 @@ namespace ProjetoControleCestas
             this.panelRodape.Controls.Add(this.buttonCancelar);
             this.panelRodape.Controls.Add(this.buttonSalvar);
             this.panelRodape.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRodape.Location = new System.Drawing.Point(0, 210);
+            this.panelRodape.Location = new System.Drawing.Point(0, 254);
             this.panelRodape.Name = "panelRodape";
             this.panelRodape.Size = new System.Drawing.Size(800, 65);
             this.panelRodape.TabIndex = 0;
@@ -239,7 +260,7 @@ namespace ProjetoControleCestas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancelar;
-            this.ClientSize = new System.Drawing.Size(800, 275);
+            this.ClientSize = new System.Drawing.Size(800, 319);
             this.Controls.Add(this.panelFundo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -278,5 +299,7 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.RadioButton radioButtonBanheiroNaoPossui;
         private System.Windows.Forms.RadioButton radioButtonBanheiroColetivo;
         private System.Windows.Forms.RadioButton radioButtonBanheiroProprio;
+        private System.Windows.Forms.TextBox textBoxCodigoVisita;
+        private System.Windows.Forms.Label labelCodigoVisita;
     }
 }

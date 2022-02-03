@@ -12,5 +12,6 @@ namespace ProjetoControleCestas.Dados.Interface
         void ExcluirTodos(int codFamilia, IDbTransaction transacao);
         VisitaModel Buscar(int codigoVisita);
         List<VisitaModel> BuscarTodos(int codFamilia);
+        bool VerificarExiste(int codigoVisita);
     }
 }

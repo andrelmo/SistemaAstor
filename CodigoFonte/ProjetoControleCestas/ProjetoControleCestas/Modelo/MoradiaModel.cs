@@ -56,5 +56,6 @@ namespace ProjetoControleCestas.Modelo
         public string DescricaoBanheiro { get; private set; }
 
         public string DescricaoCondicaoMoradia { get; private set; }
+        public int? CodigoVisita { get; set; }
     }
 }

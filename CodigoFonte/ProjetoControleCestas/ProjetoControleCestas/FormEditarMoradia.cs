@@ -10,6 +10,7 @@ namespace ProjetoControleCestas
     public partial class FormEditarMoradia : Form
     {
         private readonly IMoradiaDal _moradiaDal;
+        private readonly IVisitaDal _visitaDal;
         private readonly ServiceProvider _serviceProvider;
         private MoradiaModel _moradiaEdicao;
         private bool _desabilitarControles;
@@ -23,6 +24,7 @@ namespace ProjetoControleCestas
 
             this._serviceProvider = SessaoSistema.Services.BuildServiceProvider();
             this._moradiaDal = this._serviceProvider.GetService<IMoradiaDal>();
+            this._visitaDal = this._serviceProvider.GetService<IVisitaDal>();
             this._desabilitarControles = false;
             this._codigoMoradiaoAtual = codigoMoradia;
             this._codigoFamiliaAtual = codigoFamilia;
@@ -71,6 +73,11 @@ namespace ProjetoControleCestas
             this.textBoxNumeroComodos.Text = this._moradiaEdicao.NumeroComodos.ToString();
             this.textBoxNumeroQuartos.Text = this._moradiaEdicao.NumeroQuartos.ToString();
 
+            if (this._moradiaEdicao.CodigoVisita.HasValue)
+                this.textBoxCodigoVisita.Text = this._moradiaEdicao.CodigoVisita.ToString();
+            else
+                this.textBoxCodigoVisita.Text = string.Empty;
+
             if (this._moradiaEdicao.CondicaoMoradia == CondicaoMoradia.Alugada)
                 this.radioButtonCondicaoMoradiaAlugada.Checked = true;
             else if (this._moradiaEdicao.CondicaoMoradia == CondicaoMoradia.Cedida)
@@ -92,6 +99,7 @@ namespace ProjetoControleCestas
             this.textBoxNumeroQuartos.Text = string.Empty;
             this.radioButtonCondicaoMoradiaPropria.Checked = true;
             this.radioButtonBanheiroProprio.Checked = true;
+            this.textBoxCodigoVisita.Text = string.Empty;
         }
 
         private void HabilitarControles()
@@ -102,6 +110,7 @@ namespace ProjetoControleCestas
             this.textBoxNumeroQuartos.Enabled = _habilitarControle;
             this.groupBoxTipoCondicaoMoradia.Enabled = _habilitarControle;
             this.groupBoxBanheiro.Enabled = _habilitarControle;
+            this.textBoxCodigoVisita.Enabled = _habilitarControle;
         }
 
         private void buttonSalvar_Click(object sender, System.EventArgs e)
@@ -159,7 +168,8 @@ namespace ProjetoControleCestas
                 NumeroComodos = Convert.ToByte(this.textBoxNumeroComodos.Text),
                 NumeroQuartos = Convert.ToByte(this.textBoxNumeroQuartos.Text),
                 Banheiro = this.GetBanheiro(),
-                CondicaoMoradia = this.GetCondicaoMoradia()
+                CondicaoMoradia = this.GetCondicaoMoradia(),
+                CodigoVisita = Convert.ToInt32(this.textBoxCodigoVisita.Text)
             });
         }
 
@@ -199,6 +209,23 @@ namespace ProjetoControleCestas
                 return (false);
             }
 
+            if (string.IsNullOrEmpty(this.textBoxCodigoVisita.Text))
+            {
+                MessageBox.Show("Você deve informar o Código da Visita!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                return (false);
+            }
+            else
+            {
+                //Verificar se o código da visita informado existe
+                if (!this._visitaDal.VerificarExiste(Convert.ToInt32(this.textBoxCodigoVisita.Text)))
+                {
+                    MessageBox.Show($"O Código da Visita {this.textBoxCodigoVisita.Text} informado não foi encontrado!","Atenção!",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    return (false);
+                }
+            }
+            
             return (true);
         }
 
@@ -210,25 +237,25 @@ namespace ProjetoControleCestas
         private void textBoxNumeroComodos_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
                 e.Handled = true;
-            }
             else
-            {
                 e.Handled = false;
-            }
         }
 
         private void textBoxNumeroQuartos_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
                 e.Handled = true;
-            }
             else
-            {
                 e.Handled = false;
-            }
+        }
+
+        private void textBoxCodigoVisita_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+            else
+                e.Handled = false;
         }
     }
 }

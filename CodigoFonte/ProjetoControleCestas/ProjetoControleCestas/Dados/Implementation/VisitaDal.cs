@@ -40,6 +40,30 @@ namespace ProjetoControleCestas.Dados.Implementation
             }
         }
 
+        public bool VerificarExiste(int codigoVisita)
+        {
+            //Verificar se uma determinada visita existe
+            var _cmdBuscar = @"select count(*) as total
+                               from tbVisita v
+                               where
+                                    codigoVisita = @codigoVisita";
+
+            using var _conexao = new MySqlConnection(this.GetConnecitonString());
+
+            try
+            {
+                return (_conexao.ExecuteScalar<int>(_cmdBuscar,
+                                                    new { codigoVisita },
+                                                    null,
+                                                    this.TimeoutPadrao,
+                                                    CommandType.Text) >= 1);
+            }
+            finally
+            {
+                _conexao.Close();
+            }
+        }
+
         public VisitaModel Buscar(int codigoVisita)
         {
             //Buscar uma determinada visita
