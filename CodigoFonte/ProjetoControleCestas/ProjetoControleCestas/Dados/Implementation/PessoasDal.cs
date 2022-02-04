@@ -152,8 +152,6 @@ namespace ProjetoControleCestas.Dados.Implementation
                                       nomeMae = @NomeMae,
                                       nomePai = @NomePai,
                                       naturalidade = @Naturalidade,
-                                      atividadeDesenvolvida = @AtividadeDesenvolvida,
-                                      areaInteresseProfissional = @AreaInteresseProfissional,
                                       deficiencia = @Deficiencia,
                                       idoso = @Idoso,
                                       sexo = @Sexo,
@@ -182,8 +180,6 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      pessoa.NomeMae,
                                      pessoa.NomePai,
                                      pessoa.Naturalidade,
-                                     pessoa.AtividadeDesenvolvida,
-                                     pessoa.AreaInteresseProfissional,
                                      pessoa.Deficiencia,
                                      pessoa.Idoso,
                                      pessoa.Sexo,
@@ -215,12 +211,10 @@ namespace ProjetoControleCestas.Dados.Implementation
 
             //Adicona uma nova pessoa
             var _cmdInserir = @"insert into tbPessoas(nome,identidade,cpf,situacaoCivil,nomeMae,nomePai,naturalidade,
-                                                      atividadeDesenvolvida,areaInteresseProfissional,deficiencia,
-                                                      idoso,sexo,escolaridade,parentesco,codFamilia,vinculoFamiliar,
+                                                      deficiencia,idoso,sexo,escolaridade,parentesco,codFamilia,vinculoFamiliar,
                                                       problemaSaude,IsResponsavelFamilia,codusuariocriacao,datacriacao) 
                                 values (@Nome,@Identidade,@Cpf,@SituacaoCivil,@NomeMae,@NomePai,@Naturalidade,
-                                        @AtividadeDesenvolvida,@AreaInteresseProfissional,@Deficiencia,
-                                        @Idoso,@Sexo,@Escolaridade,@Parentesco,@CodFamilia,@VinculoFamiliar,
+                                        @Deficiencia,@Idoso,@Sexo,@Escolaridade,@Parentesco,@CodFamilia,@VinculoFamiliar,
                                         @ProblemaSaude,@IsResponsavelFamilia,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
@@ -244,8 +238,6 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                       pessoa.NomeMae,
                                                       pessoa.NomePai,
                                                       pessoa.Naturalidade,
-                                                      pessoa.AtividadeDesenvolvida,
-                                                      pessoa.AreaInteresseProfissional,
                                                       pessoa.Deficiencia,
                                                       pessoa.Idoso,
                                                       pessoa.Sexo,

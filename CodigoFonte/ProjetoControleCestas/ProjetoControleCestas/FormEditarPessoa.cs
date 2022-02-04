@@ -17,6 +17,8 @@ namespace ProjetoControleCestas
         private readonly IBeneficioDal _beneficioDal;
         private readonly IRendaDal _rendaDal;
         private readonly IDocumentosDal _documentosDal;
+        private readonly IAreaInteresseProfissionalDal _areaInteresseProfissionalDal;
+        private readonly IAtividadeDesenvolvidaDal _atividadeDesenvolvidaDal;
         private readonly ServiceProvider _serviceProvider;
         private PessoasModel _pessoaEdicao;
         private bool _desabilitarControles;
@@ -28,6 +30,8 @@ namespace ProjetoControleCestas
         private BeneficioModel _registroAtualBeneficio;
         private RendaModel _registroAtualRenda;
         private DocumentosModel _registroAtualDocumento;
+        private AreaInteresseProfissionalModel _registroAtualAreInteresseProfissional;
+        private AtividadeDesenvolvidaModel _registroAtualAtividadeDesenvolvida;
 
         public FormEditarPessoa(int codigoFamiliaAtual, int codigoPessoa = -1)
         {
@@ -40,6 +44,8 @@ namespace ProjetoControleCestas
             this._beneficioDal = this._serviceProvider.GetService<IBeneficioDal>();
             this._rendaDal = this._serviceProvider.GetService<IRendaDal>();
             this._documentosDal = this._serviceProvider.GetService<IDocumentosDal>();
+            this._areaInteresseProfissionalDal = this._serviceProvider.GetService<IAreaInteresseProfissionalDal>();
+            this._atividadeDesenvolvidaDal = this._serviceProvider.GetService<IAtividadeDesenvolvidaDal>();
             this._desabilitarControles = false;
             this._codigoFamiliaAtual = codigoFamiliaAtual;
             this._codigoPessoaAtual = codigoPessoa;
@@ -48,6 +54,8 @@ namespace ProjetoControleCestas
             this.dataGridViewBeneficios.AutoGenerateColumns = false;
             this.dataGridViewRendas.AutoGenerateColumns = false;
             this.dataGridViewDocumentos.AutoGenerateColumns = false;
+            this.dataGridViewAreaInteresseProfissional.AutoGenerateColumns = false;
+            this.dataGridViewAtividadesDesenvolvidas.AutoGenerateColumns = false;
 
             if (codigoPessoa != -1)
             {
@@ -113,7 +121,6 @@ namespace ProjetoControleCestas
             this.textBoxNomePai.Text = this._pessoaEdicao.NomePai;
             this.textBoxParentesco.Text = this._pessoaEdicao.Parentesco;
             this.textBoxNaturalidade.Text = this._pessoaEdicao.Naturalidade;
-            this.textBoxAtividadeDesenvolvida.Text = this._pessoaEdicao.AtividadeDesenvolvida;
             this._desabilitarControles = false;
 
             //Verificar a situação civil da pessoa
@@ -180,6 +187,12 @@ namespace ProjetoControleCestas
 
             //Carregar a lista de documentos
             this.CarregarDocumentos(this._codigoPessoaAtual);
+
+            //Carregar a lista de áreas de interesse profissional
+            this.CarregarAreasInteresseProfissional(this._codigoPessoaAtual);
+
+            //Carregar a lista de atividades desenvolvidas
+            this.CarregarAtividadesDesenvolvidas(this._codigoPessoaAtual);
         }
 
         private void CarregarDocumentos(int codigoPessoa)
@@ -193,6 +206,42 @@ namespace ProjetoControleCestas
                 var _listaDocumentos = this._documentosDal.BuscarTodos(codigoPessoa);
 
                 this.dataGridViewDocumentos.DataSource = _listaDocumentos;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void CarregarAreasInteresseProfissional(int codigoPessoa)
+        {
+            //Carregar a lista de áreas de interesse profissional da pessoa
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                var _listaAreas = this._areaInteresseProfissionalDal.BuscarTodos(codigoPessoa);
+
+                this.dataGridViewAreaInteresseProfissional.DataSource = _listaAreas;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void CarregarAtividadesDesenvolvidas(int codigoPessoa)
+        {
+            //Carregar a lista de atividades desenvolvidas da pessoa
+
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                var _listaAtividades = this._atividadeDesenvolvidaDal.BuscarTodos(codigoPessoa);
+
+                this.dataGridViewAtividadesDesenvolvidas.DataSource = _listaAtividades;
             }
             finally
             {
@@ -282,7 +331,6 @@ namespace ProjetoControleCestas
             this.textBoxNomePai.Text = string.Empty;
             this.textBoxParentesco.Text = string.Empty;
             this.textBoxNaturalidade.Text = string.Empty;
-            this.textBoxAtividadeDesenvolvida.Text = string.Empty;
             this.radioButtonSituacaoCivilSolteira.Checked = true;
             this.radioButtonDeficienciaNao.Checked = true;
             this.radioButtonProblemaSaudeNao.Checked = true;
@@ -304,7 +352,6 @@ namespace ProjetoControleCestas
             this.textBoxNomePai.Enabled = _habilitarControle;
             this.textBoxParentesco.Enabled = _habilitarControle;
             this.textBoxNaturalidade.Enabled = _habilitarControle;
-            this.textBoxAtividadeDesenvolvida.Enabled = _habilitarControle;
             this.groupBoxSituacaoCivil.Enabled = _habilitarControle;
             this.groupBoxDeficiencia.Enabled = _habilitarControle;
             this.groupBoxProblemaSaude.Enabled = _habilitarControle;
@@ -380,7 +427,6 @@ namespace ProjetoControleCestas
         {
             return (new PessoasModel()
             {
-                AtividadeDesenvolvida = this.textBoxAtividadeDesenvolvida.Text,
                 CodFamilia = this._codigoFamiliaAtual,
                 Cpf = this.maskedTextBoxCpf.Text,
                 Escolaridade = this.textBoxEscolaridade.Text,
@@ -561,6 +607,30 @@ namespace ProjetoControleCestas
             }
             else
                 this._registroAtualDocumento = null;
+        }
+
+        private void SelecionarRegistroGridAreaInteresseProfissional(int linha)
+        {
+            if (linha >= 0)
+            {
+                var _listaAreas = (List<AreaInteresseProfissionalModel>)this.dataGridViewAreaInteresseProfissional.DataSource;
+
+                this._registroAtualAreInteresseProfissional = _listaAreas[linha];
+            }
+            else
+                this._registroAtualAreInteresseProfissional = null;
+        }
+
+        private void SelecionarRegistroGridAtividadeDesenvolvida(int linha)
+        {
+            if (linha >= 0)
+            {
+                var _listaAtividades = (List<AtividadeDesenvolvidaModel>)this.dataGridViewAtividadesDesenvolvidas.DataSource;
+
+                this._registroAtualAtividadeDesenvolvida = _listaAtividades[linha];
+            }
+            else
+                this._registroAtualAtividadeDesenvolvida = null;
         }
 
         private void dataGridViewRendas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -895,6 +965,152 @@ namespace ProjetoControleCestas
             finally
             {
                 _formRenda.Close();
+            }
+        }
+
+        private void dataGridViewAreaInteresseProfissional_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SelecionarRegistroGridAreaInteresseProfissional(e.RowIndex);
+        }
+
+        private void dataGridViewAreaInteresseProfissional_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SelecionarRegistroGridAreaInteresseProfissional(e.RowIndex);
+        }
+
+        private void buttonExcluirAreaInteresseProfissional_Click(object sender, EventArgs e)
+        {
+            if (this._registroAtualAreInteresseProfissional == null)
+                MessageBox.Show("Você deve primeiro selecionar uma Área de Interesse Profissional no grid!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else
+            {
+                if (MessageBox.Show("Confirma a Exclusão?", "Confirma", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        this._areaInteresseProfissionalDal.Excluir(this._registroAtualAreInteresseProfissional.codAreaInteresseProfissional);
+                        MessageBox.Show("Área de Interesse Profissional Excluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //Carregar a lista de Áreas de Interesse Profissional
+                        this.CarregarAreasInteresseProfissional(this._codigoPessoaAtual);
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show($"Ocorreu o seguinte erro: {Ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void buttonAlterarAreaInteresseProfissional_Click(object sender, EventArgs e)
+        {
+            if (this._registroAtualAreInteresseProfissional == null)
+                MessageBox.Show("Você deve primeiro selecionar uma Área de Interesse Profissional no grid!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else
+            {
+                using var _formDocumento = new FormEditarAreaInteresseProfissional(this._codigoPessoaAtual, this._registroAtualAreInteresseProfissional.codAreaInteresseProfissional);
+
+                try
+                {
+                    _formDocumento.ShowDialog();
+
+                    //Carregar a lista de áreas de interesse profissional
+                    this.CarregarAreasInteresseProfissional(this._codigoPessoaAtual);
+                }
+                finally
+                {
+                    _formDocumento.Close();
+                }
+            }
+        }
+
+        private void buttonAdicionarAreaInteresseProfissional_Click(object sender, EventArgs e)
+        {
+            using var _formDocumento = new FormEditarAreaInteresseProfissional(this._codigoPessoaAtual);
+
+            try
+            {
+                _formDocumento.ShowDialog();
+
+                //Carregar a lista de áreas de interesse profissional
+                this.CarregarAreasInteresseProfissional(this._codigoPessoaAtual);
+            }
+            finally
+            {
+                _formDocumento.Close();
+            }
+        }
+
+        private void dataGridViewAtividadesDesenvolvidas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SelecionarRegistroGridAtividadeDesenvolvida(e.RowIndex);
+        }
+
+        private void dataGridViewAtividadesDesenvolvidas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SelecionarRegistroGridAtividadeDesenvolvida(e.RowIndex);
+        }
+
+        private void buttonExcluirAtividadesDesenvolvidas_Click(object sender, EventArgs e)
+        {
+            if (this._registroAtualAtividadeDesenvolvida == null)
+                MessageBox.Show("Você deve primeiro selecionar uma Atividade Desenvolvida no grid!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else
+            {
+                if (MessageBox.Show("Confirma a Exclusão?", "Confirma", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        this._atividadeDesenvolvidaDal.Excluir(this._registroAtualAtividadeDesenvolvida.codAtividadeDesenvolvida);
+                        MessageBox.Show("Atividade Desenvolvida Excluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //Carregar a lista de Atividades desenvolvidas
+                        this.CarregarAtividadesDesenvolvidas(this._codigoPessoaAtual);
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show($"Ocorreu o seguinte erro: {Ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void buttonAlterarAtividadesDesenvolvidas_Click(object sender, EventArgs e)
+        {
+            if (this._registroAtualAtividadeDesenvolvida == null)
+                MessageBox.Show("Você deve primeiro selecionar uma Atividade Desenvolvida no grid!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else
+            {
+                using var _formDocumento = new FormEditarAtividadeDesenvolvida(this._codigoPessoaAtual, this._registroAtualAtividadeDesenvolvida.codAtividadeDesenvolvida);
+
+                try
+                {
+                    _formDocumento.ShowDialog();
+
+                    //Carregar a lista de atividades desenvolvidas
+                    this.CarregarAtividadesDesenvolvidas(this._codigoPessoaAtual);
+                }
+                finally
+                {
+                    _formDocumento.Close();
+                }
+            }
+        }
+
+        private void buttonAdicionarAtividadesDesenvolvidas_Click(object sender, EventArgs e)
+        {
+            using var _formDocumento = new FormEditarAtividadeDesenvolvida(this._codigoPessoaAtual);
+
+            try
+            {
+                _formDocumento.ShowDialog();
+
+                //Carregar a lista de atividades desenvolvidas
+                this.CarregarAtividadesDesenvolvidas(this._codigoPessoaAtual);
+            }
+            finally
+            {
+                _formDocumento.Close();
             }
         }
     }

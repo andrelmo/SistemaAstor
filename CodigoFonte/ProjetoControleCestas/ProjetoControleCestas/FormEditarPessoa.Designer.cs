@@ -29,14 +29,13 @@ namespace ProjetoControleCestas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelFundo = new System.Windows.Forms.Panel();
             this.panelEdicao = new System.Windows.Forms.Panel();
             this.tabControlInformacoesPessoa = new System.Windows.Forms.TabControl();
             this.tabPageInformacoesGerais = new System.Windows.Forms.TabPage();
-            this.textBoxAreaInteresseProfissional = new System.Windows.Forms.TextBox();
-            this.labelAreaInteresseProfissional = new System.Windows.Forms.Label();
+            this.checkBoxResponsavelFamilia = new System.Windows.Forms.CheckBox();
             this.groupBoxProblemaSaude = new System.Windows.Forms.GroupBox();
             this.radioButtonProblemaSaudeNao = new System.Windows.Forms.RadioButton();
             this.radioButtonProblemaSaudeSim = new System.Windows.Forms.RadioButton();
@@ -64,8 +63,6 @@ namespace ProjetoControleCestas
             this.radioButtonSituacaoCivilViuva = new System.Windows.Forms.RadioButton();
             this.radioButtonSituacaoCivilCasada = new System.Windows.Forms.RadioButton();
             this.radioButtonSituacaoCivilSolteira = new System.Windows.Forms.RadioButton();
-            this.textBoxAtividadeDesenvolvida = new System.Windows.Forms.TextBox();
-            this.labelAtividadeDesenvolvida = new System.Windows.Forms.Label();
             this.textBoxNomePai = new System.Windows.Forms.TextBox();
             this.labelNomePai = new System.Windows.Forms.Label();
             this.textBoxNaturalidade = new System.Windows.Forms.TextBox();
@@ -128,10 +125,25 @@ namespace ProjetoControleCestas
             this.buttonExcluirDocumento = new System.Windows.Forms.Button();
             this.buttonAlterarDocumento = new System.Windows.Forms.Button();
             this.buttonAdicionarDocumento = new System.Windows.Forms.Button();
+            this.tabPageAreaInteresseProfissional = new System.Windows.Forms.TabPage();
+            this.panelGridAreaInteresseProfissional = new System.Windows.Forms.Panel();
+            this.dataGridViewAreaInteresseProfissional = new System.Windows.Forms.DataGridView();
+            this.ColumnAreaInteresse = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelCabecalhoAreaInteresseProfissional = new System.Windows.Forms.Panel();
+            this.buttonExcluirAreaInteresseProfissional = new System.Windows.Forms.Button();
+            this.buttonAlterarAreaInteresseProfissional = new System.Windows.Forms.Button();
+            this.buttonAdicionarAreaInteresseProfissional = new System.Windows.Forms.Button();
+            this.tabPageAtividadesDesenvolvidas = new System.Windows.Forms.TabPage();
+            this.panelGridAtividadesDesenvolvidas = new System.Windows.Forms.Panel();
+            this.dataGridViewAtividadesDesenvolvidas = new System.Windows.Forms.DataGridView();
+            this.ColumnAtividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonExcluirAtividadesDesenvolvidas = new System.Windows.Forms.Button();
+            this.buttonAlterarAtividadesDesenvolvidas = new System.Windows.Forms.Button();
+            this.buttonAdicionarAtividadesDesenvolvidas = new System.Windows.Forms.Button();
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.checkBoxResponsavelFamilia = new System.Windows.Forms.CheckBox();
             this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.tabControlInformacoesPessoa.SuspendLayout();
@@ -167,6 +179,14 @@ namespace ProjetoControleCestas
             this.panelListagemDocumentos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocumentos)).BeginInit();
             this.panelCabecalhoDocumentos.SuspendLayout();
+            this.tabPageAreaInteresseProfissional.SuspendLayout();
+            this.panelGridAreaInteresseProfissional.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAreaInteresseProfissional)).BeginInit();
+            this.panelCabecalhoAreaInteresseProfissional.SuspendLayout();
+            this.tabPageAtividadesDesenvolvidas.SuspendLayout();
+            this.panelGridAtividadesDesenvolvidas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtividadesDesenvolvidas)).BeginInit();
+            this.panel1.SuspendLayout();
             this.panelRodape.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,7 +197,7 @@ namespace ProjetoControleCestas
             this.panelFundo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFundo.Location = new System.Drawing.Point(0, 0);
             this.panelFundo.Name = "panelFundo";
-            this.panelFundo.Size = new System.Drawing.Size(996, 533);
+            this.panelFundo.Size = new System.Drawing.Size(996, 491);
             this.panelFundo.TabIndex = 0;
             // 
             // panelEdicao
@@ -186,7 +206,7 @@ namespace ProjetoControleCestas
             this.panelEdicao.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEdicao.Location = new System.Drawing.Point(0, 0);
             this.panelEdicao.Name = "panelEdicao";
-            this.panelEdicao.Size = new System.Drawing.Size(996, 468);
+            this.panelEdicao.Size = new System.Drawing.Size(996, 426);
             this.panelEdicao.TabIndex = 1;
             // 
             // tabControlInformacoesPessoa
@@ -197,18 +217,18 @@ namespace ProjetoControleCestas
             this.tabControlInformacoesPessoa.Controls.Add(this.tabPageBeneficios);
             this.tabControlInformacoesPessoa.Controls.Add(this.tabPageRendas);
             this.tabControlInformacoesPessoa.Controls.Add(this.tabPageDocumentos);
+            this.tabControlInformacoesPessoa.Controls.Add(this.tabPageAreaInteresseProfissional);
+            this.tabControlInformacoesPessoa.Controls.Add(this.tabPageAtividadesDesenvolvidas);
             this.tabControlInformacoesPessoa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlInformacoesPessoa.Location = new System.Drawing.Point(0, 0);
             this.tabControlInformacoesPessoa.Name = "tabControlInformacoesPessoa";
             this.tabControlInformacoesPessoa.SelectedIndex = 0;
-            this.tabControlInformacoesPessoa.Size = new System.Drawing.Size(996, 468);
+            this.tabControlInformacoesPessoa.Size = new System.Drawing.Size(996, 426);
             this.tabControlInformacoesPessoa.TabIndex = 0;
             // 
             // tabPageInformacoesGerais
             // 
             this.tabPageInformacoesGerais.Controls.Add(this.checkBoxResponsavelFamilia);
-            this.tabPageInformacoesGerais.Controls.Add(this.textBoxAreaInteresseProfissional);
-            this.tabPageInformacoesGerais.Controls.Add(this.labelAreaInteresseProfissional);
             this.tabPageInformacoesGerais.Controls.Add(this.groupBoxProblemaSaude);
             this.tabPageInformacoesGerais.Controls.Add(this.groupBoxVinculoFamiliar);
             this.tabPageInformacoesGerais.Controls.Add(this.textBoxParentesco);
@@ -220,8 +240,6 @@ namespace ProjetoControleCestas
             this.tabPageInformacoesGerais.Controls.Add(this.groupBoxDeficiencia);
             this.tabPageInformacoesGerais.Controls.Add(this.maskedTextBoxCpf);
             this.tabPageInformacoesGerais.Controls.Add(this.groupBoxSituacaoCivil);
-            this.tabPageInformacoesGerais.Controls.Add(this.textBoxAtividadeDesenvolvida);
-            this.tabPageInformacoesGerais.Controls.Add(this.labelAtividadeDesenvolvida);
             this.tabPageInformacoesGerais.Controls.Add(this.textBoxNomePai);
             this.tabPageInformacoesGerais.Controls.Add(this.labelNomePai);
             this.tabPageInformacoesGerais.Controls.Add(this.textBoxNaturalidade);
@@ -236,33 +254,26 @@ namespace ProjetoControleCestas
             this.tabPageInformacoesGerais.Location = new System.Drawing.Point(4, 24);
             this.tabPageInformacoesGerais.Name = "tabPageInformacoesGerais";
             this.tabPageInformacoesGerais.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInformacoesGerais.Size = new System.Drawing.Size(988, 440);
+            this.tabPageInformacoesGerais.Size = new System.Drawing.Size(988, 398);
             this.tabPageInformacoesGerais.TabIndex = 0;
             this.tabPageInformacoesGerais.Text = "Informações Gerais";
             this.tabPageInformacoesGerais.UseVisualStyleBackColor = true;
             // 
-            // textBoxAreaInteresseProfissional
+            // checkBoxResponsavelFamilia
             // 
-            this.textBoxAreaInteresseProfissional.Location = new System.Drawing.Point(29, 214);
-            this.textBoxAreaInteresseProfissional.MaxLength = 20;
-            this.textBoxAreaInteresseProfissional.Name = "textBoxAreaInteresseProfissional";
-            this.textBoxAreaInteresseProfissional.Size = new System.Drawing.Size(931, 23);
-            this.textBoxAreaInteresseProfissional.TabIndex = 19;
-            // 
-            // labelAreaInteresseProfissional
-            // 
-            this.labelAreaInteresseProfissional.AutoSize = true;
-            this.labelAreaInteresseProfissional.Location = new System.Drawing.Point(29, 196);
-            this.labelAreaInteresseProfissional.Name = "labelAreaInteresseProfissional";
-            this.labelAreaInteresseProfissional.Size = new System.Drawing.Size(147, 15);
-            this.labelAreaInteresseProfissional.TabIndex = 18;
-            this.labelAreaInteresseProfissional.Text = "Área Interesse Profissional:";
+            this.checkBoxResponsavelFamilia.AutoSize = true;
+            this.checkBoxResponsavelFamilia.Location = new System.Drawing.Point(800, 331);
+            this.checkBoxResponsavelFamilia.Name = "checkBoxResponsavelFamilia";
+            this.checkBoxResponsavelFamilia.Size = new System.Drawing.Size(148, 19);
+            this.checkBoxResponsavelFamilia.TabIndex = 26;
+            this.checkBoxResponsavelFamilia.Text = "Responsável da Família";
+            this.checkBoxResponsavelFamilia.UseVisualStyleBackColor = true;
             // 
             // groupBoxProblemaSaude
             // 
             this.groupBoxProblemaSaude.Controls.Add(this.radioButtonProblemaSaudeNao);
             this.groupBoxProblemaSaude.Controls.Add(this.radioButtonProblemaSaudeSim);
-            this.groupBoxProblemaSaude.Location = new System.Drawing.Point(801, 245);
+            this.groupBoxProblemaSaude.Location = new System.Drawing.Point(800, 199);
             this.groupBoxProblemaSaude.Name = "groupBoxProblemaSaude";
             this.groupBoxProblemaSaude.Size = new System.Drawing.Size(159, 78);
             this.groupBoxProblemaSaude.TabIndex = 22;
@@ -295,7 +306,7 @@ namespace ProjetoControleCestas
             // 
             this.groupBoxVinculoFamiliar.Controls.Add(this.radioButtonVinculoFamiliarResponsavel);
             this.groupBoxVinculoFamiliar.Controls.Add(this.radioButtonVinculoFamiliarDependente);
-            this.groupBoxVinculoFamiliar.Location = new System.Drawing.Point(559, 342);
+            this.groupBoxVinculoFamiliar.Location = new System.Drawing.Point(558, 296);
             this.groupBoxVinculoFamiliar.Name = "groupBoxVinculoFamiliar";
             this.groupBoxVinculoFamiliar.Size = new System.Drawing.Size(226, 78);
             this.groupBoxVinculoFamiliar.TabIndex = 25;
@@ -362,7 +373,7 @@ namespace ProjetoControleCestas
             // 
             this.groupBoxSexo.Controls.Add(this.radioButtonSexoFeminino);
             this.groupBoxSexo.Controls.Add(this.radioButtonSexoMasculino);
-            this.groupBoxSexo.Location = new System.Drawing.Point(259, 342);
+            this.groupBoxSexo.Location = new System.Drawing.Point(258, 296);
             this.groupBoxSexo.Name = "groupBoxSexo";
             this.groupBoxSexo.Size = new System.Drawing.Size(281, 78);
             this.groupBoxSexo.TabIndex = 24;
@@ -395,7 +406,7 @@ namespace ProjetoControleCestas
             // 
             this.groupBoxIdoso.Controls.Add(this.radioButtonIdosoNao);
             this.groupBoxIdoso.Controls.Add(this.radioButtonIdosoSim);
-            this.groupBoxIdoso.Location = new System.Drawing.Point(29, 342);
+            this.groupBoxIdoso.Location = new System.Drawing.Point(28, 296);
             this.groupBoxIdoso.Name = "groupBoxIdoso";
             this.groupBoxIdoso.Size = new System.Drawing.Size(200, 78);
             this.groupBoxIdoso.TabIndex = 23;
@@ -428,7 +439,7 @@ namespace ProjetoControleCestas
             // 
             this.groupBoxDeficiencia.Controls.Add(this.radioButtonDeficienciaNao);
             this.groupBoxDeficiencia.Controls.Add(this.radioButtonDeficienciaSim);
-            this.groupBoxDeficiencia.Location = new System.Drawing.Point(559, 245);
+            this.groupBoxDeficiencia.Location = new System.Drawing.Point(558, 199);
             this.groupBoxDeficiencia.Name = "groupBoxDeficiencia";
             this.groupBoxDeficiencia.Size = new System.Drawing.Size(226, 78);
             this.groupBoxDeficiencia.TabIndex = 21;
@@ -474,7 +485,7 @@ namespace ProjetoControleCestas
             this.groupBoxSituacaoCivil.Controls.Add(this.radioButtonSituacaoCivilViuva);
             this.groupBoxSituacaoCivil.Controls.Add(this.radioButtonSituacaoCivilCasada);
             this.groupBoxSituacaoCivil.Controls.Add(this.radioButtonSituacaoCivilSolteira);
-            this.groupBoxSituacaoCivil.Location = new System.Drawing.Point(29, 245);
+            this.groupBoxSituacaoCivil.Location = new System.Drawing.Point(28, 199);
             this.groupBoxSituacaoCivil.Name = "groupBoxSituacaoCivil";
             this.groupBoxSituacaoCivil.Size = new System.Drawing.Size(511, 78);
             this.groupBoxSituacaoCivil.TabIndex = 20;
@@ -546,23 +557,6 @@ namespace ProjetoControleCestas
             this.radioButtonSituacaoCivilSolteira.TabStop = true;
             this.radioButtonSituacaoCivilSolteira.Text = "Solteira";
             this.radioButtonSituacaoCivilSolteira.UseVisualStyleBackColor = true;
-            // 
-            // textBoxAtividadeDesenvolvida
-            // 
-            this.textBoxAtividadeDesenvolvida.Location = new System.Drawing.Point(412, 158);
-            this.textBoxAtividadeDesenvolvida.MaxLength = 20;
-            this.textBoxAtividadeDesenvolvida.Name = "textBoxAtividadeDesenvolvida";
-            this.textBoxAtividadeDesenvolvida.Size = new System.Drawing.Size(548, 23);
-            this.textBoxAtividadeDesenvolvida.TabIndex = 17;
-            // 
-            // labelAtividadeDesenvolvida
-            // 
-            this.labelAtividadeDesenvolvida.AutoSize = true;
-            this.labelAtividadeDesenvolvida.Location = new System.Drawing.Point(412, 140);
-            this.labelAtividadeDesenvolvida.Name = "labelAtividadeDesenvolvida";
-            this.labelAtividadeDesenvolvida.Size = new System.Drawing.Size(133, 15);
-            this.labelAtividadeDesenvolvida.TabIndex = 16;
-            this.labelAtividadeDesenvolvida.Text = "Atividade Desenvolvida:";
             // 
             // textBoxNomePai
             // 
@@ -664,7 +658,7 @@ namespace ProjetoControleCestas
             this.tabPageProblemasSaude.Location = new System.Drawing.Point(4, 24);
             this.tabPageProblemasSaude.Name = "tabPageProblemasSaude";
             this.tabPageProblemasSaude.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProblemasSaude.Size = new System.Drawing.Size(988, 440);
+            this.tabPageProblemasSaude.Size = new System.Drawing.Size(988, 398);
             this.tabPageProblemasSaude.TabIndex = 1;
             this.tabPageProblemasSaude.Text = "Problemas de Saúde";
             this.tabPageProblemasSaude.UseVisualStyleBackColor = true;
@@ -676,7 +670,7 @@ namespace ProjetoControleCestas
             this.panelFundoProblemasSaude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFundoProblemasSaude.Location = new System.Drawing.Point(3, 3);
             this.panelFundoProblemasSaude.Name = "panelFundoProblemasSaude";
-            this.panelFundoProblemasSaude.Size = new System.Drawing.Size(982, 434);
+            this.panelFundoProblemasSaude.Size = new System.Drawing.Size(982, 392);
             this.panelFundoProblemasSaude.TabIndex = 0;
             // 
             // panelListagemProblemasSaude
@@ -685,7 +679,7 @@ namespace ProjetoControleCestas
             this.panelListagemProblemasSaude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelListagemProblemasSaude.Location = new System.Drawing.Point(0, 68);
             this.panelListagemProblemasSaude.Name = "panelListagemProblemasSaude";
-            this.panelListagemProblemasSaude.Size = new System.Drawing.Size(982, 366);
+            this.panelListagemProblemasSaude.Size = new System.Drawing.Size(982, 324);
             this.panelListagemProblemasSaude.TabIndex = 1;
             // 
             // dataGridViewProblemasSaude
@@ -706,7 +700,7 @@ namespace ProjetoControleCestas
             this.dataGridViewProblemasSaude.RowHeadersVisible = false;
             this.dataGridViewProblemasSaude.RowTemplate.Height = 25;
             this.dataGridViewProblemasSaude.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProblemasSaude.Size = new System.Drawing.Size(982, 366);
+            this.dataGridViewProblemasSaude.Size = new System.Drawing.Size(982, 324);
             this.dataGridViewProblemasSaude.TabIndex = 0;
             this.dataGridViewProblemasSaude.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProblemasSaude_CellClick);
             this.dataGridViewProblemasSaude.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProblemasSaude_CellContentClick);
@@ -790,7 +784,7 @@ namespace ProjetoControleCestas
             this.tabPageDeficiencia.Location = new System.Drawing.Point(4, 24);
             this.tabPageDeficiencia.Name = "tabPageDeficiencia";
             this.tabPageDeficiencia.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDeficiencia.Size = new System.Drawing.Size(988, 440);
+            this.tabPageDeficiencia.Size = new System.Drawing.Size(988, 398);
             this.tabPageDeficiencia.TabIndex = 2;
             this.tabPageDeficiencia.Text = "Deficiência";
             this.tabPageDeficiencia.UseVisualStyleBackColor = true;
@@ -802,7 +796,7 @@ namespace ProjetoControleCestas
             this.panelFundoDeficiencia.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFundoDeficiencia.Location = new System.Drawing.Point(3, 3);
             this.panelFundoDeficiencia.Name = "panelFundoDeficiencia";
-            this.panelFundoDeficiencia.Size = new System.Drawing.Size(982, 434);
+            this.panelFundoDeficiencia.Size = new System.Drawing.Size(982, 392);
             this.panelFundoDeficiencia.TabIndex = 0;
             // 
             // panelListagemDeficiencias
@@ -811,7 +805,7 @@ namespace ProjetoControleCestas
             this.panelListagemDeficiencias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelListagemDeficiencias.Location = new System.Drawing.Point(0, 68);
             this.panelListagemDeficiencias.Name = "panelListagemDeficiencias";
-            this.panelListagemDeficiencias.Size = new System.Drawing.Size(982, 366);
+            this.panelListagemDeficiencias.Size = new System.Drawing.Size(982, 324);
             this.panelListagemDeficiencias.TabIndex = 1;
             // 
             // dataGridViewDeficiencias
@@ -829,7 +823,7 @@ namespace ProjetoControleCestas
             this.dataGridViewDeficiencias.RowHeadersVisible = false;
             this.dataGridViewDeficiencias.RowTemplate.Height = 25;
             this.dataGridViewDeficiencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDeficiencias.Size = new System.Drawing.Size(982, 366);
+            this.dataGridViewDeficiencias.Size = new System.Drawing.Size(982, 324);
             this.dataGridViewDeficiencias.TabIndex = 0;
             this.dataGridViewDeficiencias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDeficiencias_CellClick);
             this.dataGridViewDeficiencias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDeficiencias_CellContentClick);
@@ -889,7 +883,7 @@ namespace ProjetoControleCestas
             this.tabPageBeneficios.Location = new System.Drawing.Point(4, 24);
             this.tabPageBeneficios.Name = "tabPageBeneficios";
             this.tabPageBeneficios.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBeneficios.Size = new System.Drawing.Size(988, 440);
+            this.tabPageBeneficios.Size = new System.Drawing.Size(988, 398);
             this.tabPageBeneficios.TabIndex = 3;
             this.tabPageBeneficios.Text = "Benefícios";
             this.tabPageBeneficios.UseVisualStyleBackColor = true;
@@ -901,7 +895,7 @@ namespace ProjetoControleCestas
             this.panelFundoBeneficios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFundoBeneficios.Location = new System.Drawing.Point(3, 3);
             this.panelFundoBeneficios.Name = "panelFundoBeneficios";
-            this.panelFundoBeneficios.Size = new System.Drawing.Size(982, 434);
+            this.panelFundoBeneficios.Size = new System.Drawing.Size(982, 392);
             this.panelFundoBeneficios.TabIndex = 0;
             // 
             // panelListagemBeneficios
@@ -910,7 +904,7 @@ namespace ProjetoControleCestas
             this.panelListagemBeneficios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelListagemBeneficios.Location = new System.Drawing.Point(0, 68);
             this.panelListagemBeneficios.Name = "panelListagemBeneficios";
-            this.panelListagemBeneficios.Size = new System.Drawing.Size(982, 366);
+            this.panelListagemBeneficios.Size = new System.Drawing.Size(982, 324);
             this.panelListagemBeneficios.TabIndex = 1;
             // 
             // dataGridViewBeneficios
@@ -929,7 +923,7 @@ namespace ProjetoControleCestas
             this.dataGridViewBeneficios.RowHeadersVisible = false;
             this.dataGridViewBeneficios.RowTemplate.Height = 25;
             this.dataGridViewBeneficios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewBeneficios.Size = new System.Drawing.Size(982, 366);
+            this.dataGridViewBeneficios.Size = new System.Drawing.Size(982, 324);
             this.dataGridViewBeneficios.TabIndex = 0;
             this.dataGridViewBeneficios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBeneficios_CellClick);
             this.dataGridViewBeneficios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBeneficios_CellContentClick);
@@ -945,9 +939,9 @@ namespace ProjetoControleCestas
             // ColumnValorBeneficio
             // 
             this.ColumnValorBeneficio.DataPropertyName = "ValorBeneficio";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnValorBeneficio.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ColumnValorBeneficio.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnValorBeneficio.HeaderText = "Valor";
             this.ColumnValorBeneficio.Name = "ColumnValorBeneficio";
             this.ColumnValorBeneficio.ReadOnly = true;
@@ -1000,7 +994,7 @@ namespace ProjetoControleCestas
             this.tabPageRendas.Location = new System.Drawing.Point(4, 24);
             this.tabPageRendas.Name = "tabPageRendas";
             this.tabPageRendas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRendas.Size = new System.Drawing.Size(988, 440);
+            this.tabPageRendas.Size = new System.Drawing.Size(988, 398);
             this.tabPageRendas.TabIndex = 4;
             this.tabPageRendas.Text = "Rendas";
             this.tabPageRendas.UseVisualStyleBackColor = true;
@@ -1012,7 +1006,7 @@ namespace ProjetoControleCestas
             this.panelFundoRendas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFundoRendas.Location = new System.Drawing.Point(3, 3);
             this.panelFundoRendas.Name = "panelFundoRendas";
-            this.panelFundoRendas.Size = new System.Drawing.Size(982, 434);
+            this.panelFundoRendas.Size = new System.Drawing.Size(982, 392);
             this.panelFundoRendas.TabIndex = 0;
             // 
             // panelListagemRendas
@@ -1021,7 +1015,7 @@ namespace ProjetoControleCestas
             this.panelListagemRendas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelListagemRendas.Location = new System.Drawing.Point(0, 68);
             this.panelListagemRendas.Name = "panelListagemRendas";
-            this.panelListagemRendas.Size = new System.Drawing.Size(982, 366);
+            this.panelListagemRendas.Size = new System.Drawing.Size(982, 324);
             this.panelListagemRendas.TabIndex = 1;
             // 
             // dataGridViewRendas
@@ -1041,7 +1035,7 @@ namespace ProjetoControleCestas
             this.dataGridViewRendas.RowHeadersVisible = false;
             this.dataGridViewRendas.RowTemplate.Height = 25;
             this.dataGridViewRendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewRendas.Size = new System.Drawing.Size(982, 366);
+            this.dataGridViewRendas.Size = new System.Drawing.Size(982, 324);
             this.dataGridViewRendas.TabIndex = 0;
             this.dataGridViewRendas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRendas_CellClick);
             this.dataGridViewRendas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRendas_CellContentClick);
@@ -1057,9 +1051,9 @@ namespace ProjetoControleCestas
             // ColumnValorRenda
             // 
             this.ColumnValorRenda.DataPropertyName = "ValorRenda";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ColumnValorRenda.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.ColumnValorRenda.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnValorRenda.HeaderText = "Valor da Renda";
             this.ColumnValorRenda.Name = "ColumnValorRenda";
             this.ColumnValorRenda.ReadOnly = true;
@@ -1112,7 +1106,7 @@ namespace ProjetoControleCestas
             this.tabPageDocumentos.Location = new System.Drawing.Point(4, 24);
             this.tabPageDocumentos.Name = "tabPageDocumentos";
             this.tabPageDocumentos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDocumentos.Size = new System.Drawing.Size(988, 440);
+            this.tabPageDocumentos.Size = new System.Drawing.Size(988, 398);
             this.tabPageDocumentos.TabIndex = 5;
             this.tabPageDocumentos.Text = "Documentos";
             this.tabPageDocumentos.UseVisualStyleBackColor = true;
@@ -1124,7 +1118,7 @@ namespace ProjetoControleCestas
             this.panelFundoDocumentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFundoDocumentos.Location = new System.Drawing.Point(3, 3);
             this.panelFundoDocumentos.Name = "panelFundoDocumentos";
-            this.panelFundoDocumentos.Size = new System.Drawing.Size(982, 434);
+            this.panelFundoDocumentos.Size = new System.Drawing.Size(982, 392);
             this.panelFundoDocumentos.TabIndex = 0;
             // 
             // panelListagemDocumentos
@@ -1133,7 +1127,7 @@ namespace ProjetoControleCestas
             this.panelListagemDocumentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelListagemDocumentos.Location = new System.Drawing.Point(0, 68);
             this.panelListagemDocumentos.Name = "panelListagemDocumentos";
-            this.panelListagemDocumentos.Size = new System.Drawing.Size(982, 366);
+            this.panelListagemDocumentos.Size = new System.Drawing.Size(982, 324);
             this.panelListagemDocumentos.TabIndex = 1;
             // 
             // dataGridViewDocumentos
@@ -1152,7 +1146,7 @@ namespace ProjetoControleCestas
             this.dataGridViewDocumentos.RowHeadersVisible = false;
             this.dataGridViewDocumentos.RowTemplate.Height = 25;
             this.dataGridViewDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDocumentos.Size = new System.Drawing.Size(982, 366);
+            this.dataGridViewDocumentos.Size = new System.Drawing.Size(982, 324);
             this.dataGridViewDocumentos.TabIndex = 0;
             this.dataGridViewDocumentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDocumentos_CellClick);
             this.dataGridViewDocumentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDocumentos_CellContentClick);
@@ -1214,12 +1208,192 @@ namespace ProjetoControleCestas
             this.buttonAdicionarDocumento.UseVisualStyleBackColor = true;
             this.buttonAdicionarDocumento.Click += new System.EventHandler(this.buttonAdicionarDocumento_Click);
             // 
+            // tabPageAreaInteresseProfissional
+            // 
+            this.tabPageAreaInteresseProfissional.Controls.Add(this.panelGridAreaInteresseProfissional);
+            this.tabPageAreaInteresseProfissional.Controls.Add(this.panelCabecalhoAreaInteresseProfissional);
+            this.tabPageAreaInteresseProfissional.Location = new System.Drawing.Point(4, 24);
+            this.tabPageAreaInteresseProfissional.Name = "tabPageAreaInteresseProfissional";
+            this.tabPageAreaInteresseProfissional.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAreaInteresseProfissional.Size = new System.Drawing.Size(988, 398);
+            this.tabPageAreaInteresseProfissional.TabIndex = 6;
+            this.tabPageAreaInteresseProfissional.Text = "Área de Interesse Profissional";
+            this.tabPageAreaInteresseProfissional.UseVisualStyleBackColor = true;
+            // 
+            // panelGridAreaInteresseProfissional
+            // 
+            this.panelGridAreaInteresseProfissional.Controls.Add(this.dataGridViewAreaInteresseProfissional);
+            this.panelGridAreaInteresseProfissional.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGridAreaInteresseProfissional.Location = new System.Drawing.Point(3, 71);
+            this.panelGridAreaInteresseProfissional.Name = "panelGridAreaInteresseProfissional";
+            this.panelGridAreaInteresseProfissional.Size = new System.Drawing.Size(982, 324);
+            this.panelGridAreaInteresseProfissional.TabIndex = 4;
+            // 
+            // dataGridViewAreaInteresseProfissional
+            // 
+            this.dataGridViewAreaInteresseProfissional.AllowUserToAddRows = false;
+            this.dataGridViewAreaInteresseProfissional.AllowUserToDeleteRows = false;
+            this.dataGridViewAreaInteresseProfissional.AllowUserToOrderColumns = true;
+            this.dataGridViewAreaInteresseProfissional.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAreaInteresseProfissional.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnAreaInteresse});
+            this.dataGridViewAreaInteresseProfissional.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewAreaInteresseProfissional.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewAreaInteresseProfissional.Name = "dataGridViewAreaInteresseProfissional";
+            this.dataGridViewAreaInteresseProfissional.ReadOnly = true;
+            this.dataGridViewAreaInteresseProfissional.RowHeadersVisible = false;
+            this.dataGridViewAreaInteresseProfissional.RowTemplate.Height = 25;
+            this.dataGridViewAreaInteresseProfissional.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAreaInteresseProfissional.Size = new System.Drawing.Size(982, 324);
+            this.dataGridViewAreaInteresseProfissional.TabIndex = 3;
+            this.dataGridViewAreaInteresseProfissional.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAreaInteresseProfissional_CellClick);
+            this.dataGridViewAreaInteresseProfissional.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAreaInteresseProfissional_CellContentClick);
+            // 
+            // ColumnAreaInteresse
+            // 
+            this.ColumnAreaInteresse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnAreaInteresse.DataPropertyName = "AreaInteresse";
+            this.ColumnAreaInteresse.HeaderText = "Área de Interesse";
+            this.ColumnAreaInteresse.Name = "ColumnAreaInteresse";
+            this.ColumnAreaInteresse.ReadOnly = true;
+            // 
+            // panelCabecalhoAreaInteresseProfissional
+            // 
+            this.panelCabecalhoAreaInteresseProfissional.Controls.Add(this.buttonExcluirAreaInteresseProfissional);
+            this.panelCabecalhoAreaInteresseProfissional.Controls.Add(this.buttonAlterarAreaInteresseProfissional);
+            this.panelCabecalhoAreaInteresseProfissional.Controls.Add(this.buttonAdicionarAreaInteresseProfissional);
+            this.panelCabecalhoAreaInteresseProfissional.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelCabecalhoAreaInteresseProfissional.Location = new System.Drawing.Point(3, 3);
+            this.panelCabecalhoAreaInteresseProfissional.Name = "panelCabecalhoAreaInteresseProfissional";
+            this.panelCabecalhoAreaInteresseProfissional.Size = new System.Drawing.Size(982, 68);
+            this.panelCabecalhoAreaInteresseProfissional.TabIndex = 1;
+            // 
+            // buttonExcluirAreaInteresseProfissional
+            // 
+            this.buttonExcluirAreaInteresseProfissional.Location = new System.Drawing.Point(895, 27);
+            this.buttonExcluirAreaInteresseProfissional.Name = "buttonExcluirAreaInteresseProfissional";
+            this.buttonExcluirAreaInteresseProfissional.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcluirAreaInteresseProfissional.TabIndex = 2;
+            this.buttonExcluirAreaInteresseProfissional.Text = "Excluir";
+            this.buttonExcluirAreaInteresseProfissional.UseVisualStyleBackColor = true;
+            this.buttonExcluirAreaInteresseProfissional.Click += new System.EventHandler(this.buttonExcluirAreaInteresseProfissional_Click);
+            // 
+            // buttonAlterarAreaInteresseProfissional
+            // 
+            this.buttonAlterarAreaInteresseProfissional.Location = new System.Drawing.Point(814, 27);
+            this.buttonAlterarAreaInteresseProfissional.Name = "buttonAlterarAreaInteresseProfissional";
+            this.buttonAlterarAreaInteresseProfissional.Size = new System.Drawing.Size(75, 23);
+            this.buttonAlterarAreaInteresseProfissional.TabIndex = 1;
+            this.buttonAlterarAreaInteresseProfissional.Text = "Alterar";
+            this.buttonAlterarAreaInteresseProfissional.UseVisualStyleBackColor = true;
+            this.buttonAlterarAreaInteresseProfissional.Click += new System.EventHandler(this.buttonAlterarAreaInteresseProfissional_Click);
+            // 
+            // buttonAdicionarAreaInteresseProfissional
+            // 
+            this.buttonAdicionarAreaInteresseProfissional.Location = new System.Drawing.Point(732, 27);
+            this.buttonAdicionarAreaInteresseProfissional.Name = "buttonAdicionarAreaInteresseProfissional";
+            this.buttonAdicionarAreaInteresseProfissional.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdicionarAreaInteresseProfissional.TabIndex = 0;
+            this.buttonAdicionarAreaInteresseProfissional.Text = "Adicionar";
+            this.buttonAdicionarAreaInteresseProfissional.UseVisualStyleBackColor = true;
+            this.buttonAdicionarAreaInteresseProfissional.Click += new System.EventHandler(this.buttonAdicionarAreaInteresseProfissional_Click);
+            // 
+            // tabPageAtividadesDesenvolvidas
+            // 
+            this.tabPageAtividadesDesenvolvidas.Controls.Add(this.panelGridAtividadesDesenvolvidas);
+            this.tabPageAtividadesDesenvolvidas.Controls.Add(this.panel1);
+            this.tabPageAtividadesDesenvolvidas.Location = new System.Drawing.Point(4, 24);
+            this.tabPageAtividadesDesenvolvidas.Name = "tabPageAtividadesDesenvolvidas";
+            this.tabPageAtividadesDesenvolvidas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAtividadesDesenvolvidas.Size = new System.Drawing.Size(988, 398);
+            this.tabPageAtividadesDesenvolvidas.TabIndex = 7;
+            this.tabPageAtividadesDesenvolvidas.Text = "Atividades Desenvolvidas";
+            this.tabPageAtividadesDesenvolvidas.UseVisualStyleBackColor = true;
+            // 
+            // panelGridAtividadesDesenvolvidas
+            // 
+            this.panelGridAtividadesDesenvolvidas.Controls.Add(this.dataGridViewAtividadesDesenvolvidas);
+            this.panelGridAtividadesDesenvolvidas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGridAtividadesDesenvolvidas.Location = new System.Drawing.Point(3, 71);
+            this.panelGridAtividadesDesenvolvidas.Name = "panelGridAtividadesDesenvolvidas";
+            this.panelGridAtividadesDesenvolvidas.Size = new System.Drawing.Size(982, 324);
+            this.panelGridAtividadesDesenvolvidas.TabIndex = 3;
+            // 
+            // dataGridViewAtividadesDesenvolvidas
+            // 
+            this.dataGridViewAtividadesDesenvolvidas.AllowUserToAddRows = false;
+            this.dataGridViewAtividadesDesenvolvidas.AllowUserToDeleteRows = false;
+            this.dataGridViewAtividadesDesenvolvidas.AllowUserToOrderColumns = true;
+            this.dataGridViewAtividadesDesenvolvidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAtividadesDesenvolvidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnAtividade});
+            this.dataGridViewAtividadesDesenvolvidas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewAtividadesDesenvolvidas.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewAtividadesDesenvolvidas.Name = "dataGridViewAtividadesDesenvolvidas";
+            this.dataGridViewAtividadesDesenvolvidas.ReadOnly = true;
+            this.dataGridViewAtividadesDesenvolvidas.RowHeadersVisible = false;
+            this.dataGridViewAtividadesDesenvolvidas.RowTemplate.Height = 25;
+            this.dataGridViewAtividadesDesenvolvidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAtividadesDesenvolvidas.Size = new System.Drawing.Size(982, 324);
+            this.dataGridViewAtividadesDesenvolvidas.TabIndex = 4;
+            this.dataGridViewAtividadesDesenvolvidas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAtividadesDesenvolvidas_CellClick);
+            this.dataGridViewAtividadesDesenvolvidas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAtividadesDesenvolvidas_CellContentClick);
+            // 
+            // ColumnAtividade
+            // 
+            this.ColumnAtividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnAtividade.DataPropertyName = "Atividade";
+            this.ColumnAtividade.HeaderText = "Atividade";
+            this.ColumnAtividade.Name = "ColumnAtividade";
+            this.ColumnAtividade.ReadOnly = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.buttonExcluirAtividadesDesenvolvidas);
+            this.panel1.Controls.Add(this.buttonAlterarAtividadesDesenvolvidas);
+            this.panel1.Controls.Add(this.buttonAdicionarAtividadesDesenvolvidas);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(982, 68);
+            this.panel1.TabIndex = 2;
+            // 
+            // buttonExcluirAtividadesDesenvolvidas
+            // 
+            this.buttonExcluirAtividadesDesenvolvidas.Location = new System.Drawing.Point(895, 27);
+            this.buttonExcluirAtividadesDesenvolvidas.Name = "buttonExcluirAtividadesDesenvolvidas";
+            this.buttonExcluirAtividadesDesenvolvidas.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcluirAtividadesDesenvolvidas.TabIndex = 2;
+            this.buttonExcluirAtividadesDesenvolvidas.Text = "Excluir";
+            this.buttonExcluirAtividadesDesenvolvidas.UseVisualStyleBackColor = true;
+            this.buttonExcluirAtividadesDesenvolvidas.Click += new System.EventHandler(this.buttonExcluirAtividadesDesenvolvidas_Click);
+            // 
+            // buttonAlterarAtividadesDesenvolvidas
+            // 
+            this.buttonAlterarAtividadesDesenvolvidas.Location = new System.Drawing.Point(814, 27);
+            this.buttonAlterarAtividadesDesenvolvidas.Name = "buttonAlterarAtividadesDesenvolvidas";
+            this.buttonAlterarAtividadesDesenvolvidas.Size = new System.Drawing.Size(75, 23);
+            this.buttonAlterarAtividadesDesenvolvidas.TabIndex = 1;
+            this.buttonAlterarAtividadesDesenvolvidas.Text = "Alterar";
+            this.buttonAlterarAtividadesDesenvolvidas.UseVisualStyleBackColor = true;
+            this.buttonAlterarAtividadesDesenvolvidas.Click += new System.EventHandler(this.buttonAlterarAtividadesDesenvolvidas_Click);
+            // 
+            // buttonAdicionarAtividadesDesenvolvidas
+            // 
+            this.buttonAdicionarAtividadesDesenvolvidas.Location = new System.Drawing.Point(732, 27);
+            this.buttonAdicionarAtividadesDesenvolvidas.Name = "buttonAdicionarAtividadesDesenvolvidas";
+            this.buttonAdicionarAtividadesDesenvolvidas.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdicionarAtividadesDesenvolvidas.TabIndex = 0;
+            this.buttonAdicionarAtividadesDesenvolvidas.Text = "Adicionar";
+            this.buttonAdicionarAtividadesDesenvolvidas.UseVisualStyleBackColor = true;
+            this.buttonAdicionarAtividadesDesenvolvidas.Click += new System.EventHandler(this.buttonAdicionarAtividadesDesenvolvidas_Click);
+            // 
             // panelRodape
             // 
             this.panelRodape.Controls.Add(this.buttonCancelar);
             this.panelRodape.Controls.Add(this.buttonSalvar);
             this.panelRodape.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRodape.Location = new System.Drawing.Point(0, 468);
+            this.panelRodape.Location = new System.Drawing.Point(0, 426);
             this.panelRodape.Name = "panelRodape";
             this.panelRodape.Size = new System.Drawing.Size(996, 65);
             this.panelRodape.TabIndex = 0;
@@ -1244,23 +1418,13 @@ namespace ProjetoControleCestas
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
-            // checkBoxResponsavelFamilia
-            // 
-            this.checkBoxResponsavelFamilia.AutoSize = true;
-            this.checkBoxResponsavelFamilia.Location = new System.Drawing.Point(801, 377);
-            this.checkBoxResponsavelFamilia.Name = "checkBoxResponsavelFamilia";
-            this.checkBoxResponsavelFamilia.Size = new System.Drawing.Size(148, 19);
-            this.checkBoxResponsavelFamilia.TabIndex = 26;
-            this.checkBoxResponsavelFamilia.Text = "Responsável da Família";
-            this.checkBoxResponsavelFamilia.UseVisualStyleBackColor = true;
-            // 
             // FormEditarPessoa
             // 
             this.AcceptButton = this.buttonSalvar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancelar;
-            this.ClientSize = new System.Drawing.Size(996, 533);
+            this.ClientSize = new System.Drawing.Size(996, 491);
             this.Controls.Add(this.panelFundo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -1310,6 +1474,14 @@ namespace ProjetoControleCestas
             this.panelListagemDocumentos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDocumentos)).EndInit();
             this.panelCabecalhoDocumentos.ResumeLayout(false);
+            this.tabPageAreaInteresseProfissional.ResumeLayout(false);
+            this.panelGridAreaInteresseProfissional.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAreaInteresseProfissional)).EndInit();
+            this.panelCabecalhoAreaInteresseProfissional.ResumeLayout(false);
+            this.tabPageAtividadesDesenvolvidas.ResumeLayout(false);
+            this.panelGridAtividadesDesenvolvidas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtividadesDesenvolvidas)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.panelRodape.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1351,8 +1523,6 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.RadioButton radioButtonSituacaoCivilViuva;
         private System.Windows.Forms.RadioButton radioButtonSituacaoCivilCasada;
         private System.Windows.Forms.RadioButton radioButtonSituacaoCivilSolteira;
-        private System.Windows.Forms.TextBox textBoxAtividadeDesenvolvida;
-        private System.Windows.Forms.Label labelAtividadeDesenvolvida;
         private System.Windows.Forms.TextBox textBoxNomePai;
         private System.Windows.Forms.Label labelNomePai;
         private System.Windows.Forms.TextBox textBoxNaturalidade;
@@ -1413,10 +1583,24 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.Button buttonExcluirDocumento;
         private System.Windows.Forms.Button buttonAlterarDocumento;
         private System.Windows.Forms.Button buttonAdicionarDocumento;
-        private System.Windows.Forms.TextBox textBoxAreaInteresseProfissional;
-        private System.Windows.Forms.Label labelAreaInteresseProfissional;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTipoDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNumeroDocumento;
         private System.Windows.Forms.CheckBox checkBoxResponsavelFamilia;
+        private System.Windows.Forms.TabPage tabPageAreaInteresseProfissional;
+        private System.Windows.Forms.Panel panelCabecalhoAreaInteresseProfissional;
+        private System.Windows.Forms.Button buttonExcluirAreaInteresseProfissional;
+        private System.Windows.Forms.Button buttonAlterarAreaInteresseProfissional;
+        private System.Windows.Forms.Button buttonAdicionarAreaInteresseProfissional;
+        private System.Windows.Forms.Panel panelGridAreaInteresseProfissional;
+        private System.Windows.Forms.DataGridView dataGridViewAreaInteresseProfissional;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAreaInteresse;
+        private System.Windows.Forms.TabPage tabPageAtividadesDesenvolvidas;
+        private System.Windows.Forms.Panel panelGridAtividadesDesenvolvidas;
+        private System.Windows.Forms.DataGridView dataGridViewAtividadesDesenvolvidas;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonExcluirAtividadesDesenvolvidas;
+        private System.Windows.Forms.Button buttonAlterarAtividadesDesenvolvidas;
+        private System.Windows.Forms.Button buttonAdicionarAtividadesDesenvolvidas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAtividade;
     }
 }

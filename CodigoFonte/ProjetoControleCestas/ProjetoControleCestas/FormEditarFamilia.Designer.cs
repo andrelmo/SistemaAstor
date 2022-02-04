@@ -34,6 +34,10 @@ namespace ProjetoControleCestas
             this.tabControlFamilia = new System.Windows.Forms.TabControl();
             this.tabPageAberturaFamilia = new System.Windows.Forms.TabPage();
             this.panelFundoAberturaFamilia = new System.Windows.Forms.Panel();
+            this.labelTotalBeneficios = new System.Windows.Forms.Label();
+            this.textBoxTotalBeneficiosRecebidos = new System.Windows.Forms.TextBox();
+            this.labelTotalRendas = new System.Windows.Forms.Label();
+            this.textBoxTotalRendas = new System.Windows.Forms.TextBox();
             this.comboBoxVoluntario = new System.Windows.Forms.ComboBox();
             this.textBoxCorCesta = new System.Windows.Forms.TextBox();
             this.labelCorCesta = new System.Windows.Forms.Label();
@@ -116,10 +120,6 @@ namespace ProjetoControleCestas
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.textBoxTotalRendas = new System.Windows.Forms.TextBox();
-            this.labelTotalRendas = new System.Windows.Forms.Label();
-            this.textBoxTotalBeneficiosRecebidos = new System.Windows.Forms.TextBox();
-            this.labelTotalBeneficios = new System.Windows.Forms.Label();
             this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.tabControlFamilia.SuspendLayout();
@@ -174,8 +174,8 @@ namespace ProjetoControleCestas
             // 
             this.tabControlFamilia.Controls.Add(this.tabPageAberturaFamilia);
             this.tabControlFamilia.Controls.Add(this.tabPageDadosEndereco);
-            this.tabControlFamilia.Controls.Add(this.tabPageMoradias);
             this.tabControlFamilia.Controls.Add(this.tabPageVisitas);
+            this.tabControlFamilia.Controls.Add(this.tabPageMoradias);
             this.tabControlFamilia.Controls.Add(this.tabPagePessoas);
             this.tabControlFamilia.Controls.Add(this.tabPageFaltas);
             this.tabControlFamilia.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -219,6 +219,40 @@ namespace ProjetoControleCestas
             this.panelFundoAberturaFamilia.Name = "panelFundoAberturaFamilia";
             this.panelFundoAberturaFamilia.Size = new System.Drawing.Size(786, 351);
             this.panelFundoAberturaFamilia.TabIndex = 0;
+            // 
+            // labelTotalBeneficios
+            // 
+            this.labelTotalBeneficios.AutoSize = true;
+            this.labelTotalBeneficios.Location = new System.Drawing.Point(574, 180);
+            this.labelTotalBeneficios.Name = "labelTotalBeneficios";
+            this.labelTotalBeneficios.Size = new System.Drawing.Size(114, 15);
+            this.labelTotalBeneficios.TabIndex = 15;
+            this.labelTotalBeneficios.Text = "Total dos Benefícios:";
+            // 
+            // textBoxTotalBeneficiosRecebidos
+            // 
+            this.textBoxTotalBeneficiosRecebidos.Location = new System.Drawing.Point(574, 198);
+            this.textBoxTotalBeneficiosRecebidos.Name = "textBoxTotalBeneficiosRecebidos";
+            this.textBoxTotalBeneficiosRecebidos.ReadOnly = true;
+            this.textBoxTotalBeneficiosRecebidos.Size = new System.Drawing.Size(180, 23);
+            this.textBoxTotalBeneficiosRecebidos.TabIndex = 14;
+            // 
+            // labelTotalRendas
+            // 
+            this.labelTotalRendas.AutoSize = true;
+            this.labelTotalRendas.Location = new System.Drawing.Point(358, 180);
+            this.labelTotalRendas.Name = "labelTotalRendas";
+            this.labelTotalRendas.Size = new System.Drawing.Size(97, 15);
+            this.labelTotalRendas.TabIndex = 13;
+            this.labelTotalRendas.Text = "Total das Rendas:";
+            // 
+            // textBoxTotalRendas
+            // 
+            this.textBoxTotalRendas.Location = new System.Drawing.Point(358, 198);
+            this.textBoxTotalRendas.Name = "textBoxTotalRendas";
+            this.textBoxTotalRendas.ReadOnly = true;
+            this.textBoxTotalRendas.Size = new System.Drawing.Size(200, 23);
+            this.textBoxTotalRendas.TabIndex = 12;
             // 
             // comboBoxVoluntario
             // 
@@ -1057,40 +1091,6 @@ namespace ProjetoControleCestas
             this.buttonSalvar.Text = "Salvar";
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
-            // 
-            // textBoxTotalRendas
-            // 
-            this.textBoxTotalRendas.Location = new System.Drawing.Point(358, 198);
-            this.textBoxTotalRendas.Name = "textBoxTotalRendas";
-            this.textBoxTotalRendas.ReadOnly = true;
-            this.textBoxTotalRendas.Size = new System.Drawing.Size(200, 23);
-            this.textBoxTotalRendas.TabIndex = 12;
-            // 
-            // labelTotalRendas
-            // 
-            this.labelTotalRendas.AutoSize = true;
-            this.labelTotalRendas.Location = new System.Drawing.Point(358, 180);
-            this.labelTotalRendas.Name = "labelTotalRendas";
-            this.labelTotalRendas.Size = new System.Drawing.Size(97, 15);
-            this.labelTotalRendas.TabIndex = 13;
-            this.labelTotalRendas.Text = "Total das Rendas:";
-            // 
-            // textBoxTotalBeneficiosRecebidos
-            // 
-            this.textBoxTotalBeneficiosRecebidos.Location = new System.Drawing.Point(574, 198);
-            this.textBoxTotalBeneficiosRecebidos.Name = "textBoxTotalBeneficiosRecebidos";
-            this.textBoxTotalBeneficiosRecebidos.ReadOnly = true;
-            this.textBoxTotalBeneficiosRecebidos.Size = new System.Drawing.Size(180, 23);
-            this.textBoxTotalBeneficiosRecebidos.TabIndex = 14;
-            // 
-            // labelTotalBeneficios
-            // 
-            this.labelTotalBeneficios.AutoSize = true;
-            this.labelTotalBeneficios.Location = new System.Drawing.Point(574, 180);
-            this.labelTotalBeneficios.Name = "labelTotalBeneficios";
-            this.labelTotalBeneficios.Size = new System.Drawing.Size(114, 15);
-            this.labelTotalBeneficios.TabIndex = 15;
-            this.labelTotalBeneficios.Text = "Total dos Benefícios:";
             // 
             // FormEditarFamilia
             // 

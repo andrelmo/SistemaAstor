@@ -43,7 +43,6 @@ namespace ProjetoControleCestas
             this.labelSenha = new System.Windows.Forms.Label();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.labelLogin = new System.Windows.Forms.Label();
-            this.textBoxTelefone = new System.Windows.Forms.TextBox();
             this.labelTelefone = new System.Windows.Forms.Label();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@ namespace ProjetoControleCestas
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
+            this.textBoxTelefone = new System.Windows.Forms.MaskedTextBox();
             this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
@@ -80,6 +80,7 @@ namespace ProjetoControleCestas
             // 
             // panelEdicao
             // 
+            this.panelEdicao.Controls.Add(this.textBoxTelefone);
             this.panelEdicao.Controls.Add(this.textBoxCep);
             this.panelEdicao.Controls.Add(this.groupBoxStatus);
             this.panelEdicao.Controls.Add(this.groupBoxTipoUsuario);
@@ -87,7 +88,6 @@ namespace ProjetoControleCestas
             this.panelEdicao.Controls.Add(this.labelSenha);
             this.panelEdicao.Controls.Add(this.textBoxLogin);
             this.panelEdicao.Controls.Add(this.labelLogin);
-            this.panelEdicao.Controls.Add(this.textBoxTelefone);
             this.panelEdicao.Controls.Add(this.labelTelefone);
             this.panelEdicao.Controls.Add(this.textBoxEmail);
             this.panelEdicao.Controls.Add(this.labelEmail);
@@ -231,14 +231,6 @@ namespace ProjetoControleCestas
             this.labelLogin.Size = new System.Drawing.Size(40, 15);
             this.labelLogin.TabIndex = 18;
             this.labelLogin.Text = "Login:";
-            // 
-            // textBoxTelefone
-            // 
-            this.textBoxTelefone.Location = new System.Drawing.Point(13, 164);
-            this.textBoxTelefone.MaxLength = 30;
-            this.textBoxTelefone.Name = "textBoxTelefone";
-            this.textBoxTelefone.Size = new System.Drawing.Size(185, 23);
-            this.textBoxTelefone.TabIndex = 13;
             // 
             // labelTelefone
             // 
@@ -420,6 +412,15 @@ namespace ProjetoControleCestas
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
+            // textBoxTelefone
+            // 
+            this.textBoxTelefone.Location = new System.Drawing.Point(13, 163);
+            this.textBoxTelefone.Mask = "(00)0000-0000";
+            this.textBoxTelefone.Name = "textBoxTelefone";
+            this.textBoxTelefone.Size = new System.Drawing.Size(185, 23);
+            this.textBoxTelefone.TabIndex = 13;
+            this.textBoxTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // FormEditarUsuario
             // 
             this.AcceptButton = this.buttonSalvar;
@@ -468,7 +469,6 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.Label labelLogin;
-        private System.Windows.Forms.TextBox textBoxTelefone;
         private System.Windows.Forms.Label labelTelefone;
         private System.Windows.Forms.TextBox textBoxSenha;
         private System.Windows.Forms.Label labelSenha;
@@ -480,5 +480,6 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.RadioButton radioButtonStatusInativo;
         private System.Windows.Forms.RadioButton radioButtonTipoUsuarioSistema;
         private System.Windows.Forms.MaskedTextBox textBoxCep;
+        private System.Windows.Forms.MaskedTextBox textBoxTelefone;
     }
 }

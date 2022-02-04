@@ -1,5 +1,5 @@
 4)Outro pedido é: Atrelar o cadastramento da moradia(condições de moradia) à visita.. 
 Sugestão, criar um número sequencial para a visita e assim no cadastramento das condições da moradia ser obrigatório o número da visita. (feito)
 
-5)Área de interesse profissional e atividade desenvolvida, tem que ser uma aba para cada, pois elas são atributos da pessoa e podem ter mais de uma.
+5)Área de interesse profissional e atividade desenvolvida, tem que ser uma aba para cada, pois elas são atributos da pessoa e podem ter mais de uma. (feito)
 

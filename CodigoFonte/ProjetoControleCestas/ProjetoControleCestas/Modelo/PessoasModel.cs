@@ -15,8 +15,6 @@ namespace ProjetoControleCestas.Modelo
         public string NomeMae { get; set; }
         public string NomePai { get; set; }
         public string Naturalidade { get; set; }
-        public string AtividadeDesenvolvida { get; set;}
-        public string AreaInteresseProfissional { get; set; }
         public string Deficiencia { get; set; }
         public byte Idoso { get; set; }
         public string Sexo { get; set; }
