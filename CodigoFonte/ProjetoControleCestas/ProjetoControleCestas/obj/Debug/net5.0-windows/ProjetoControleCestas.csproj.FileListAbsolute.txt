@@ -61,7 +61,6 @@ C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\bin\Debug\net5.0-windows\ProjetoControleCestas.runtimeconfig.json
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\bin\Debug\net5.0-windows\ProjetoControleCestas.runtimeconfig.dev.json
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\bin\Debug\net5.0-windows\ProjetoControleCestas.dll
-C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\bin\Debug\net5.0-windows\ref\ProjetoControleCestas.dll
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\bin\Debug\net5.0-windows\ProjetoControleCestas.pdb
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\bin\Debug\net5.0-windows\Dapper.dll
@@ -114,3 +113,4 @@ C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\ProjetoControleCestas.genruntimeconfig.cache
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\ProjetoControleCestas.FormEditarAreaInteresseProfissional.resources
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\ProjetoControleCestas.FormEditarAtividadeDesenvolvida.resources
+C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\refint\ProjetoControleCestas.dll

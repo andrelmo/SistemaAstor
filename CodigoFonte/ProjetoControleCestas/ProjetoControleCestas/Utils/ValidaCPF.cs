@@ -1,7 +1,7 @@
 ﻿namespace ProjetoControleCestas.Utils
 {
 	/// <summary>
-	/// Realiza a validação do CPF
+	/// Realiza a validação do CPF (sem máscaras)
 	/// </summary>
 	public static class ValidaCPF
 	{
