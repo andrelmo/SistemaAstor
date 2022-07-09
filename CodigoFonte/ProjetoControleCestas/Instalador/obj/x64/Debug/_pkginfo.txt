@@ -1,0 +1,1 @@
+C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\Instalador\AppPackages\Instalador_1.0.2.0_Debug_Test\Instalador_1.0.2.0_x64_Debug.msixbundle

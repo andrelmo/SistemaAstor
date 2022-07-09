@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "w0Urw69plYIw3yMnJCi7hEZrnHqkblyWI3odnf2wBMuWQchPjfwbXeZK3cGdVGaMZQ922TuiwALAGyRVyyDZbA==",
+  "success": true,
+  "projectFilePath": "C:\\Projetos\\Astor\\GitCodigoFonte\\SistemaAstor\\CodigoFonte\\ProjetoControleCestas\\Instalador\\Instalador.wapproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22000.194\\microsoft.windows.sdk.buildtools.10.0.22000.194.nupkg.sha512"
+  ],
+  "logs": []
+}
