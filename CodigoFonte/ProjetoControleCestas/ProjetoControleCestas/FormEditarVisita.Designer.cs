@@ -111,62 +111,67 @@ namespace ProjetoControleCestas
             // 
             // textBoxObservacoes
             // 
-            this.textBoxObservacoes.Location = new System.Drawing.Point(12, 292);
+            this.textBoxObservacoes.Location = new System.Drawing.Point(12, 95);
             this.textBoxObservacoes.MaxLength = 50;
             this.textBoxObservacoes.Name = "textBoxObservacoes";
             this.textBoxObservacoes.Size = new System.Drawing.Size(693, 23);
-            this.textBoxObservacoes.TabIndex = 25;
+            this.textBoxObservacoes.TabIndex = 5;
             // 
             // labelObservacoes
             // 
             this.labelObservacoes.AutoSize = true;
-            this.labelObservacoes.Location = new System.Drawing.Point(12, 274);
+            this.labelObservacoes.Location = new System.Drawing.Point(12, 77);
             this.labelObservacoes.Name = "labelObservacoes";
             this.labelObservacoes.Size = new System.Drawing.Size(77, 15);
-            this.labelObservacoes.TabIndex = 24;
+            this.labelObservacoes.TabIndex = 4;
             this.labelObservacoes.Text = "Observações:";
             // 
             // textBoxConfinamento
             // 
-            this.textBoxConfinamento.Location = new System.Drawing.Point(444, 228);
+            this.textBoxConfinamento.Location = new System.Drawing.Point(444, 295);
             this.textBoxConfinamento.MaxLength = 20;
             this.textBoxConfinamento.Name = "textBoxConfinamento";
             this.textBoxConfinamento.Size = new System.Drawing.Size(261, 23);
             this.textBoxConfinamento.TabIndex = 23;
+            this.textBoxConfinamento.Visible = false;
             // 
             // labelConfinamento
             // 
             this.labelConfinamento.AutoSize = true;
-            this.labelConfinamento.Location = new System.Drawing.Point(444, 210);
+            this.labelConfinamento.Location = new System.Drawing.Point(444, 277);
             this.labelConfinamento.Name = "labelConfinamento";
             this.labelConfinamento.Size = new System.Drawing.Size(87, 15);
             this.labelConfinamento.TabIndex = 22;
             this.labelConfinamento.Text = "Confinamento:";
+            this.labelConfinamento.Visible = false;
             // 
             // textBoxMoradia
             // 
-            this.textBoxMoradia.Location = new System.Drawing.Point(444, 164);
+            this.textBoxMoradia.Location = new System.Drawing.Point(444, 231);
             this.textBoxMoradia.MaxLength = 20;
             this.textBoxMoradia.Name = "textBoxMoradia";
             this.textBoxMoradia.Size = new System.Drawing.Size(121, 23);
             this.textBoxMoradia.TabIndex = 17;
+            this.textBoxMoradia.Visible = false;
             // 
             // labelMoradia
             // 
             this.labelMoradia.AutoSize = true;
-            this.labelMoradia.Location = new System.Drawing.Point(444, 146);
+            this.labelMoradia.Location = new System.Drawing.Point(444, 213);
             this.labelMoradia.Name = "labelMoradia";
             this.labelMoradia.Size = new System.Drawing.Size(54, 15);
             this.labelMoradia.TabIndex = 16;
             this.labelMoradia.Text = "Moradia:";
+            this.labelMoradia.Visible = false;
             // 
             // textBoxAguaTratada
             // 
-            this.textBoxAguaTratada.Location = new System.Drawing.Point(444, 100);
+            this.textBoxAguaTratada.Location = new System.Drawing.Point(444, 167);
             this.textBoxAguaTratada.MaxLength = 20;
             this.textBoxAguaTratada.Name = "textBoxAguaTratada";
             this.textBoxAguaTratada.Size = new System.Drawing.Size(121, 23);
             this.textBoxAguaTratada.TabIndex = 9;
+            this.textBoxAguaTratada.Visible = false;
             // 
             // dateTimePickerDataVisita
             // 
@@ -188,131 +193,146 @@ namespace ProjetoControleCestas
             // 
             // textBoxRelacaoFamiliar
             // 
-            this.textBoxRelacaoFamiliar.Location = new System.Drawing.Point(253, 228);
+            this.textBoxRelacaoFamiliar.Location = new System.Drawing.Point(253, 295);
             this.textBoxRelacaoFamiliar.MaxLength = 20;
             this.textBoxRelacaoFamiliar.Name = "textBoxRelacaoFamiliar";
             this.textBoxRelacaoFamiliar.Size = new System.Drawing.Size(152, 23);
             this.textBoxRelacaoFamiliar.TabIndex = 21;
+            this.textBoxRelacaoFamiliar.Visible = false;
             // 
             // labelRelacaoFamiliar
             // 
             this.labelRelacaoFamiliar.AutoSize = true;
-            this.labelRelacaoFamiliar.Location = new System.Drawing.Point(253, 210);
+            this.labelRelacaoFamiliar.Location = new System.Drawing.Point(253, 277);
             this.labelRelacaoFamiliar.Name = "labelRelacaoFamiliar";
             this.labelRelacaoFamiliar.Size = new System.Drawing.Size(96, 15);
             this.labelRelacaoFamiliar.TabIndex = 20;
             this.labelRelacaoFamiliar.Text = "Relação Familiar:";
+            this.labelRelacaoFamiliar.Visible = false;
             // 
             // textBoxHigieneLimpeza
             // 
-            this.textBoxHigieneLimpeza.Location = new System.Drawing.Point(12, 228);
+            this.textBoxHigieneLimpeza.Location = new System.Drawing.Point(12, 295);
             this.textBoxHigieneLimpeza.MaxLength = 20;
             this.textBoxHigieneLimpeza.Name = "textBoxHigieneLimpeza";
             this.textBoxHigieneLimpeza.Size = new System.Drawing.Size(152, 23);
             this.textBoxHigieneLimpeza.TabIndex = 19;
+            this.textBoxHigieneLimpeza.Visible = false;
             // 
             // labelHigieneLimpeza
             // 
             this.labelHigieneLimpeza.AutoSize = true;
-            this.labelHigieneLimpeza.Location = new System.Drawing.Point(12, 210);
+            this.labelHigieneLimpeza.Location = new System.Drawing.Point(12, 277);
             this.labelHigieneLimpeza.Name = "labelHigieneLimpeza";
             this.labelHigieneLimpeza.Size = new System.Drawing.Size(98, 15);
             this.labelHigieneLimpeza.TabIndex = 18;
             this.labelHigieneLimpeza.Text = "Higiene Limpeza:";
+            this.labelHigieneLimpeza.Visible = false;
             // 
             // textBoxEnergiaEletrica
             // 
-            this.textBoxEnergiaEletrica.Location = new System.Drawing.Point(12, 164);
+            this.textBoxEnergiaEletrica.Location = new System.Drawing.Point(12, 231);
             this.textBoxEnergiaEletrica.MaxLength = 20;
             this.textBoxEnergiaEletrica.Name = "textBoxEnergiaEletrica";
             this.textBoxEnergiaEletrica.Size = new System.Drawing.Size(185, 23);
             this.textBoxEnergiaEletrica.TabIndex = 13;
+            this.textBoxEnergiaEletrica.Visible = false;
             // 
             // labelEnergiaEletrica
             // 
             this.labelEnergiaEletrica.AutoSize = true;
-            this.labelEnergiaEletrica.Location = new System.Drawing.Point(12, 146);
+            this.labelEnergiaEletrica.Location = new System.Drawing.Point(12, 213);
             this.labelEnergiaEletrica.Name = "labelEnergiaEletrica";
             this.labelEnergiaEletrica.Size = new System.Drawing.Size(90, 15);
             this.labelEnergiaEletrica.TabIndex = 12;
             this.labelEnergiaEletrica.Text = "Energia Elétrica:";
+            this.labelEnergiaEletrica.Visible = false;
             // 
             // textBoxServicosPublicos
             // 
-            this.textBoxServicosPublicos.Location = new System.Drawing.Point(253, 164);
+            this.textBoxServicosPublicos.Location = new System.Drawing.Point(253, 231);
             this.textBoxServicosPublicos.MaxLength = 20;
             this.textBoxServicosPublicos.Name = "textBoxServicosPublicos";
             this.textBoxServicosPublicos.Size = new System.Drawing.Size(158, 23);
             this.textBoxServicosPublicos.TabIndex = 15;
+            this.textBoxServicosPublicos.Visible = false;
             // 
             // labelServicosPublicos
             // 
             this.labelServicosPublicos.AutoSize = true;
-            this.labelServicosPublicos.Location = new System.Drawing.Point(253, 146);
+            this.labelServicosPublicos.Location = new System.Drawing.Point(253, 213);
             this.labelServicosPublicos.Name = "labelServicosPublicos";
             this.labelServicosPublicos.Size = new System.Drawing.Size(101, 15);
             this.labelServicosPublicos.TabIndex = 14;
             this.labelServicosPublicos.Text = "Serviços Públicos:";
+            this.labelServicosPublicos.Visible = false;
             // 
             // labelAguaTratada
             // 
             this.labelAguaTratada.AutoSize = true;
-            this.labelAguaTratada.Location = new System.Drawing.Point(444, 81);
+            this.labelAguaTratada.Location = new System.Drawing.Point(444, 148);
             this.labelAguaTratada.Name = "labelAguaTratada";
             this.labelAguaTratada.Size = new System.Drawing.Size(79, 15);
             this.labelAguaTratada.TabIndex = 8;
             this.labelAguaTratada.Text = "Água Tratada:";
+            this.labelAguaTratada.Visible = false;
             // 
             // textBoxEsgotoSanitario
             // 
-            this.textBoxEsgotoSanitario.Location = new System.Drawing.Point(605, 100);
+            this.textBoxEsgotoSanitario.Location = new System.Drawing.Point(605, 167);
             this.textBoxEsgotoSanitario.MaxLength = 20;
             this.textBoxEsgotoSanitario.Name = "textBoxEsgotoSanitario";
             this.textBoxEsgotoSanitario.Size = new System.Drawing.Size(100, 23);
             this.textBoxEsgotoSanitario.TabIndex = 11;
+            this.textBoxEsgotoSanitario.Visible = false;
             // 
             // labelEsgotoSanitario
             // 
             this.labelEsgotoSanitario.AutoSize = true;
-            this.labelEsgotoSanitario.Location = new System.Drawing.Point(605, 81);
+            this.labelEsgotoSanitario.Location = new System.Drawing.Point(605, 148);
             this.labelEsgotoSanitario.Name = "labelEsgotoSanitario";
             this.labelEsgotoSanitario.Size = new System.Drawing.Size(95, 15);
             this.labelEsgotoSanitario.TabIndex = 10;
             this.labelEsgotoSanitario.Text = "Esgoto Sanitário:";
+            this.labelEsgotoSanitario.Visible = false;
             // 
             // textBoxReligiaoPredominante
             // 
-            this.textBoxReligiaoPredominante.Location = new System.Drawing.Point(253, 100);
+            this.textBoxReligiaoPredominante.Location = new System.Drawing.Point(253, 167);
             this.textBoxReligiaoPredominante.MaxLength = 20;
             this.textBoxReligiaoPredominante.Name = "textBoxReligiaoPredominante";
             this.textBoxReligiaoPredominante.Size = new System.Drawing.Size(158, 23);
             this.textBoxReligiaoPredominante.TabIndex = 7;
+            this.textBoxReligiaoPredominante.Visible = false;
             // 
             // labelReligiaoPredominante
             // 
             this.labelReligiaoPredominante.AutoSize = true;
-            this.labelReligiaoPredominante.Location = new System.Drawing.Point(253, 81);
+            this.labelReligiaoPredominante.Location = new System.Drawing.Point(253, 148);
             this.labelReligiaoPredominante.Name = "labelReligiaoPredominante";
             this.labelReligiaoPredominante.Size = new System.Drawing.Size(130, 15);
             this.labelReligiaoPredominante.TabIndex = 6;
             this.labelReligiaoPredominante.Text = "Religião Predominante:";
+            this.labelReligiaoPredominante.Visible = false;
             // 
             // textBoxAlimentacao
             // 
-            this.textBoxAlimentacao.Location = new System.Drawing.Point(12, 100);
+            this.textBoxAlimentacao.Location = new System.Drawing.Point(12, 167);
             this.textBoxAlimentacao.MaxLength = 20;
             this.textBoxAlimentacao.Name = "textBoxAlimentacao";
             this.textBoxAlimentacao.Size = new System.Drawing.Size(185, 23);
             this.textBoxAlimentacao.TabIndex = 5;
+            this.textBoxAlimentacao.Visible = false;
             // 
             // labelAlimentacao
             // 
             this.labelAlimentacao.AutoSize = true;
-            this.labelAlimentacao.Location = new System.Drawing.Point(12, 81);
+            this.labelAlimentacao.Location = new System.Drawing.Point(12, 148);
             this.labelAlimentacao.Name = "labelAlimentacao";
             this.labelAlimentacao.Size = new System.Drawing.Size(77, 15);
             this.labelAlimentacao.TabIndex = 4;
             this.labelAlimentacao.Text = "Alimentação:";
+            this.labelAlimentacao.Visible = false;
             // 
             // labelDataVisita
             // 
@@ -340,7 +360,7 @@ namespace ProjetoControleCestas
             this.panelRodape.Location = new System.Drawing.Point(0, 385);
             this.panelRodape.Name = "panelRodape";
             this.panelRodape.Size = new System.Drawing.Size(800, 65);
-            this.panelRodape.TabIndex = 26;
+            this.panelRodape.TabIndex = 6;
             // 
             // buttonCancelar
             // 

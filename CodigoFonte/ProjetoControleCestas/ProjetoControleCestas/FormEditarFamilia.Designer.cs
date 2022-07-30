@@ -29,6 +29,7 @@ namespace ProjetoControleCestas
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditarFamilia));
             this.panelFundo = new System.Windows.Forms.Panel();
             this.panelEdicao = new System.Windows.Forms.Panel();
             this.tabControlFamilia = new System.Windows.Forms.TabControl();
@@ -74,6 +75,16 @@ namespace ProjetoControleCestas
             this.labelLogradouro = new System.Windows.Forms.Label();
             this.textBoxTipoLogradouro = new System.Windows.Forms.TextBox();
             this.labelTipoLogradouro = new System.Windows.Forms.Label();
+            this.tabPageVisitas = new System.Windows.Forms.TabPage();
+            this.panelFundoVisitas = new System.Windows.Forms.Panel();
+            this.panelListagemVisitas = new System.Windows.Forms.Panel();
+            this.dataGridViewVisitas = new System.Windows.Forms.DataGridView();
+            this.ColumnNomeVoluntario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDataVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelCabecalhoVisitas = new System.Windows.Forms.Panel();
+            this.buttonExcluirVisita = new System.Windows.Forms.Button();
+            this.buttonAlterarVisita = new System.Windows.Forms.Button();
+            this.buttonAdicionarVisita = new System.Windows.Forms.Button();
             this.tabPageMoradias = new System.Windows.Forms.TabPage();
             this.panelFundoMoradias = new System.Windows.Forms.Panel();
             this.panelListagemMoradias = new System.Windows.Forms.Panel();
@@ -86,16 +97,6 @@ namespace ProjetoControleCestas
             this.buttonExcluirMoradia = new System.Windows.Forms.Button();
             this.buttonAlterarMoradia = new System.Windows.Forms.Button();
             this.buttonAdicionarMoradia = new System.Windows.Forms.Button();
-            this.tabPageVisitas = new System.Windows.Forms.TabPage();
-            this.panelFundoVisitas = new System.Windows.Forms.Panel();
-            this.panelListagemVisitas = new System.Windows.Forms.Panel();
-            this.dataGridViewVisitas = new System.Windows.Forms.DataGridView();
-            this.ColumnNomeVoluntario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDataVisita = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelCabecalhoVisitas = new System.Windows.Forms.Panel();
-            this.buttonExcluirVisita = new System.Windows.Forms.Button();
-            this.buttonAlterarVisita = new System.Windows.Forms.Button();
-            this.buttonAdicionarVisita = new System.Windows.Forms.Button();
             this.tabPagePessoas = new System.Windows.Forms.TabPage();
             this.panelFundoPessoas = new System.Windows.Forms.Panel();
             this.panelListagemPessoas = new System.Windows.Forms.Panel();
@@ -120,6 +121,11 @@ namespace ProjetoControleCestas
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.radioButtonCestaTipo3 = new System.Windows.Forms.RadioButton();
+            this.radioButtonCestaTipo1ComCrianca = new System.Windows.Forms.RadioButton();
+            this.radioButtonCestaTipo2ComCrianca = new System.Windows.Forms.RadioButton();
+            this.radioButtonCestaTipo3ComCrianca = new System.Windows.Forms.RadioButton();
             this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.tabControlFamilia.SuspendLayout();
@@ -128,16 +134,16 @@ namespace ProjetoControleCestas
             this.groupBoxTipoCesta.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
             this.tabPageDadosEndereco.SuspendLayout();
-            this.tabPageMoradias.SuspendLayout();
-            this.panelFundoMoradias.SuspendLayout();
-            this.panelListagemMoradias.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoradias)).BeginInit();
-            this.panelCabecalhoMoradia.SuspendLayout();
             this.tabPageVisitas.SuspendLayout();
             this.panelFundoVisitas.SuspendLayout();
             this.panelListagemVisitas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisitas)).BeginInit();
             this.panelCabecalhoVisitas.SuspendLayout();
+            this.tabPageMoradias.SuspendLayout();
+            this.panelFundoMoradias.SuspendLayout();
+            this.panelListagemMoradias.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoradias)).BeginInit();
+            this.panelCabecalhoMoradia.SuspendLayout();
             this.tabPagePessoas.SuspendLayout();
             this.panelFundoPessoas.SuspendLayout();
             this.panelListagemPessoas.SuspendLayout();
@@ -223,36 +229,36 @@ namespace ProjetoControleCestas
             // labelTotalBeneficios
             // 
             this.labelTotalBeneficios.AutoSize = true;
-            this.labelTotalBeneficios.Location = new System.Drawing.Point(574, 180);
+            this.labelTotalBeneficios.Location = new System.Drawing.Point(575, 251);
             this.labelTotalBeneficios.Name = "labelTotalBeneficios";
             this.labelTotalBeneficios.Size = new System.Drawing.Size(114, 15);
-            this.labelTotalBeneficios.TabIndex = 15;
+            this.labelTotalBeneficios.TabIndex = 12;
             this.labelTotalBeneficios.Text = "Total dos Benefícios:";
             // 
             // textBoxTotalBeneficiosRecebidos
             // 
-            this.textBoxTotalBeneficiosRecebidos.Location = new System.Drawing.Point(574, 198);
+            this.textBoxTotalBeneficiosRecebidos.Location = new System.Drawing.Point(575, 269);
             this.textBoxTotalBeneficiosRecebidos.Name = "textBoxTotalBeneficiosRecebidos";
             this.textBoxTotalBeneficiosRecebidos.ReadOnly = true;
             this.textBoxTotalBeneficiosRecebidos.Size = new System.Drawing.Size(180, 23);
-            this.textBoxTotalBeneficiosRecebidos.TabIndex = 14;
+            this.textBoxTotalBeneficiosRecebidos.TabIndex = 13;
             // 
             // labelTotalRendas
             // 
             this.labelTotalRendas.AutoSize = true;
-            this.labelTotalRendas.Location = new System.Drawing.Point(358, 180);
+            this.labelTotalRendas.Location = new System.Drawing.Point(356, 251);
             this.labelTotalRendas.Name = "labelTotalRendas";
             this.labelTotalRendas.Size = new System.Drawing.Size(97, 15);
-            this.labelTotalRendas.TabIndex = 13;
+            this.labelTotalRendas.TabIndex = 10;
             this.labelTotalRendas.Text = "Total das Rendas:";
             // 
             // textBoxTotalRendas
             // 
-            this.textBoxTotalRendas.Location = new System.Drawing.Point(358, 198);
+            this.textBoxTotalRendas.Location = new System.Drawing.Point(356, 269);
             this.textBoxTotalRendas.Name = "textBoxTotalRendas";
             this.textBoxTotalRendas.ReadOnly = true;
             this.textBoxTotalRendas.Size = new System.Drawing.Size(200, 23);
-            this.textBoxTotalRendas.TabIndex = 12;
+            this.textBoxTotalRendas.TabIndex = 11;
             // 
             // comboBoxVoluntario
             // 
@@ -266,28 +272,32 @@ namespace ProjetoControleCestas
             // 
             // textBoxCorCesta
             // 
-            this.textBoxCorCesta.Location = new System.Drawing.Point(358, 108);
+            this.textBoxCorCesta.Location = new System.Drawing.Point(358, 198);
             this.textBoxCorCesta.MaxLength = 10;
             this.textBoxCorCesta.Name = "textBoxCorCesta";
             this.textBoxCorCesta.Size = new System.Drawing.Size(200, 23);
-            this.textBoxCorCesta.TabIndex = 8;
+            this.textBoxCorCesta.TabIndex = 9;
             // 
             // labelCorCesta
             // 
             this.labelCorCesta.AutoSize = true;
-            this.labelCorCesta.Location = new System.Drawing.Point(358, 90);
+            this.labelCorCesta.Location = new System.Drawing.Point(358, 180);
             this.labelCorCesta.Name = "labelCorCesta";
             this.labelCorCesta.Size = new System.Drawing.Size(77, 15);
-            this.labelCorCesta.TabIndex = 7;
+            this.labelCorCesta.TabIndex = 8;
             this.labelCorCesta.Text = "Cor da Cesta:";
             // 
             // groupBoxTipoCesta
             // 
+            this.groupBoxTipoCesta.Controls.Add(this.radioButtonCestaTipo3ComCrianca);
+            this.groupBoxTipoCesta.Controls.Add(this.radioButtonCestaTipo2ComCrianca);
+            this.groupBoxTipoCesta.Controls.Add(this.radioButtonCestaTipo1ComCrianca);
+            this.groupBoxTipoCesta.Controls.Add(this.radioButtonCestaTipo3);
             this.groupBoxTipoCesta.Controls.Add(this.radioButtonCestaTipo2);
             this.groupBoxTipoCesta.Controls.Add(this.radioButtonCestaTipo1);
             this.groupBoxTipoCesta.Location = new System.Drawing.Point(18, 90);
             this.groupBoxTipoCesta.Name = "groupBoxTipoCesta";
-            this.groupBoxTipoCesta.Size = new System.Drawing.Size(200, 74);
+            this.groupBoxTipoCesta.Size = new System.Drawing.Size(736, 74);
             this.groupBoxTipoCesta.TabIndex = 6;
             this.groupBoxTipoCesta.TabStop = false;
             this.groupBoxTipoCesta.Text = "Tipo de Cesta";
@@ -330,7 +340,7 @@ namespace ProjetoControleCestas
             this.textBoxObservacao.MaxLength = 50;
             this.textBoxObservacao.Name = "textBoxObservacao";
             this.textBoxObservacao.Size = new System.Drawing.Size(736, 23);
-            this.textBoxObservacao.TabIndex = 11;
+            this.textBoxObservacao.TabIndex = 15;
             // 
             // labelObservacao
             // 
@@ -338,7 +348,7 @@ namespace ProjetoControleCestas
             this.labelObservacao.Location = new System.Drawing.Point(18, 283);
             this.labelObservacao.Name = "labelObservacao";
             this.labelObservacao.Size = new System.Drawing.Size(72, 15);
-            this.labelObservacao.TabIndex = 10;
+            this.labelObservacao.TabIndex = 14;
             this.labelObservacao.Text = "Observação:";
             // 
             // groupBoxStatus
@@ -350,7 +360,7 @@ namespace ProjetoControleCestas
             this.groupBoxStatus.Location = new System.Drawing.Point(18, 180);
             this.groupBoxStatus.Name = "groupBoxStatus";
             this.groupBoxStatus.Size = new System.Drawing.Size(319, 74);
-            this.groupBoxStatus.TabIndex = 9;
+            this.groupBoxStatus.TabIndex = 7;
             this.groupBoxStatus.TabStop = false;
             this.groupBoxStatus.Text = "Status";
             // 
@@ -604,6 +614,114 @@ namespace ProjetoControleCestas
             this.labelTipoLogradouro.TabIndex = 12;
             this.labelTipoLogradouro.Text = "Tipo de Logradouro:";
             // 
+            // tabPageVisitas
+            // 
+            this.tabPageVisitas.Controls.Add(this.panelFundoVisitas);
+            this.tabPageVisitas.Location = new System.Drawing.Point(4, 24);
+            this.tabPageVisitas.Name = "tabPageVisitas";
+            this.tabPageVisitas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageVisitas.Size = new System.Drawing.Size(792, 357);
+            this.tabPageVisitas.TabIndex = 3;
+            this.tabPageVisitas.Text = "Visitas";
+            this.tabPageVisitas.UseVisualStyleBackColor = true;
+            // 
+            // panelFundoVisitas
+            // 
+            this.panelFundoVisitas.Controls.Add(this.panelListagemVisitas);
+            this.panelFundoVisitas.Controls.Add(this.panelCabecalhoVisitas);
+            this.panelFundoVisitas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFundoVisitas.Location = new System.Drawing.Point(3, 3);
+            this.panelFundoVisitas.Name = "panelFundoVisitas";
+            this.panelFundoVisitas.Size = new System.Drawing.Size(786, 351);
+            this.panelFundoVisitas.TabIndex = 0;
+            // 
+            // panelListagemVisitas
+            // 
+            this.panelListagemVisitas.Controls.Add(this.dataGridViewVisitas);
+            this.panelListagemVisitas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelListagemVisitas.Location = new System.Drawing.Point(0, 68);
+            this.panelListagemVisitas.Name = "panelListagemVisitas";
+            this.panelListagemVisitas.Size = new System.Drawing.Size(786, 283);
+            this.panelListagemVisitas.TabIndex = 1;
+            // 
+            // dataGridViewVisitas
+            // 
+            this.dataGridViewVisitas.AllowUserToAddRows = false;
+            this.dataGridViewVisitas.AllowUserToDeleteRows = false;
+            this.dataGridViewVisitas.AllowUserToOrderColumns = true;
+            this.dataGridViewVisitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewVisitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnNomeVoluntario,
+            this.ColumnDataVisita});
+            this.dataGridViewVisitas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewVisitas.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewVisitas.Name = "dataGridViewVisitas";
+            this.dataGridViewVisitas.ReadOnly = true;
+            this.dataGridViewVisitas.RowHeadersVisible = false;
+            this.dataGridViewVisitas.RowTemplate.Height = 25;
+            this.dataGridViewVisitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewVisitas.Size = new System.Drawing.Size(786, 283);
+            this.dataGridViewVisitas.TabIndex = 0;
+            this.dataGridViewVisitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisitas_CellClick);
+            this.dataGridViewVisitas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisitas_CellContentClick);
+            // 
+            // ColumnNomeVoluntario
+            // 
+            this.ColumnNomeVoluntario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnNomeVoluntario.DataPropertyName = "Voluntario";
+            this.ColumnNomeVoluntario.HeaderText = "Voluntário";
+            this.ColumnNomeVoluntario.Name = "ColumnNomeVoluntario";
+            this.ColumnNomeVoluntario.ReadOnly = true;
+            // 
+            // ColumnDataVisita
+            // 
+            this.ColumnDataVisita.DataPropertyName = "DataVisita";
+            this.ColumnDataVisita.HeaderText = "Data da Visita";
+            this.ColumnDataVisita.Name = "ColumnDataVisita";
+            this.ColumnDataVisita.ReadOnly = true;
+            this.ColumnDataVisita.Width = 200;
+            // 
+            // panelCabecalhoVisitas
+            // 
+            this.panelCabecalhoVisitas.Controls.Add(this.buttonExcluirVisita);
+            this.panelCabecalhoVisitas.Controls.Add(this.buttonAlterarVisita);
+            this.panelCabecalhoVisitas.Controls.Add(this.buttonAdicionarVisita);
+            this.panelCabecalhoVisitas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelCabecalhoVisitas.Location = new System.Drawing.Point(0, 0);
+            this.panelCabecalhoVisitas.Name = "panelCabecalhoVisitas";
+            this.panelCabecalhoVisitas.Size = new System.Drawing.Size(786, 68);
+            this.panelCabecalhoVisitas.TabIndex = 0;
+            // 
+            // buttonExcluirVisita
+            // 
+            this.buttonExcluirVisita.Location = new System.Drawing.Point(691, 23);
+            this.buttonExcluirVisita.Name = "buttonExcluirVisita";
+            this.buttonExcluirVisita.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcluirVisita.TabIndex = 2;
+            this.buttonExcluirVisita.Text = "Excluir";
+            this.buttonExcluirVisita.UseVisualStyleBackColor = true;
+            this.buttonExcluirVisita.Click += new System.EventHandler(this.buttonExcluirVisita_Click);
+            // 
+            // buttonAlterarVisita
+            // 
+            this.buttonAlterarVisita.Location = new System.Drawing.Point(610, 23);
+            this.buttonAlterarVisita.Name = "buttonAlterarVisita";
+            this.buttonAlterarVisita.Size = new System.Drawing.Size(75, 23);
+            this.buttonAlterarVisita.TabIndex = 1;
+            this.buttonAlterarVisita.Text = "Alterar";
+            this.buttonAlterarVisita.UseVisualStyleBackColor = true;
+            this.buttonAlterarVisita.Click += new System.EventHandler(this.buttonAlterarVisita_Click);
+            // 
+            // buttonAdicionarVisita
+            // 
+            this.buttonAdicionarVisita.Location = new System.Drawing.Point(529, 23);
+            this.buttonAdicionarVisita.Name = "buttonAdicionarVisita";
+            this.buttonAdicionarVisita.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdicionarVisita.TabIndex = 0;
+            this.buttonAdicionarVisita.Text = "Adicionar";
+            this.buttonAdicionarVisita.UseVisualStyleBackColor = true;
+            this.buttonAdicionarVisita.Click += new System.EventHandler(this.buttonAdicionarVisita_Click);
+            // 
             // tabPageMoradias
             // 
             this.tabPageMoradias.Controls.Add(this.panelFundoMoradias);
@@ -730,114 +848,6 @@ namespace ProjetoControleCestas
             this.buttonAdicionarMoradia.Text = "Adicionar";
             this.buttonAdicionarMoradia.UseVisualStyleBackColor = true;
             this.buttonAdicionarMoradia.Click += new System.EventHandler(this.buttonAdicionarMoradia_Click);
-            // 
-            // tabPageVisitas
-            // 
-            this.tabPageVisitas.Controls.Add(this.panelFundoVisitas);
-            this.tabPageVisitas.Location = new System.Drawing.Point(4, 24);
-            this.tabPageVisitas.Name = "tabPageVisitas";
-            this.tabPageVisitas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageVisitas.Size = new System.Drawing.Size(792, 357);
-            this.tabPageVisitas.TabIndex = 3;
-            this.tabPageVisitas.Text = "Visitas";
-            this.tabPageVisitas.UseVisualStyleBackColor = true;
-            // 
-            // panelFundoVisitas
-            // 
-            this.panelFundoVisitas.Controls.Add(this.panelListagemVisitas);
-            this.panelFundoVisitas.Controls.Add(this.panelCabecalhoVisitas);
-            this.panelFundoVisitas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFundoVisitas.Location = new System.Drawing.Point(3, 3);
-            this.panelFundoVisitas.Name = "panelFundoVisitas";
-            this.panelFundoVisitas.Size = new System.Drawing.Size(786, 351);
-            this.panelFundoVisitas.TabIndex = 0;
-            // 
-            // panelListagemVisitas
-            // 
-            this.panelListagemVisitas.Controls.Add(this.dataGridViewVisitas);
-            this.panelListagemVisitas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelListagemVisitas.Location = new System.Drawing.Point(0, 68);
-            this.panelListagemVisitas.Name = "panelListagemVisitas";
-            this.panelListagemVisitas.Size = new System.Drawing.Size(786, 283);
-            this.panelListagemVisitas.TabIndex = 1;
-            // 
-            // dataGridViewVisitas
-            // 
-            this.dataGridViewVisitas.AllowUserToAddRows = false;
-            this.dataGridViewVisitas.AllowUserToDeleteRows = false;
-            this.dataGridViewVisitas.AllowUserToOrderColumns = true;
-            this.dataGridViewVisitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewVisitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnNomeVoluntario,
-            this.ColumnDataVisita});
-            this.dataGridViewVisitas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewVisitas.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewVisitas.Name = "dataGridViewVisitas";
-            this.dataGridViewVisitas.ReadOnly = true;
-            this.dataGridViewVisitas.RowHeadersVisible = false;
-            this.dataGridViewVisitas.RowTemplate.Height = 25;
-            this.dataGridViewVisitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVisitas.Size = new System.Drawing.Size(786, 283);
-            this.dataGridViewVisitas.TabIndex = 0;
-            this.dataGridViewVisitas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisitas_CellClick);
-            this.dataGridViewVisitas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisitas_CellContentClick);
-            // 
-            // ColumnNomeVoluntario
-            // 
-            this.ColumnNomeVoluntario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnNomeVoluntario.DataPropertyName = "Voluntario";
-            this.ColumnNomeVoluntario.HeaderText = "Voluntário";
-            this.ColumnNomeVoluntario.Name = "ColumnNomeVoluntario";
-            this.ColumnNomeVoluntario.ReadOnly = true;
-            // 
-            // ColumnDataVisita
-            // 
-            this.ColumnDataVisita.DataPropertyName = "DataVisita";
-            this.ColumnDataVisita.HeaderText = "Data da Visita";
-            this.ColumnDataVisita.Name = "ColumnDataVisita";
-            this.ColumnDataVisita.ReadOnly = true;
-            this.ColumnDataVisita.Width = 200;
-            // 
-            // panelCabecalhoVisitas
-            // 
-            this.panelCabecalhoVisitas.Controls.Add(this.buttonExcluirVisita);
-            this.panelCabecalhoVisitas.Controls.Add(this.buttonAlterarVisita);
-            this.panelCabecalhoVisitas.Controls.Add(this.buttonAdicionarVisita);
-            this.panelCabecalhoVisitas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelCabecalhoVisitas.Location = new System.Drawing.Point(0, 0);
-            this.panelCabecalhoVisitas.Name = "panelCabecalhoVisitas";
-            this.panelCabecalhoVisitas.Size = new System.Drawing.Size(786, 68);
-            this.panelCabecalhoVisitas.TabIndex = 0;
-            // 
-            // buttonExcluirVisita
-            // 
-            this.buttonExcluirVisita.Location = new System.Drawing.Point(691, 23);
-            this.buttonExcluirVisita.Name = "buttonExcluirVisita";
-            this.buttonExcluirVisita.Size = new System.Drawing.Size(75, 23);
-            this.buttonExcluirVisita.TabIndex = 2;
-            this.buttonExcluirVisita.Text = "Excluir";
-            this.buttonExcluirVisita.UseVisualStyleBackColor = true;
-            this.buttonExcluirVisita.Click += new System.EventHandler(this.buttonExcluirVisita_Click);
-            // 
-            // buttonAlterarVisita
-            // 
-            this.buttonAlterarVisita.Location = new System.Drawing.Point(610, 23);
-            this.buttonAlterarVisita.Name = "buttonAlterarVisita";
-            this.buttonAlterarVisita.Size = new System.Drawing.Size(75, 23);
-            this.buttonAlterarVisita.TabIndex = 1;
-            this.buttonAlterarVisita.Text = "Alterar";
-            this.buttonAlterarVisita.UseVisualStyleBackColor = true;
-            this.buttonAlterarVisita.Click += new System.EventHandler(this.buttonAlterarVisita_Click);
-            // 
-            // buttonAdicionarVisita
-            // 
-            this.buttonAdicionarVisita.Location = new System.Drawing.Point(529, 23);
-            this.buttonAdicionarVisita.Name = "buttonAdicionarVisita";
-            this.buttonAdicionarVisita.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdicionarVisita.TabIndex = 0;
-            this.buttonAdicionarVisita.Text = "Adicionar";
-            this.buttonAdicionarVisita.UseVisualStyleBackColor = true;
-            this.buttonAdicionarVisita.Click += new System.EventHandler(this.buttonAdicionarVisita_Click);
             // 
             // tabPagePessoas
             // 
@@ -1070,7 +1080,7 @@ namespace ProjetoControleCestas
             this.panelRodape.Location = new System.Drawing.Point(0, 385);
             this.panelRodape.Name = "panelRodape";
             this.panelRodape.Size = new System.Drawing.Size(800, 65);
-            this.panelRodape.TabIndex = 12;
+            this.panelRodape.TabIndex = 16;
             // 
             // buttonCancelar
             // 
@@ -1092,6 +1102,60 @@ namespace ProjetoControleCestas
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // radioButtonCestaTipo3
+            // 
+            this.radioButtonCestaTipo3.AutoSize = true;
+            this.radioButtonCestaTipo3.Location = new System.Drawing.Point(155, 35);
+            this.radioButtonCestaTipo3.Name = "radioButtonCestaTipo3";
+            this.radioButtonCestaTipo3.Size = new System.Drawing.Size(57, 19);
+            this.radioButtonCestaTipo3.TabIndex = 2;
+            this.radioButtonCestaTipo3.TabStop = true;
+            this.radioButtonCestaTipo3.Text = "Tipo 3";
+            this.radioButtonCestaTipo3.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCestaTipo1ComCrianca
+            // 
+            this.radioButtonCestaTipo1ComCrianca.AutoSize = true;
+            this.radioButtonCestaTipo1ComCrianca.Location = new System.Drawing.Point(218, 35);
+            this.radioButtonCestaTipo1ComCrianca.Name = "radioButtonCestaTipo1ComCrianca";
+            this.radioButtonCestaTipo1ComCrianca.Size = new System.Drawing.Size(127, 19);
+            this.radioButtonCestaTipo1ComCrianca.TabIndex = 3;
+            this.radioButtonCestaTipo1ComCrianca.TabStop = true;
+            this.radioButtonCestaTipo1ComCrianca.Text = "Tipo 1 com Criança";
+            this.radioButtonCestaTipo1ComCrianca.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCestaTipo2ComCrianca
+            // 
+            this.radioButtonCestaTipo2ComCrianca.AutoSize = true;
+            this.radioButtonCestaTipo2ComCrianca.Location = new System.Drawing.Point(351, 35);
+            this.radioButtonCestaTipo2ComCrianca.Name = "radioButtonCestaTipo2ComCrianca";
+            this.radioButtonCestaTipo2ComCrianca.Size = new System.Drawing.Size(127, 19);
+            this.radioButtonCestaTipo2ComCrianca.TabIndex = 4;
+            this.radioButtonCestaTipo2ComCrianca.TabStop = true;
+            this.radioButtonCestaTipo2ComCrianca.Text = "Tipo 2 com Criança";
+            this.radioButtonCestaTipo2ComCrianca.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCestaTipo3ComCrianca
+            // 
+            this.radioButtonCestaTipo3ComCrianca.AutoSize = true;
+            this.radioButtonCestaTipo3ComCrianca.Location = new System.Drawing.Point(493, 35);
+            this.radioButtonCestaTipo3ComCrianca.Name = "radioButtonCestaTipo3ComCrianca";
+            this.radioButtonCestaTipo3ComCrianca.Size = new System.Drawing.Size(127, 19);
+            this.radioButtonCestaTipo3ComCrianca.TabIndex = 5;
+            this.radioButtonCestaTipo3ComCrianca.TabStop = true;
+            this.radioButtonCestaTipo3ComCrianca.Text = "Tipo 3 com Criança";
+            this.radioButtonCestaTipo3ComCrianca.UseVisualStyleBackColor = true;
+            // 
             // FormEditarFamilia
             // 
             this.AcceptButton = this.buttonSalvar;
@@ -1105,7 +1169,7 @@ namespace ProjetoControleCestas
             this.MinimizeBox = false;
             this.Name = "FormEditarFamilia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editar Família";
+            this.Text = "Abertura Cadastro";
             this.panelFundo.ResumeLayout(false);
             this.panelEdicao.ResumeLayout(false);
             this.tabControlFamilia.ResumeLayout(false);
@@ -1118,16 +1182,16 @@ namespace ProjetoControleCestas
             this.groupBoxStatus.PerformLayout();
             this.tabPageDadosEndereco.ResumeLayout(false);
             this.tabPageDadosEndereco.PerformLayout();
-            this.tabPageMoradias.ResumeLayout(false);
-            this.panelFundoMoradias.ResumeLayout(false);
-            this.panelListagemMoradias.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoradias)).EndInit();
-            this.panelCabecalhoMoradia.ResumeLayout(false);
             this.tabPageVisitas.ResumeLayout(false);
             this.panelFundoVisitas.ResumeLayout(false);
             this.panelListagemVisitas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisitas)).EndInit();
             this.panelCabecalhoVisitas.ResumeLayout(false);
+            this.tabPageMoradias.ResumeLayout(false);
+            this.panelFundoMoradias.ResumeLayout(false);
+            this.panelListagemMoradias.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoradias)).EndInit();
+            this.panelCabecalhoMoradia.ResumeLayout(false);
             this.tabPagePessoas.ResumeLayout(false);
             this.panelFundoPessoas.ResumeLayout(false);
             this.panelListagemPessoas.ResumeLayout(false);
@@ -1236,5 +1300,10 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.TextBox textBoxTotalBeneficiosRecebidos;
         private System.Windows.Forms.Label labelTotalRendas;
         private System.Windows.Forms.TextBox textBoxTotalRendas;
+        private System.Windows.Forms.RadioButton radioButtonCestaTipo3ComCrianca;
+        private System.Windows.Forms.RadioButton radioButtonCestaTipo2ComCrianca;
+        private System.Windows.Forms.RadioButton radioButtonCestaTipo1ComCrianca;
+        private System.Windows.Forms.RadioButton radioButtonCestaTipo3;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

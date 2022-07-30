@@ -160,13 +160,22 @@ namespace ProjetoControleCestas.Dados.Implementation
                                       CodFamilia = @CodFamilia,
                                       VinculoFamiliar = @VinculoFamiliar,
                                       ProblemaSaude = @ProblemaSaude,
-                                      IsResponsavelFamilia = @IsResponsavelFamilia,
                                       codusuariomodificacao = @CodigoUsuario,
-                                      datamodificacao = @DataModificacao
+                                      datamodificacao = @DataModificacao,
+                                      dataNascimento = @DataNascimento,
+                                      celular = @Celular,
+                                      residencial = @Residencial,
+                                      recado = @Recado,
+                                      trabalho = @Trabalho,
+                                      outro = @Outro
                                  where
                                      codPessoas = @CodPessoas";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
+            DateTime? DataNascimento = new Nullable<DateTime>();
+
+            if (pessoa.DataNascimento.HasValue)
+                DataNascimento = pessoa.DataNascimento.Value.Date;
 
             try
             {
@@ -188,10 +197,15 @@ namespace ProjetoControleCestas.Dados.Implementation
                                      pessoa.CodFamilia,
                                      pessoa.VinculoFamiliar,
                                      pessoa.ProblemaSaude,
-                                     pessoa.CodPessoas,
-                                     pessoa.IsResponsavelFamilia,
                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
-                                     DataModificacao
+                                     DataModificacao,
+                                     DataNascimento,
+                                     pessoa.Celular,
+                                     pessoa.Residencial,
+                                     pessoa.Recado,
+                                     pessoa.Trabalho,
+                                     pessoa.Outro,
+                                     pessoa.CodPessoas,
                                  },
                                  null,
                                  this.TimeoutPadrao,
@@ -212,10 +226,12 @@ namespace ProjetoControleCestas.Dados.Implementation
             //Adicona uma nova pessoa
             var _cmdInserir = @"insert into tbPessoas(nome,identidade,cpf,situacaoCivil,nomeMae,nomePai,naturalidade,
                                                       deficiencia,idoso,sexo,escolaridade,parentesco,codFamilia,vinculoFamiliar,
-                                                      problemaSaude,IsResponsavelFamilia,codusuariocriacao,datacriacao) 
+                                                      problemaSaude,codusuariocriacao,datacriacao,dataNascimento,celular,
+                                                      residencial,recado,trabalho,outro) 
                                 values (@Nome,@Identidade,@Cpf,@SituacaoCivil,@NomeMae,@NomePai,@Naturalidade,
                                         @Deficiencia,@Idoso,@Sexo,@Escolaridade,@Parentesco,@CodFamilia,@VinculoFamiliar,
-                                        @ProblemaSaude,@IsResponsavelFamilia,@CodigoUsuario,@DataCriacao)";
+                                        @ProblemaSaude,@CodigoUsuario,@DataCriacao,@DataNascimento,@Celular,@Residencial,
+                                        @Recado,@Trabalho,@Outro)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -246,9 +262,14 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                       pessoa.CodFamilia,
                                                       pessoa.VinculoFamiliar,
                                                       pessoa.ProblemaSaude,
-                                                      pessoa.IsResponsavelFamilia,
                                                       SessaoSistema.UsuarioCorrente.CodigoUsuario,
-                                                      DataCriacao
+                                                      DataCriacao,
+                                                      pessoa.DataNascimento,
+                                                      pessoa.Celular,
+                                                      pessoa.Residencial,
+                                                      pessoa.Recado,
+                                                      pessoa.Trabalho,
+                                                      pessoa.Outro
                                                   },
                                                   _transacao,
                                                   this.TimeoutPadrao,

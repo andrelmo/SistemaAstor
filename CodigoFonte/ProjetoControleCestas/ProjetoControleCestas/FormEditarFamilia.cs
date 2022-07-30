@@ -231,8 +231,16 @@ namespace ProjetoControleCestas
 
             if (this._aberturaFamiliaEdicao.TipoCesta == Constantes.ConstantesGlobais.TIPO_CESTA_1)
                 this.radioButtonCestaTipo1.Checked = true;
-            else
+            else if (this._aberturaFamiliaEdicao.TipoCesta == Constantes.ConstantesGlobais.TIPO_CESTA_2)
                 this.radioButtonCestaTipo2.Checked = true;
+            else if (this._aberturaFamiliaEdicao.TipoCesta == Constantes.ConstantesGlobais.TIPO_CESTA_3)
+                this.radioButtonCestaTipo3.Checked = true;
+            else if (this._aberturaFamiliaEdicao.TipoCesta == Constantes.ConstantesGlobais.TIPO_CESTA_1_COM_CRIANCA)
+                this.radioButtonCestaTipo1ComCrianca.Checked = true;
+            else if (this._aberturaFamiliaEdicao.TipoCesta == Constantes.ConstantesGlobais.TIPO_CESTA_2_COM_CRIANCA)
+                this.radioButtonCestaTipo2ComCrianca.Checked = true;
+            else
+                this.radioButtonCestaTipo3ComCrianca.Checked = true;
 
             if (this._aberturaFamiliaEdicao.Status == Constantes.ConstantesGlobais.STATUS_ABERTURA_FAMILIA_ATIVO)
                 this.radioButtonStatusAberturaFamiliaAtivo.Checked = true;
@@ -485,8 +493,16 @@ namespace ProjetoControleCestas
         {
             if (this.radioButtonCestaTipo1.Checked)
                 return (Constantes.ConstantesGlobais.TIPO_CESTA_1);
+            else if (this.radioButtonCestaTipo2.Checked)
+                return (Constantes.ConstantesGlobais.TIPO_CESTA_2);
+            else if (this.radioButtonCestaTipo3.Checked)
+                return (Constantes.ConstantesGlobais.TIPO_CESTA_3);
+            else if (this.radioButtonCestaTipo1ComCrianca.Checked)
+                return (Constantes.ConstantesGlobais.TIPO_CESTA_1_COM_CRIANCA);
+            else if (this.radioButtonCestaTipo2ComCrianca.Checked)
+                return (Constantes.ConstantesGlobais.TIPO_CESTA_2_COM_CRIANCA);
 
-            return (Constantes.ConstantesGlobais.TIPO_CESTA_2);
+            return (Constantes.ConstantesGlobais.TIPO_CESTA_3_COM_CRIANCA);
         }
 
         private string GetStatus()

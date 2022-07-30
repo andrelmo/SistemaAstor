@@ -77,6 +77,7 @@ namespace ProjetoControleCestas
             this.panelFundoBeneficios.Enabled = habilitar;
             this.panelFundoRendas.Enabled = habilitar;
             this.panelFundoDocumentos.Enabled = habilitar;
+            this.panelFundoTelefones.Enabled = habilitar;
         }
 
         private void CarregarPessoa(int codigoPessoa)
@@ -121,6 +122,15 @@ namespace ProjetoControleCestas
             this.textBoxNomePai.Text = this._pessoaEdicao.NomePai;
             this.textBoxParentesco.Text = this._pessoaEdicao.Parentesco;
             this.textBoxNaturalidade.Text = this._pessoaEdicao.Naturalidade;
+
+            if (this._pessoaEdicao.DataNascimento.HasValue)
+                this.dateTimePickerDataNascimento.Value = this._pessoaEdicao.DataNascimento.Value;
+            else
+            {
+                this.dateTimePickerDataNascimento.Checked = false;
+                this.dateTimePickerDataNascimento.Text = string.Empty;
+            }
+
             this._desabilitarControles = false;
 
             //Verificar a situação civil da pessoa
@@ -163,15 +173,22 @@ namespace ProjetoControleCestas
 
             //Verificar o vinculo familiar
             if (this._pessoaEdicao.VinculoFamiliar == VinculoFamiliar.Dependente)
+            {
                 this.radioButtonVinculoFamiliarDependente.Checked = true;
+                this.textBoxParentesco.Enabled = true;
+            }
             else
+            {
                 this.radioButtonVinculoFamiliarResponsavel.Checked = true;
+                this.textBoxParentesco.Enabled = false;
+                this.textBoxParentesco.Text = string.Empty;
+            }
 
-            //Verificar se a pessoa é o responsável da família
-            if (_pessoaEdicao.IsResponsavelFamilia)
-                this.checkBoxResponsavelFamilia.Checked = true;
-            else
-                this.checkBoxResponsavelFamilia.Checked = false;
+            this.textBoxCelular.Text = this._pessoaEdicao.Celular;
+            this.textBoxResidencial.Text = this._pessoaEdicao.Residencial;
+            this.textBoxRecado.Text = this._pessoaEdicao.Recado;
+            this.textBoxTrabalho.Text = this._pessoaEdicao.Trabalho;
+            this.textBoxOutro.Text = this._pessoaEdicao.Outro;
 
             //Carregar a lista de problemas de saúde
             this.CarregarProblemasSaude(this._codigoPessoaAtual);
@@ -299,7 +316,7 @@ namespace ProjetoControleCestas
             }
             finally
             {
-                this.Cursor = Cursors.Default;                
+                this.Cursor = Cursors.Default;
             }
         }
 
@@ -331,13 +348,18 @@ namespace ProjetoControleCestas
             this.textBoxNomePai.Text = string.Empty;
             this.textBoxParentesco.Text = string.Empty;
             this.textBoxNaturalidade.Text = string.Empty;
+            this.dateTimePickerDataNascimento.Text = String.Empty;
             this.radioButtonSituacaoCivilSolteira.Checked = true;
             this.radioButtonDeficienciaNao.Checked = true;
             this.radioButtonProblemaSaudeNao.Checked = true;
             this.radioButtonIdosoNao.Checked = true;
             this.radioButtonSexoMasculino.Checked = true;
             this.radioButtonVinculoFamiliarDependente.Checked = true;
-            this.checkBoxResponsavelFamilia.Checked = false;
+            this.textBoxCelular.Text = String.Empty;
+            this.textBoxResidencial.Text = String.Empty;
+            this.textBoxRecado.Text = String.Empty;
+            this.textBoxTrabalho.Text = string.Empty;
+            this.textBoxOutro.Text = String.Empty;
         }
 
         private void HabilitarControles()
@@ -350,15 +372,24 @@ namespace ProjetoControleCestas
             this.textBoxEscolaridade.Enabled = _habilitarControle;
             this.textBoxNomeMae.Enabled = _habilitarControle;
             this.textBoxNomePai.Enabled = _habilitarControle;
-            this.textBoxParentesco.Enabled = _habilitarControle;
             this.textBoxNaturalidade.Enabled = _habilitarControle;
+            this.dateTimePickerDataNascimento.Enabled = _habilitarControle;
             this.groupBoxSituacaoCivil.Enabled = _habilitarControle;
             this.groupBoxDeficiencia.Enabled = _habilitarControle;
             this.groupBoxProblemaSaude.Enabled = _habilitarControle;
             this.groupBoxIdoso.Enabled = _habilitarControle;
             this.groupBoxSexo.Enabled = _habilitarControle;
             this.groupBoxVinculoFamiliar.Enabled = _habilitarControle;
-            this.checkBoxResponsavelFamilia.Enabled = _habilitarControle;
+            this.textBoxCelular.Enabled = _habilitarControle;
+            this.textBoxResidencial.Enabled = _habilitarControle;
+            this.textBoxRecado.Enabled = _habilitarControle;
+            this.textBoxTrabalho.Enabled = _habilitarControle;
+            this.textBoxOutro.Enabled = _habilitarControle;
+
+            if (this._pessoaEdicao.VinculoFamiliar == VinculoFamiliar.Dependente)
+                this.textBoxParentesco.Enabled = _habilitarControle;
+            else
+                this.textBoxParentesco.Enabled = false;
         }
 
         private void buttonSalvar_Click(object sender, System.EventArgs e)
@@ -373,7 +404,7 @@ namespace ProjetoControleCestas
                     if (this.VerificarInformacoesObrigatorias())
                     {
                         //Verificar se o CPF informado é válido
-                        
+
                         if (!string.IsNullOrEmpty(this.maskedTextBoxCpf.Text))
                         {
                             //Verificar se está sendo feita uma inserção
@@ -425,7 +456,7 @@ namespace ProjetoControleCestas
 
         private PessoasModel CriarPessoaModel()
         {
-            return (new PessoasModel()
+            var _pessoa = new PessoasModel()
             {
                 CodFamilia = this._codigoFamiliaAtual,
                 Cpf = this.maskedTextBoxCpf.Text,
@@ -442,8 +473,17 @@ namespace ProjetoControleCestas
                 VinculoFamiliar = this.GetVinculoFamiliar(),
                 Deficiencia = this.GetTextoDeficiencia(),
                 ProblemaSaude = this.GetProblemaSaude(),
-                IsResponsavelFamilia = this.checkBoxResponsavelFamilia.Checked
-            });
+                Celular = this.textBoxCelular.Text,
+                Residencial = this.textBoxResidencial.Text,
+                Recado = this.textBoxRecado.Text,
+                Trabalho = this.textBoxTrabalho.Text,
+                Outro = this.textBoxOutro.Text
+            };
+
+            if (dateTimePickerDataNascimento.Checked)
+                _pessoa.DataNascimento = dateTimePickerDataNascimento.Value;
+
+            return (_pessoa);
         }
 
         private string GetTextoDeficiencia()
@@ -1112,6 +1152,28 @@ namespace ProjetoControleCestas
             {
                 _formDocumento.Close();
             }
+        }
+
+        private void radioButtonVinculoFamiliarResponsavel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonVinculoFamiliarResponsavel.Checked)
+            {
+                this.textBoxParentesco.Enabled = false;
+                this.textBoxParentesco.Text = String.Empty;
+            }
+            else
+                this.textBoxParentesco.Enabled = true;
+        }
+
+        private void radioButtonVinculoFamiliarDependente_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radioButtonVinculoFamiliarResponsavel.Checked)
+            {
+                this.textBoxParentesco.Enabled = false;
+                this.textBoxParentesco.Text = String.Empty;
+            }
+            else
+                this.textBoxParentesco.Enabled = true;
         }
     }
 }

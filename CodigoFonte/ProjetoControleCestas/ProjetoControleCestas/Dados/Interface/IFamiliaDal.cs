@@ -17,5 +17,6 @@ namespace ProjetoControleCestas.Dados.Interface
         IDbConnection CriarConexao();
         List<FamiliaModel> PesquisarPorCpfResponsavel(string cpf);
         List<FamiliaModel> PesquisarPorNomeResponsavel(string nomeResponsavel);
+        List<FamiliaModel> PesquisarPorIdentidade(string identidade);
     }
 }

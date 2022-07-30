@@ -103,9 +103,9 @@ namespace ProjetoControleCestas
             this.labelLocal.AutoSize = true;
             this.labelLocal.Location = new System.Drawing.Point(13, 81);
             this.labelLocal.Name = "labelLocal";
-            this.labelLocal.Size = new System.Drawing.Size(38, 15);
+            this.labelLocal.Size = new System.Drawing.Size(105, 15);
             this.labelLocal.TabIndex = 4;
-            this.labelLocal.Text = "Local:";
+            this.labelLocal.Text = "Unidade de Saúde:";
             // 
             // textBoxMedicamento
             // 

@@ -1,5 +1,6 @@
 ﻿using Dapper.Contrib.Extensions;
 using ProjetoControleCestas.Enums;
+using System;
 
 namespace ProjetoControleCestas.Modelo
 {
@@ -23,6 +24,11 @@ namespace ProjetoControleCestas.Modelo
         public int CodFamilia { get; set; }
         public VinculoFamiliar VinculoFamiliar { get; set; }
         public string ProblemaSaude { get; set; }
-        public bool IsResponsavelFamilia { get; set; }
+        public DateTime? DataNascimento { get; set; }
+        public string Celular { get; set; }
+        public string Residencial { get; set; }
+        public string Recado { get; set; }
+        public string Trabalho { get; set; }
+        public string Outro { get; set; }
     }
 }

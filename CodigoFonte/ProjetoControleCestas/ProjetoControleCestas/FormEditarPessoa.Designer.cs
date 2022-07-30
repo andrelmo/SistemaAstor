@@ -29,13 +29,14 @@ namespace ProjetoControleCestas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelFundo = new System.Windows.Forms.Panel();
             this.panelEdicao = new System.Windows.Forms.Panel();
             this.tabControlInformacoesPessoa = new System.Windows.Forms.TabControl();
             this.tabPageInformacoesGerais = new System.Windows.Forms.TabPage();
-            this.checkBoxResponsavelFamilia = new System.Windows.Forms.CheckBox();
+            this.dateTimePickerDataNascimento = new System.Windows.Forms.DateTimePicker();
+            this.labelDataNascimento = new System.Windows.Forms.Label();
             this.groupBoxProblemaSaude = new System.Windows.Forms.GroupBox();
             this.radioButtonProblemaSaudeNao = new System.Windows.Forms.RadioButton();
             this.radioButtonProblemaSaudeSim = new System.Windows.Forms.RadioButton();
@@ -141,9 +142,21 @@ namespace ProjetoControleCestas
             this.buttonExcluirAtividadesDesenvolvidas = new System.Windows.Forms.Button();
             this.buttonAlterarAtividadesDesenvolvidas = new System.Windows.Forms.Button();
             this.buttonAdicionarAtividadesDesenvolvidas = new System.Windows.Forms.Button();
+            this.tabPageTelefones = new System.Windows.Forms.TabPage();
+            this.panelFundoTelefones = new System.Windows.Forms.Panel();
+            this.labelOutro = new System.Windows.Forms.Label();
+            this.labelTrabalho = new System.Windows.Forms.Label();
+            this.labelRecado = new System.Windows.Forms.Label();
+            this.labelResidencial = new System.Windows.Forms.Label();
+            this.labelCelular = new System.Windows.Forms.Label();
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
+            this.textBoxCelular = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxResidencial = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxRecado = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxTrabalho = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxOutro = new System.Windows.Forms.MaskedTextBox();
             this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.tabControlInformacoesPessoa.SuspendLayout();
@@ -187,6 +200,8 @@ namespace ProjetoControleCestas
             this.panelGridAtividadesDesenvolvidas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtividadesDesenvolvidas)).BeginInit();
             this.panel1.SuspendLayout();
+            this.tabPageTelefones.SuspendLayout();
+            this.panelFundoTelefones.SuspendLayout();
             this.panelRodape.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -219,6 +234,7 @@ namespace ProjetoControleCestas
             this.tabControlInformacoesPessoa.Controls.Add(this.tabPageDocumentos);
             this.tabControlInformacoesPessoa.Controls.Add(this.tabPageAreaInteresseProfissional);
             this.tabControlInformacoesPessoa.Controls.Add(this.tabPageAtividadesDesenvolvidas);
+            this.tabControlInformacoesPessoa.Controls.Add(this.tabPageTelefones);
             this.tabControlInformacoesPessoa.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlInformacoesPessoa.Location = new System.Drawing.Point(0, 0);
             this.tabControlInformacoesPessoa.Name = "tabControlInformacoesPessoa";
@@ -228,7 +244,8 @@ namespace ProjetoControleCestas
             // 
             // tabPageInformacoesGerais
             // 
-            this.tabPageInformacoesGerais.Controls.Add(this.checkBoxResponsavelFamilia);
+            this.tabPageInformacoesGerais.Controls.Add(this.dateTimePickerDataNascimento);
+            this.tabPageInformacoesGerais.Controls.Add(this.labelDataNascimento);
             this.tabPageInformacoesGerais.Controls.Add(this.groupBoxProblemaSaude);
             this.tabPageInformacoesGerais.Controls.Add(this.groupBoxVinculoFamiliar);
             this.tabPageInformacoesGerais.Controls.Add(this.textBoxParentesco);
@@ -259,15 +276,22 @@ namespace ProjetoControleCestas
             this.tabPageInformacoesGerais.Text = "Informações Gerais";
             this.tabPageInformacoesGerais.UseVisualStyleBackColor = true;
             // 
-            // checkBoxResponsavelFamilia
+            // dateTimePickerDataNascimento
             // 
-            this.checkBoxResponsavelFamilia.AutoSize = true;
-            this.checkBoxResponsavelFamilia.Location = new System.Drawing.Point(800, 331);
-            this.checkBoxResponsavelFamilia.Name = "checkBoxResponsavelFamilia";
-            this.checkBoxResponsavelFamilia.Size = new System.Drawing.Size(148, 19);
-            this.checkBoxResponsavelFamilia.TabIndex = 26;
-            this.checkBoxResponsavelFamilia.Text = "Responsável da Família";
-            this.checkBoxResponsavelFamilia.UseVisualStyleBackColor = true;
+            this.dateTimePickerDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDataNascimento.Location = new System.Drawing.Point(412, 158);
+            this.dateTimePickerDataNascimento.Name = "dateTimePickerDataNascimento";
+            this.dateTimePickerDataNascimento.Size = new System.Drawing.Size(171, 23);
+            this.dateTimePickerDataNascimento.TabIndex = 17;
+            // 
+            // labelDataNascimento
+            // 
+            this.labelDataNascimento.AutoSize = true;
+            this.labelDataNascimento.Location = new System.Drawing.Point(412, 140);
+            this.labelDataNascimento.Name = "labelDataNascimento";
+            this.labelDataNascimento.Size = new System.Drawing.Size(114, 15);
+            this.labelDataNascimento.TabIndex = 16;
+            this.labelDataNascimento.Text = "Data de Nascimento";
             // 
             // groupBoxProblemaSaude
             // 
@@ -276,7 +300,7 @@ namespace ProjetoControleCestas
             this.groupBoxProblemaSaude.Location = new System.Drawing.Point(800, 199);
             this.groupBoxProblemaSaude.Name = "groupBoxProblemaSaude";
             this.groupBoxProblemaSaude.Size = new System.Drawing.Size(159, 78);
-            this.groupBoxProblemaSaude.TabIndex = 22;
+            this.groupBoxProblemaSaude.TabIndex = 20;
             this.groupBoxProblemaSaude.TabStop = false;
             this.groupBoxProblemaSaude.Text = "Problema de Saúde";
             // 
@@ -309,7 +333,7 @@ namespace ProjetoControleCestas
             this.groupBoxVinculoFamiliar.Location = new System.Drawing.Point(558, 296);
             this.groupBoxVinculoFamiliar.Name = "groupBoxVinculoFamiliar";
             this.groupBoxVinculoFamiliar.Size = new System.Drawing.Size(226, 78);
-            this.groupBoxVinculoFamiliar.TabIndex = 25;
+            this.groupBoxVinculoFamiliar.TabIndex = 23;
             this.groupBoxVinculoFamiliar.TabStop = false;
             this.groupBoxVinculoFamiliar.Text = "Vínculo Familiar";
             // 
@@ -322,6 +346,7 @@ namespace ProjetoControleCestas
             this.radioButtonVinculoFamiliarResponsavel.TabIndex = 1;
             this.radioButtonVinculoFamiliarResponsavel.Text = "Responsável";
             this.radioButtonVinculoFamiliarResponsavel.UseVisualStyleBackColor = true;
+            this.radioButtonVinculoFamiliarResponsavel.CheckedChanged += new System.EventHandler(this.radioButtonVinculoFamiliarResponsavel_CheckedChanged);
             // 
             // radioButtonVinculoFamiliarDependente
             // 
@@ -334,6 +359,7 @@ namespace ProjetoControleCestas
             this.radioButtonVinculoFamiliarDependente.TabStop = true;
             this.radioButtonVinculoFamiliarDependente.Text = "Dependente";
             this.radioButtonVinculoFamiliarDependente.UseVisualStyleBackColor = true;
+            this.radioButtonVinculoFamiliarDependente.CheckedChanged += new System.EventHandler(this.radioButtonVinculoFamiliarDependente_CheckedChanged);
             // 
             // textBoxParentesco
             // 
@@ -376,7 +402,7 @@ namespace ProjetoControleCestas
             this.groupBoxSexo.Location = new System.Drawing.Point(258, 296);
             this.groupBoxSexo.Name = "groupBoxSexo";
             this.groupBoxSexo.Size = new System.Drawing.Size(281, 78);
-            this.groupBoxSexo.TabIndex = 24;
+            this.groupBoxSexo.TabIndex = 22;
             this.groupBoxSexo.TabStop = false;
             this.groupBoxSexo.Text = "Sexo";
             // 
@@ -409,7 +435,7 @@ namespace ProjetoControleCestas
             this.groupBoxIdoso.Location = new System.Drawing.Point(28, 296);
             this.groupBoxIdoso.Name = "groupBoxIdoso";
             this.groupBoxIdoso.Size = new System.Drawing.Size(200, 78);
-            this.groupBoxIdoso.TabIndex = 23;
+            this.groupBoxIdoso.TabIndex = 21;
             this.groupBoxIdoso.TabStop = false;
             this.groupBoxIdoso.Text = "Idoso";
             // 
@@ -442,7 +468,7 @@ namespace ProjetoControleCestas
             this.groupBoxDeficiencia.Location = new System.Drawing.Point(558, 199);
             this.groupBoxDeficiencia.Name = "groupBoxDeficiencia";
             this.groupBoxDeficiencia.Size = new System.Drawing.Size(226, 78);
-            this.groupBoxDeficiencia.TabIndex = 21;
+            this.groupBoxDeficiencia.TabIndex = 19;
             this.groupBoxDeficiencia.TabStop = false;
             this.groupBoxDeficiencia.Text = "Deficiência";
             // 
@@ -471,7 +497,7 @@ namespace ProjetoControleCestas
             // maskedTextBoxCpf
             // 
             this.maskedTextBoxCpf.Location = new System.Drawing.Point(602, 41);
-            this.maskedTextBoxCpf.Mask = "000.00.00.00/00";
+            this.maskedTextBoxCpf.Mask = "999.999.999-99";
             this.maskedTextBoxCpf.Name = "maskedTextBoxCpf";
             this.maskedTextBoxCpf.Size = new System.Drawing.Size(100, 23);
             this.maskedTextBoxCpf.TabIndex = 5;
@@ -488,7 +514,7 @@ namespace ProjetoControleCestas
             this.groupBoxSituacaoCivil.Location = new System.Drawing.Point(28, 199);
             this.groupBoxSituacaoCivil.Name = "groupBoxSituacaoCivil";
             this.groupBoxSituacaoCivil.Size = new System.Drawing.Size(511, 78);
-            this.groupBoxSituacaoCivil.TabIndex = 20;
+            this.groupBoxSituacaoCivil.TabIndex = 18;
             this.groupBoxSituacaoCivil.TabStop = false;
             this.groupBoxSituacaoCivil.Text = "Situação Cívil";
             // 
@@ -939,9 +965,9 @@ namespace ProjetoControleCestas
             // ColumnValorBeneficio
             // 
             this.ColumnValorBeneficio.DataPropertyName = "ValorBeneficio";
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ColumnValorBeneficio.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ColumnValorBeneficio.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnValorBeneficio.HeaderText = "Valor";
             this.ColumnValorBeneficio.Name = "ColumnValorBeneficio";
             this.ColumnValorBeneficio.ReadOnly = true;
@@ -1051,9 +1077,9 @@ namespace ProjetoControleCestas
             // ColumnValorRenda
             // 
             this.ColumnValorRenda.DataPropertyName = "ValorRenda";
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.ColumnValorRenda.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColumnValorRenda.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnValorRenda.HeaderText = "Valor da Renda";
             this.ColumnValorRenda.Name = "ColumnValorRenda";
             this.ColumnValorRenda.ReadOnly = true;
@@ -1388,6 +1414,80 @@ namespace ProjetoControleCestas
             this.buttonAdicionarAtividadesDesenvolvidas.UseVisualStyleBackColor = true;
             this.buttonAdicionarAtividadesDesenvolvidas.Click += new System.EventHandler(this.buttonAdicionarAtividadesDesenvolvidas_Click);
             // 
+            // tabPageTelefones
+            // 
+            this.tabPageTelefones.Controls.Add(this.panelFundoTelefones);
+            this.tabPageTelefones.Location = new System.Drawing.Point(4, 24);
+            this.tabPageTelefones.Name = "tabPageTelefones";
+            this.tabPageTelefones.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTelefones.Size = new System.Drawing.Size(988, 398);
+            this.tabPageTelefones.TabIndex = 8;
+            this.tabPageTelefones.Text = "Telefones";
+            this.tabPageTelefones.UseVisualStyleBackColor = true;
+            // 
+            // panelFundoTelefones
+            // 
+            this.panelFundoTelefones.Controls.Add(this.textBoxOutro);
+            this.panelFundoTelefones.Controls.Add(this.textBoxTrabalho);
+            this.panelFundoTelefones.Controls.Add(this.textBoxRecado);
+            this.panelFundoTelefones.Controls.Add(this.textBoxResidencial);
+            this.panelFundoTelefones.Controls.Add(this.textBoxCelular);
+            this.panelFundoTelefones.Controls.Add(this.labelOutro);
+            this.panelFundoTelefones.Controls.Add(this.labelTrabalho);
+            this.panelFundoTelefones.Controls.Add(this.labelRecado);
+            this.panelFundoTelefones.Controls.Add(this.labelResidencial);
+            this.panelFundoTelefones.Controls.Add(this.labelCelular);
+            this.panelFundoTelefones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFundoTelefones.Location = new System.Drawing.Point(3, 3);
+            this.panelFundoTelefones.Name = "panelFundoTelefones";
+            this.panelFundoTelefones.Size = new System.Drawing.Size(982, 392);
+            this.panelFundoTelefones.TabIndex = 0;
+            // 
+            // labelOutro
+            // 
+            this.labelOutro.AutoSize = true;
+            this.labelOutro.Location = new System.Drawing.Point(24, 292);
+            this.labelOutro.Name = "labelOutro";
+            this.labelOutro.Size = new System.Drawing.Size(41, 15);
+            this.labelOutro.TabIndex = 9;
+            this.labelOutro.Text = "Outro:";
+            // 
+            // labelTrabalho
+            // 
+            this.labelTrabalho.AutoSize = true;
+            this.labelTrabalho.Location = new System.Drawing.Point(24, 227);
+            this.labelTrabalho.Name = "labelTrabalho";
+            this.labelTrabalho.Size = new System.Drawing.Size(55, 15);
+            this.labelTrabalho.TabIndex = 7;
+            this.labelTrabalho.Text = "Trabalho:";
+            // 
+            // labelRecado
+            // 
+            this.labelRecado.AutoSize = true;
+            this.labelRecado.Location = new System.Drawing.Point(24, 162);
+            this.labelRecado.Name = "labelRecado";
+            this.labelRecado.Size = new System.Drawing.Size(49, 15);
+            this.labelRecado.TabIndex = 5;
+            this.labelRecado.Text = "Recado:";
+            // 
+            // labelResidencial
+            // 
+            this.labelResidencial.AutoSize = true;
+            this.labelResidencial.Location = new System.Drawing.Point(24, 97);
+            this.labelResidencial.Name = "labelResidencial";
+            this.labelResidencial.Size = new System.Drawing.Size(69, 15);
+            this.labelResidencial.TabIndex = 3;
+            this.labelResidencial.Text = "Residencial:";
+            // 
+            // labelCelular
+            // 
+            this.labelCelular.AutoSize = true;
+            this.labelCelular.Location = new System.Drawing.Point(24, 25);
+            this.labelCelular.Name = "labelCelular";
+            this.labelCelular.Size = new System.Drawing.Size(47, 15);
+            this.labelCelular.TabIndex = 1;
+            this.labelCelular.Text = "Celular:";
+            // 
             // panelRodape
             // 
             this.panelRodape.Controls.Add(this.buttonCancelar);
@@ -1396,7 +1496,7 @@ namespace ProjetoControleCestas
             this.panelRodape.Location = new System.Drawing.Point(0, 426);
             this.panelRodape.Name = "panelRodape";
             this.panelRodape.Size = new System.Drawing.Size(996, 65);
-            this.panelRodape.TabIndex = 0;
+            this.panelRodape.TabIndex = 25;
             // 
             // buttonCancelar
             // 
@@ -1417,6 +1517,51 @@ namespace ProjetoControleCestas
             this.buttonSalvar.Text = "Salvar";
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
+            // 
+            // textBoxCelular
+            // 
+            this.textBoxCelular.Location = new System.Drawing.Point(24, 43);
+            this.textBoxCelular.Mask = "(99)9999-9999";
+            this.textBoxCelular.Name = "textBoxCelular";
+            this.textBoxCelular.Size = new System.Drawing.Size(151, 23);
+            this.textBoxCelular.TabIndex = 2;
+            this.textBoxCelular.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // textBoxResidencial
+            // 
+            this.textBoxResidencial.Location = new System.Drawing.Point(24, 115);
+            this.textBoxResidencial.Mask = "(99)9999-9999";
+            this.textBoxResidencial.Name = "textBoxResidencial";
+            this.textBoxResidencial.Size = new System.Drawing.Size(151, 23);
+            this.textBoxResidencial.TabIndex = 4;
+            this.textBoxResidencial.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // textBoxRecado
+            // 
+            this.textBoxRecado.Location = new System.Drawing.Point(24, 180);
+            this.textBoxRecado.Mask = "(99)9999-9999";
+            this.textBoxRecado.Name = "textBoxRecado";
+            this.textBoxRecado.Size = new System.Drawing.Size(151, 23);
+            this.textBoxRecado.TabIndex = 6;
+            this.textBoxRecado.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // textBoxTrabalho
+            // 
+            this.textBoxTrabalho.Location = new System.Drawing.Point(24, 245);
+            this.textBoxTrabalho.Mask = "(99)9999-9999";
+            this.textBoxTrabalho.Name = "textBoxTrabalho";
+            this.textBoxTrabalho.Size = new System.Drawing.Size(151, 23);
+            this.textBoxTrabalho.TabIndex = 8;
+            this.textBoxTrabalho.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // textBoxOutro
+            // 
+            this.textBoxOutro.Location = new System.Drawing.Point(24, 310);
+            this.textBoxOutro.Mask = "(99)9999-9999";
+            this.textBoxOutro.Name = "textBoxOutro";
+            this.textBoxOutro.Size = new System.Drawing.Size(151, 23);
+            this.textBoxOutro.TabIndex = 10;
+            this.textBoxOutro.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // FormEditarPessoa
             // 
@@ -1482,6 +1627,9 @@ namespace ProjetoControleCestas
             this.panelGridAtividadesDesenvolvidas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAtividadesDesenvolvidas)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.tabPageTelefones.ResumeLayout(false);
+            this.panelFundoTelefones.ResumeLayout(false);
+            this.panelFundoTelefones.PerformLayout();
             this.panelRodape.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1585,7 +1733,6 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.Button buttonAdicionarDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTipoDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNumeroDocumento;
-        private System.Windows.Forms.CheckBox checkBoxResponsavelFamilia;
         private System.Windows.Forms.TabPage tabPageAreaInteresseProfissional;
         private System.Windows.Forms.Panel panelCabecalhoAreaInteresseProfissional;
         private System.Windows.Forms.Button buttonExcluirAreaInteresseProfissional;
@@ -1602,5 +1749,19 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.Button buttonAlterarAtividadesDesenvolvidas;
         private System.Windows.Forms.Button buttonAdicionarAtividadesDesenvolvidas;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAtividade;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDataNascimento;
+        private System.Windows.Forms.Label labelDataNascimento;
+        private System.Windows.Forms.TabPage tabPageTelefones;
+        private System.Windows.Forms.Panel panelFundoTelefones;
+        private System.Windows.Forms.Label labelOutro;
+        private System.Windows.Forms.Label labelTrabalho;
+        private System.Windows.Forms.Label labelRecado;
+        private System.Windows.Forms.Label labelResidencial;
+        private System.Windows.Forms.Label labelCelular;
+        private System.Windows.Forms.MaskedTextBox textBoxOutro;
+        private System.Windows.Forms.MaskedTextBox textBoxTrabalho;
+        private System.Windows.Forms.MaskedTextBox textBoxRecado;
+        private System.Windows.Forms.MaskedTextBox textBoxResidencial;
+        private System.Windows.Forms.MaskedTextBox textBoxCelular;
     }
 }

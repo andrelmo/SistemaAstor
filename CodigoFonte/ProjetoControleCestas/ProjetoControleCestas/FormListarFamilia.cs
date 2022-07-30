@@ -9,7 +9,7 @@ namespace ProjetoControleCestas
 {
     public partial class FormListarFamilia : Form
     {
-        private const string MASCARA_CPF = @"000.00.00.00/00";
+        private const string MASCARA_CPF = @"999.999.999-99";
         private readonly IFamiliaDal _familiaDal;
         private readonly ServiceProvider _serviceProvider;
         private FamiliaModel _registroAtual;
@@ -143,7 +143,7 @@ namespace ProjetoControleCestas
         
         private void ConfigurarMascara()
         {
-            if (this.radioButtonPesqNome.Checked)
+            if (this.radioButtonPesqNome.Checked || this.radioButtonPesqIdentidade.Checked)
                 this.maskedTextBoxPesquisar.Mask = "";
             else
                 this.maskedTextBoxPesquisar.Mask = MASCARA_CPF;
@@ -173,7 +173,7 @@ namespace ProjetoControleCestas
                         MessageBox.Show("Não foi encontrada nenhum resultado para a sua pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else
+            else if (this.radioButtonPesqNome.Checked)
             {
                 if (string.IsNullOrEmpty(this.maskedTextBoxPesquisar.Text))
                     MessageBox.Show("Você deve informar o nome do responsável para poder pequisar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -188,6 +188,26 @@ namespace ProjetoControleCestas
                         MessageBox.Show("Não foi encontrada nenhum resultado para a sua pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
+            else
+            {
+                if (string.IsNullOrEmpty(this.maskedTextBoxPesquisar.Text))
+                    MessageBox.Show("Você deve informar a Identidade para poder pesquisar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    //Realizar a pesquisa pela identidade da pessoa
+                    var _listaResultado = this._familiaDal.PesquisarPorIdentidade(this.maskedTextBoxPesquisar.Text);
+
+                    this.dataGridViewFamilias.DataSource = _listaResultado;
+
+                    if (_listaResultado.Count == 0)
+                        MessageBox.Show("Não foi encontrada nenhum resultado para a sua pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void radioButtonPesqIdentidade_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ConfigurarMascara();
         }
     }
 }

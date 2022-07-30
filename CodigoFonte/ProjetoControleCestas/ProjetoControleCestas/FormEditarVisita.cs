@@ -206,12 +206,12 @@ namespace ProjetoControleCestas
                 return (false);
             }
 
-            if (string.IsNullOrEmpty(this.textBoxAlimentacao.Text))
+            /*if (string.IsNullOrEmpty(this.textBoxAlimentacao.Text))
             {
                 MessageBox.Show("Você deve informar a alimentação!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 return (false);
-            }
+            }*/
 
             return (true);
         }

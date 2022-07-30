@@ -24,6 +24,10 @@
         public const string NAO = @"N";
         public const string TIPO_CESTA_1 = @"Tipo 1";
         public const string TIPO_CESTA_2 = @"Tipo 2";
+        public const string TIPO_CESTA_3 = @"Tipo 3";
+        public const string TIPO_CESTA_1_COM_CRIANCA = @"Tipo 1 com Criança";
+        public const string TIPO_CESTA_2_COM_CRIANCA = @"Tipo 2 com Criança";
+        public const string TIPO_CESTA_3_COM_CRIANCA = @"Tipo 3 com Criança";
         public const byte VERDADEIRO = 1;
         public const byte FALSO = 0;
 

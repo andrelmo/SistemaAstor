@@ -203,11 +203,44 @@ namespace ProjetoControleCestas.Dados.Implementation
             }
         }
 
+        public List<FamiliaModel> PesquisarPorIdentidade(string identidade)
+        {
+            //Buscar todas as famílias
+            var _cmdBuscar = @"select f.*
+                               from tbFamilia f
+                               inner join tbPessoas p
+                               on f.codFamilia = p.codFamilia
+                               where
+                                  p.identidade like '" + identidade + "%' " +
+                               " order by f.codFamilia";
+
+            using var _conexao = new MySqlConnection(this.GetConnecitonString());
+
+            try
+            {
+                var _listaFamilias = _conexao.Query<FamiliaModel>(_cmdBuscar,
+                                                                    commandTimeout: this.TimeoutPadrao,
+                                                                    commandType: CommandType.Text).ToList();
+
+                //Preencher as informações com os dados do responsável
+                foreach (var _familia in _listaFamilias)
+                    this.CarregarResponsavelFamilia(_familia);
+
+                return (_listaFamilias);
+            }
+            finally
+            {
+                _conexao.Close();
+            }
+        }
+
         public List<FamiliaModel> BuscarTodos()
         {
             //Buscar todas as famílias
             var _cmdBuscar = @"select f.*
                                from tbFamilia f
+                               inner join tbPessoas p
+                               on f.codFamilia = p.codFamilia
                                order by f.codFamilia";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -236,7 +269,7 @@ namespace ProjetoControleCestas.Dados.Implementation
             var _listaPessoas = _pessoaDal.BuscarTodos(familia.CodFamilia);
 
             //Verifica se na lista de pessoas existe alguma marcada como responsável
-            var _responsavelFamilia = _listaPessoas.Where(i => i.IsResponsavelFamilia).FirstOrDefault();
+            var _responsavelFamilia = _listaPessoas.Where(i => i.VinculoFamiliar == Enums.VinculoFamiliar.Responsavel).FirstOrDefault();
 
             if (_responsavelFamilia != null)
             {
