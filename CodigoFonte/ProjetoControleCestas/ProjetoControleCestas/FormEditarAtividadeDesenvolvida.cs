@@ -9,6 +9,7 @@ namespace ProjetoControleCestas
     public partial class FormEditarAtividadeDesenvolvida : Form
     {
         private readonly IAtividadeDesenvolvidaDal _atividadeDesenvolvidaDal;
+        private readonly IListaAtividadeDesenvolvidaDal _listaAtividadeDesenvolvidaDal;
         private readonly ServiceProvider _serviceProvider;
         private AtividadeDesenvolvidaModel _atividadeDesenvolvidaEdicao;
         private bool _desabilitarControles;
@@ -22,9 +23,12 @@ namespace ProjetoControleCestas
 
             this._serviceProvider = SessaoSistema.Services.BuildServiceProvider();
             this._atividadeDesenvolvidaDal = this._serviceProvider.GetService<IAtividadeDesenvolvidaDal>();
+            this._listaAtividadeDesenvolvidaDal = this._serviceProvider.GetService<IListaAtividadeDesenvolvidaDal>();
             this._desabilitarControles = false;
             this._codigoAtividadeDesenvolvidaAtual = codigoAtividadeDesenvolvida;
             this._codigoPessoaAtual = codigoPessoa;
+
+            this.CarregarListaAtividadeDesenvolvida();
 
             if (codigoAtividadeDesenvolvida != -1)
             {
@@ -36,6 +40,13 @@ namespace ProjetoControleCestas
                 this._alterandoRegistro = false;
                 this.LimparControles();
             }
+        }
+
+        private void CarregarListaAtividadeDesenvolvida()
+        {
+            this.comboBoxAtividadeDesenvolvida.ValueMember = "CodAtividadeDesenvolvida";
+            this.comboBoxAtividadeDesenvolvida.DisplayMember = "Atividade";
+            this.comboBoxAtividadeDesenvolvida.DataSource = this._listaAtividadeDesenvolvidaDal.BuscarTodos();
         }
 
         private void CarregarAtividadeDesenvolvida(int codigoAtividadeDesenvolvida)
@@ -67,20 +78,20 @@ namespace ProjetoControleCestas
 
         private void PreencherControles()
         {
-            this.textBoxAtividadeDesenvolvida.Text = this._atividadeDesenvolvidaEdicao.Atividade;
+            this.comboBoxAtividadeDesenvolvida.SelectedValue = (int)this._atividadeDesenvolvidaEdicao.CodListaAtividadeDesenvolvida;
             this._desabilitarControles = false;
         }
 
         private void LimparControles()
         {
-            this.textBoxAtividadeDesenvolvida.Text = string.Empty;
+            this.comboBoxAtividadeDesenvolvida.SelectedIndex = -1;
         }
 
         private void HabilitarControles()
         {
             var _habilitarControle = !this._desabilitarControles;
 
-            this.textBoxAtividadeDesenvolvida.Enabled = _habilitarControle;
+            this.comboBoxAtividadeDesenvolvida.Enabled = _habilitarControle;
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
@@ -127,7 +138,7 @@ namespace ProjetoControleCestas
 
         private bool VerificarInformacoesObrigatorias()
         {
-            if (string.IsNullOrEmpty(this.textBoxAtividadeDesenvolvida.Text))
+            if (this.comboBoxAtividadeDesenvolvida.SelectedIndex == -1)
             {
                 MessageBox.Show("Você deve informar a Atividade Desenvolvida!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -151,7 +162,7 @@ namespace ProjetoControleCestas
             return (new AtividadeDesenvolvidaModel()
             {
                 CodPessoas = this._codigoPessoaAtual,
-                Atividade = this.textBoxAtividadeDesenvolvida.Text
+                CodListaAtividadeDesenvolvida = (int)this.comboBoxAtividadeDesenvolvida.SelectedValue
             });
         }
     }

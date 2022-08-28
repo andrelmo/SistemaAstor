@@ -21,14 +21,46 @@ namespace ProjetoControleCestas.Dados.Implementation
             transacao.Connection.Execute(_cmdExcluir, new { codPessoas }, transacao, this.TimeoutPadrao, CommandType.Text);
         }
 
+        public List<ListaAtividadeDesenvolvidaModel> BuscarPorListaAtividadeDesenvolvida(int codListaAtividadeDesenvolvida)
+        {
+            //Busca a lista de atividades desenvolvidas associados a uma determinada lista de atividade desenvolvida
+            var _cmdBuscar = @"select *
+                               from tbatividadedesenvolvida
+                               where
+                                   codListaAtividadeDesenvolvida = @codListaAtividadeDesenvolvida
+                               order by codAtividadeDesenvolvida";
+
+            using var _conexao = new MySqlConnection(this.GetConnecitonString());
+
+            try
+            {
+                return (_conexao.Query<ListaAtividadeDesenvolvidaModel>(_cmdBuscar,
+                                                                        new
+                                                                        {
+                                                                            codListaAtividadeDesenvolvida
+                                                                        },
+                                                                        null,
+                                                                        true,
+                                                                        this.TimeoutPadrao,
+                                                                        CommandType.Text).ToList());
+            }
+            finally
+            {
+                _conexao.Close();
+            }
+        }
+
         public List<AtividadeDesenvolvidaModel> BuscarTodos(int codPessoas)
         {
             //Busca a lista de atividades desenvolvidas associados a uma pessoa
-            var _cmdBuscar = @"select *
-                               from tbAtividadeDesenvolvida
+            var _cmdBuscar = @"select ad.*,
+                                      lad.atividade
+                               from tbAtividadeDesenvolvida ad
+                               inner join tbListaAtividadeDesenvolvida lad
+                               on ad.codListaAtividadeDesenvolvida = lad.codAtividadeDesenvolvida
                                where
-                                   codPessoas = @codPessoas
-                               order by codAtividadeDesenvolvida";
+                                   ad.codPessoas = @codPessoas
+                               order by ad.codAtividadeDesenvolvida";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
 
@@ -103,7 +135,7 @@ namespace ProjetoControleCestas.Dados.Implementation
             //Atualizar as informações da atividade desenvolvida
             var _cmdAtualizar = @"update tbAtividadeDesenvolvida
                                   set codPessoas = @CodPessoas,
-                                      atividade = @Atividade,
+                                      codListaAtividadeDesenvolvida = @CodListaAtividadeDesenvolvida,
                                       codusuariomodificacao = @CodigoUsuario,
                                       datamodificacao = @DataModificacao
                                   where
@@ -117,7 +149,7 @@ namespace ProjetoControleCestas.Dados.Implementation
                                  new
                                  {
                                      atividadeDesenvolvida.CodPessoas,
-                                     atividadeDesenvolvida.Atividade,
+                                     atividadeDesenvolvida.CodListaAtividadeDesenvolvida,
                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
                                      DataModificacao,
                                      atividadeDesenvolvida.codAtividadeDesenvolvida
@@ -139,8 +171,8 @@ namespace ProjetoControleCestas.Dados.Implementation
             var DataCriacao = DateTime.Now;
 
             //Adicionar uma atividade desenvolvida a pessoa
-            var _cmdInserir = @"insert into tbAtividadeDesenvolvida(codPessoas,atividade,codusuariocriacao,datacriacao) 
-                                values (@CodPessoas,@Atividade,@CodigoUsuario,@DataCriacao)";
+            var _cmdInserir = @"insert into tbAtividadeDesenvolvida(codPessoas,codListaAtividadeDesenvolvida,codusuariocriacao,datacriacao) 
+                                values (@CodPessoas,@CodListaAtividadeDesenvolvida,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -156,7 +188,7 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                   new
                                                   {
                                                       atividadeDesenvolvida.CodPessoas,
-                                                      atividadeDesenvolvida.Atividade,
+                                                      atividadeDesenvolvida.CodListaAtividadeDesenvolvida,
                                                       SessaoSistema.UsuarioCorrente.CodigoUsuario,
                                                       DataCriacao
                                                   },

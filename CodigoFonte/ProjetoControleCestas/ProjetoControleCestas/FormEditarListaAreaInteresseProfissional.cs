@@ -111,7 +111,7 @@ namespace ProjetoControleCestas
                             //Realizar a alteração do registro
                             var _listaAlterada = this._listaAreaInteresseProfissionalDal.Atualizar(this.CriarListaAreaInteresseProfisionalModelAlteracao());
 
-                            MessageBox.Show("Lista de Área de Interesse Profissinal Alterada!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Lista de Área de Interesse Profissional Alterada!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
                         }
                     }

@@ -7,29 +7,29 @@ using System.Windows.Forms;
 
 namespace ProjetoControleCestas
 {
-    public partial class FormListarAreaInteresseProfissional : Form
+    public partial class FormListarAtividadeDesenvolvida : Form
     {
-        private readonly IListaAreaInteresseProfissionalDal _listaAreaInteresseProfissinalDal;
+        private readonly IListaAtividadeDesenvolvidaDal _listaAtividadeDesenvolvidaDal;
         private readonly ServiceProvider _serviceProvider;
-        private ListaAreaInteresseProfissionalModel _registroAtual;
+        private ListaAtividadeDesenvolvidaModel _registroAtual;
 
-        public FormListarAreaInteresseProfissional()
+        public FormListarAtividadeDesenvolvida()
         {
             InitializeComponent();
 
             this._serviceProvider = SessaoSistema.Services.BuildServiceProvider();
-            this._listaAreaInteresseProfissinalDal = this._serviceProvider.GetService<IListaAreaInteresseProfissionalDal>();
+            this._listaAtividadeDesenvolvidaDal = this._serviceProvider.GetService<IListaAtividadeDesenvolvidaDal>();
             this.dataGridViewTipoBeneficios.AutoGenerateColumns = false;
-            this.CarregarListaAreaInteresseProfissinal();
+            this.CarregarListaAtividadeDesenvolvida();
         }
 
-        private void CarregarListaAreaInteresseProfissinal()
+        private void CarregarListaAtividadeDesenvolvida()
         {
             this.Cursor = Cursors.WaitCursor;
 
             try
             {
-                this.dataGridViewTipoBeneficios.DataSource = this._listaAreaInteresseProfissinalDal.BuscarTodos();
+                this.dataGridViewTipoBeneficios.DataSource = this._listaAtividadeDesenvolvidaDal.BuscarTodos();
             }
             finally
             {
@@ -37,14 +37,15 @@ namespace ProjetoControleCestas
             }
         }
 
+
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
-            using var _formAdicionar = new FormEditarListaAreaInteresseProfissional();
+            using var _formAdicionar = new FormEditarListaAtividadeDesenvolvida();
 
             try
             {
                 _formAdicionar.ShowDialog();
-                this.CarregarListaAreaInteresseProfissinal();
+                this.CarregarListaAtividadeDesenvolvida();
             }
             finally
             {
@@ -58,12 +59,12 @@ namespace ProjetoControleCestas
                 MessageBox.Show("Você deve primeiro selecionar uma linha no grid!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
             {
-                using var _formUsuario = new FormEditarListaAreaInteresseProfissional(this._registroAtual.CodAreaInteresseProfissional);
+                using var _formUsuario = new FormEditarListaAtividadeDesenvolvida(this._registroAtual.CodAtividadeDesenvolvida);
 
                 try
                 {
                     _formUsuario.ShowDialog();
-                    this.CarregarListaAreaInteresseProfissinal();
+                    this.CarregarListaAtividadeDesenvolvida();
                 }
                 finally
                 {
@@ -85,7 +86,7 @@ namespace ProjetoControleCestas
                     try
                     {
                         //Realiza a exclusão do registro selecionado no grid
-                        var _resultadoExclusao = this._listaAreaInteresseProfissinalDal.Excluir(this._registroAtual.CodAreaInteresseProfissional);
+                        var _resultadoExclusao = this._listaAtividadeDesenvolvidaDal.Excluir(this._registroAtual.CodAtividadeDesenvolvida);
 
                         if (_resultadoExclusao.IsErro)
                             MessageBox.Show(_resultadoExclusao.MensagemErro, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -93,11 +94,11 @@ namespace ProjetoControleCestas
                         {
                             if (_resultadoExclusao.IsExcluido)
                             {
-                                MessageBox.Show("Lista de Área de Interesse Profissional Excluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                this.CarregarListaAreaInteresseProfissinal();
+                                MessageBox.Show("Lista de Atividade Desenvolvida Excluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.CarregarListaAtividadeDesenvolvida();
                             }
                             else
-                                MessageBox.Show("Lista de Área de Interessse Profissional não foi Excluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Lista de Atividade Desenvolvida não foi Excluída!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     finally
@@ -117,13 +118,14 @@ namespace ProjetoControleCestas
         {
             if (linha >= 0)
             {
-                var _listaUsuarios = (List<ListaAreaInteresseProfissionalModel>)this.dataGridViewTipoBeneficios.DataSource;
+                var _listaUsuarios = (List<ListaAtividadeDesenvolvidaModel>)this.dataGridViewTipoBeneficios.DataSource;
 
                 this._registroAtual = _listaUsuarios[linha];
             }
             else
                 this._registroAtual = null;
         }
+
 
         private void dataGridViewTipoBeneficios_CellClick(object sender, DataGridViewCellEventArgs e)
         {

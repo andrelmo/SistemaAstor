@@ -12,5 +12,6 @@ namespace ProjetoControleCestas.Dados.Interface
         void Excluir(int codAtividadeDesenvolvida);
         AtividadeDesenvolvidaModel Atualizar(AtividadeDesenvolvidaModel atividadeDesenvolvida);
         AtividadeDesenvolvidaModel Adicionar(AtividadeDesenvolvidaModel atividadeDesenvolvida);
+        List<ListaAtividadeDesenvolvidaModel> BuscarPorListaAtividadeDesenvolvida(int codListaAtividadeDesenvolvida);
     }
 }

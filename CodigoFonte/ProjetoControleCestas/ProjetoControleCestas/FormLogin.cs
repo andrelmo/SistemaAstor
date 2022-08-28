@@ -32,6 +32,7 @@ namespace ProjetoControleCestas
             SessaoSistema.Services.AddTransient<IAtividadeDesenvolvidaDal, AtividadeDesenvolvidaDal>();
             SessaoSistema.Services.AddTransient<IAreaInteresseProfissionalDal, AreaInteresseProfissionalDal>();
             SessaoSistema.Services.AddTransient<IListaAreaInteresseProfissionalDal, ListaAreaInteresseProfissionalDal>();
+            SessaoSistema.Services.AddTransient<IListaAtividadeDesenvolvidaDal, ListaAtividadeDesenvolvidaDal>();
 
             this._serviceProvider = SessaoSistema.Services.BuildServiceProvider();
             this._usuarioDal = this._serviceProvider.GetService<IUsuarioDal>();

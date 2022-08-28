@@ -70,5 +70,24 @@ namespace ProjetoControleCestas
                 _formListaAreaInteresse.Close();
             }
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            using var _formListaAreaInteresse = new FormListarAtividadeDesenvolvida();
+
+            try
+            {
+                _formListaAreaInteresse.ShowDialog();
+            }
+            finally
+            {
+                _formListaAreaInteresse.Close();
+            }
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

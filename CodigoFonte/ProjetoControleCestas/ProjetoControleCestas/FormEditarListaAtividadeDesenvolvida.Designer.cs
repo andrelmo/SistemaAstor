@@ -1,7 +1,6 @@
-﻿
-namespace ProjetoControleCestas
+﻿namespace ProjetoControleCestas
 {
-    partial class FormEditarAtividadeDesenvolvida
+    partial class FormEditarListaAtividadeDesenvolvida
     {
         /// <summary>
         /// Required designer variable.
@@ -31,11 +30,11 @@ namespace ProjetoControleCestas
         {
             this.panelFundo = new System.Windows.Forms.Panel();
             this.panelEdicao = new System.Windows.Forms.Panel();
+            this.textBoxAtividadeDesenvolvida = new System.Windows.Forms.TextBox();
             this.labelAtividadeDesenvolvida = new System.Windows.Forms.Label();
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.comboBoxAtividadeDesenvolvida = new System.Windows.Forms.ComboBox();
             this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.panelRodape.SuspendLayout();
@@ -48,18 +47,26 @@ namespace ProjetoControleCestas
             this.panelFundo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFundo.Location = new System.Drawing.Point(0, 0);
             this.panelFundo.Name = "panelFundo";
-            this.panelFundo.Size = new System.Drawing.Size(800, 165);
-            this.panelFundo.TabIndex = 1;
+            this.panelFundo.Size = new System.Drawing.Size(800, 167);
+            this.panelFundo.TabIndex = 2;
             // 
             // panelEdicao
             // 
-            this.panelEdicao.Controls.Add(this.comboBoxAtividadeDesenvolvida);
+            this.panelEdicao.Controls.Add(this.textBoxAtividadeDesenvolvida);
             this.panelEdicao.Controls.Add(this.labelAtividadeDesenvolvida);
             this.panelEdicao.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEdicao.Location = new System.Drawing.Point(0, 0);
             this.panelEdicao.Name = "panelEdicao";
-            this.panelEdicao.Size = new System.Drawing.Size(800, 100);
+            this.panelEdicao.Size = new System.Drawing.Size(800, 102);
             this.panelEdicao.TabIndex = 1;
+            // 
+            // textBoxAtividadeDesenvolvida
+            // 
+            this.textBoxAtividadeDesenvolvida.Location = new System.Drawing.Point(13, 39);
+            this.textBoxAtividadeDesenvolvida.MaxLength = 200;
+            this.textBoxAtividadeDesenvolvida.Name = "textBoxAtividadeDesenvolvida";
+            this.textBoxAtividadeDesenvolvida.Size = new System.Drawing.Size(748, 23);
+            this.textBoxAtividadeDesenvolvida.TabIndex = 1;
             // 
             // labelAtividadeDesenvolvida
             // 
@@ -75,10 +82,10 @@ namespace ProjetoControleCestas
             this.panelRodape.Controls.Add(this.buttonCancelar);
             this.panelRodape.Controls.Add(this.buttonSalvar);
             this.panelRodape.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRodape.Location = new System.Drawing.Point(0, 100);
+            this.panelRodape.Location = new System.Drawing.Point(0, 102);
             this.panelRodape.Name = "panelRodape";
             this.panelRodape.Size = new System.Drawing.Size(800, 65);
-            this.panelRodape.TabIndex = 2;
+            this.panelRodape.TabIndex = 0;
             // 
             // buttonCancelar
             // 
@@ -100,27 +107,18 @@ namespace ProjetoControleCestas
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
-            // comboBoxAtividadeDesenvolvida
-            // 
-            this.comboBoxAtividadeDesenvolvida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxAtividadeDesenvolvida.FormattingEnabled = true;
-            this.comboBoxAtividadeDesenvolvida.Location = new System.Drawing.Point(13, 38);
-            this.comboBoxAtividadeDesenvolvida.Name = "comboBoxAtividadeDesenvolvida";
-            this.comboBoxAtividadeDesenvolvida.Size = new System.Drawing.Size(748, 23);
-            this.comboBoxAtividadeDesenvolvida.TabIndex = 1;
-            // 
-            // FormEditarAtividadeDesenvolvida
+            // FormEditarListaAtividadeDesenvolvida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 165);
+            this.ClientSize = new System.Drawing.Size(800, 167);
             this.Controls.Add(this.panelFundo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormEditarAtividadeDesenvolvida";
+            this.Name = "FormEditarListaAtividadeDesenvolvida";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editar Atividade Desenvolvida";
+            this.Text = "Editar Lista de Atividade Desenvolvida";
             this.panelFundo.ResumeLayout(false);
             this.panelEdicao.ResumeLayout(false);
             this.panelEdicao.PerformLayout();
@@ -133,10 +131,10 @@ namespace ProjetoControleCestas
 
         private System.Windows.Forms.Panel panelFundo;
         private System.Windows.Forms.Panel panelEdicao;
+        private System.Windows.Forms.TextBox textBoxAtividadeDesenvolvida;
         private System.Windows.Forms.Label labelAtividadeDesenvolvida;
         private System.Windows.Forms.Panel panelRodape;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonSalvar;
-        private System.Windows.Forms.ComboBox comboBoxAtividadeDesenvolvida;
     }
 }

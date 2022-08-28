@@ -7,7 +7,8 @@ namespace ProjetoControleCestas.Modelo
     {
         [Key]
         public int codAtividadeDesenvolvida { get; set; }
-        public string Atividade { get; set; }
+        public int CodListaAtividadeDesenvolvida { get; set; }
         public int CodPessoas { get; set; }
+        public string Atividade { get; set; }
     }
 }
