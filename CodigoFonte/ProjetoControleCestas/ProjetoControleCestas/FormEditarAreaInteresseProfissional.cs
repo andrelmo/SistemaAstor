@@ -9,6 +9,7 @@ namespace ProjetoControleCestas
     public partial class FormEditarAreaInteresseProfissional : Form
     {
         private readonly IAreaInteresseProfissionalDal _areaInteresseProfissionalDal;
+        private readonly IListaAreaInteresseProfissionalDal _listaAreaInteresseProfissionalDal;
         private readonly ServiceProvider _serviceProvider;
         private AreaInteresseProfissionalModel _areaInteresseProfissionaEdicao;
         private bool _desabilitarControles;
@@ -22,9 +23,12 @@ namespace ProjetoControleCestas
 
             this._serviceProvider = SessaoSistema.Services.BuildServiceProvider();
             this._areaInteresseProfissionalDal = this._serviceProvider.GetService<IAreaInteresseProfissionalDal>();
+            this._listaAreaInteresseProfissionalDal = this._serviceProvider.GetService<IListaAreaInteresseProfissionalDal>();
             this._desabilitarControles = false;
             this._codigoAreaInteresseProfissionalAtual = codigoAreaInteresseProfissional;
             this._codigoPessoaAtual = codigoPessoa;
+
+            this.CarregarListaAreaInteresseProfissional();
 
             if (codigoAreaInteresseProfissional != -1)
             {
@@ -36,6 +40,13 @@ namespace ProjetoControleCestas
                 this._alterandoRegistro = false;
                 this.LimparControles();
             }
+        }
+
+        private void CarregarListaAreaInteresseProfissional()
+        {
+            this.comboBoxListaAreaInteresseProfissional.ValueMember = "CodAreaInteresseProfissional";
+            this.comboBoxListaAreaInteresseProfissional.DisplayMember = "AreaInteresse";
+            this.comboBoxListaAreaInteresseProfissional.DataSource = this._listaAreaInteresseProfissionalDal.BuscarTodos();
         }
 
         private void CarregarAreaInteresseProfissional(int codigoAreaInteresseProfissionals)
@@ -67,20 +78,20 @@ namespace ProjetoControleCestas
 
         private void PreencherControles()
         {
-            this.textBoxAreaInteresseProfissional.Text = this._areaInteresseProfissionaEdicao.AreaInteresse;
+            this.comboBoxListaAreaInteresseProfissional.SelectedValue = this._areaInteresseProfissionaEdicao.CodListaAreaInteresseProfissional;
             this._desabilitarControles = false;
         }
 
         private void LimparControles()
         {
-            this.textBoxAreaInteresseProfissional.Text = string.Empty;
+            this.comboBoxListaAreaInteresseProfissional.SelectedIndex = -1;
         }
 
         private void HabilitarControles()
         {
             var _habilitarControle = !this._desabilitarControles;
 
-            this.textBoxAreaInteresseProfissional.Enabled = _habilitarControle;
+            this.comboBoxListaAreaInteresseProfissional.Enabled = _habilitarControle;
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
@@ -134,13 +145,13 @@ namespace ProjetoControleCestas
             return (new AreaInteresseProfissionalModel()
             {
                 CodPessoas = this._codigoPessoaAtual,
-                AreaInteresse = this.textBoxAreaInteresseProfissional.Text
-            });
+                CodListaAreaInteresseProfissional = (int)this.comboBoxListaAreaInteresseProfissional.SelectedValue
+            }); ;
         }
 
         private bool VerificarInformacoesObrigatorias()
         {
-            if (string.IsNullOrEmpty(this.textBoxAreaInteresseProfissional.Text))
+            if (this.comboBoxListaAreaInteresseProfissional.SelectedIndex == -1)
             {
                 MessageBox.Show("Você deve informar a Área de Interesse Profissional!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 

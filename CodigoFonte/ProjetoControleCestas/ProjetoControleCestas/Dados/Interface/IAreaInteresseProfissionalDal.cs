@@ -12,5 +12,6 @@ namespace ProjetoControleCestas.Dados.Interface
         void Excluir(int codAreaInteresseProfissional);
         AreaInteresseProfissionalModel Atualizar(AreaInteresseProfissionalModel areaInteresseProfissional);
         AreaInteresseProfissionalModel Adicionar(AreaInteresseProfissionalModel areaInteresseProfissional);
+        List<AreaInteresseProfissionalModel> BuscarPorListaAreaInteressProfissional(int codListaAreaInteresseProfissional);
     }
 }

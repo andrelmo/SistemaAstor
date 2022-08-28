@@ -114,3 +114,5 @@ C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\ProjetoControleCestas.FormEditarAreaInteresseProfissional.resources
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\ProjetoControleCestas.FormEditarAtividadeDesenvolvida.resources
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\refint\ProjetoControleCestas.dll
+C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\ProjetoControleCestas.FormEditarListaAreaInteresseProfissional.resources
+C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Debug\net5.0-windows\ProjetoControleCestas.FormListarAreaInteresseProfissional.resources

@@ -13,7 +13,13 @@
     <Compile Update="FormEditarFamilia.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormEditarListaAreaInteresseProfissional.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormEditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormListarAreaInteresseProfissional.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormLogin.cs">

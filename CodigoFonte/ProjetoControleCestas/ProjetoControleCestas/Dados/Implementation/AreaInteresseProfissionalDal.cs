@@ -21,14 +21,46 @@ namespace ProjetoControleCestas.Dados.Implementation
             transacao.Connection.Execute(_cmdExcluir, new { codPessoas }, transacao, this.TimeoutPadrao, CommandType.Text);
         }
 
-        public List<AreaInteresseProfissionalModel> BuscarTodos(int codPessoas)
+        public List<AreaInteresseProfissionalModel> BuscarPorListaAreaInteressProfissional(int codListaAreaInteresseProfissional)
         {
-            //Busca a lista de áreas de interesse profissionais associados a uma pessoa
+            //Busca a lista de áreas de interesse profissionais associados a uma determinada lista de área de interesse profissional
             var _cmdBuscar = @"select *
                                from tbAreaInteresseProfissional
                                where
-                                   codPessoas = @codPessoas
+                                   codListaAreaInteresseProfissional = @codListaAreaInteresseProfissional
                                order by codAreaInteresseProfissional";
+
+            using var _conexao = new MySqlConnection(this.GetConnecitonString());
+
+            try
+            {
+                return (_conexao.Query<AreaInteresseProfissionalModel>(_cmdBuscar,
+                                                           new
+                                                           {
+                                                               codListaAreaInteresseProfissional
+                                                           },
+                                                           null,
+                                                           true,
+                                                           this.TimeoutPadrao,
+                                                           CommandType.Text).ToList());
+            }
+            finally
+            {
+                _conexao.Close();
+            }
+        }
+
+        public List<AreaInteresseProfissionalModel> BuscarTodos(int codPessoas)
+        {
+            //Busca a lista de áreas de interesse profissionais associados a uma pessoa
+            var _cmdBuscar = @"select aip.*,
+                                      lai.areaInteresse
+                               from tbAreaInteresseProfissional aip
+                               inner join tbListaAreaInteresseProfissional lai
+                                  on aip.codListaAreaInteresseProfissional = lai.codAreaInteresseProfissional
+                               where
+                                   aip.codPessoas = @codPessoas 
+                               order by aip.codAreaInteresseProfissional";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
 
@@ -103,7 +135,7 @@ namespace ProjetoControleCestas.Dados.Implementation
             //Atualizar as informações da área de interesse profissional
             var _cmdAtualizar = @"update tbAreaInteresseProfissional
                                   set codPessoas = @CodPessoas,
-                                      areaInteresse = @AreaInteresse,
+                                      codListaAreaInteresseProfissional = @CodListaAreaInteresseProfissional,
                                       codusuariomodificacao = @CodigoUsuario,
                                       datamodificacao = @DataModificacao
                                   where
@@ -117,7 +149,7 @@ namespace ProjetoControleCestas.Dados.Implementation
                                  new
                                  {
                                      areaInteresseProfissional.CodPessoas,
-                                     areaInteresseProfissional.AreaInteresse,
+                                     areaInteresseProfissional.CodListaAreaInteresseProfissional,
                                      SessaoSistema.UsuarioCorrente.CodigoUsuario,
                                      DataModificacao,
                                      areaInteresseProfissional.codAreaInteresseProfissional
@@ -139,8 +171,8 @@ namespace ProjetoControleCestas.Dados.Implementation
             var DataCriacao = DateTime.Now;
 
             //Adicionar uma área de interesse profissional a pessoa
-            var _cmdInserir = @"insert into tbAreaInteresseProfissional(codPessoas,areaInteresse,codusuariocriacao,datacriacao) 
-                                values (@CodPessoas,@AreaInteresse,@CodigoUsuario,@DataCriacao)";
+            var _cmdInserir = @"insert into tbAreaInteresseProfissional(codPessoas,codListaAreaInteresseProfissional,codusuariocriacao,datacriacao) 
+                                values (@CodPessoas,@CodListaAreaInteresseProfissional,@CodigoUsuario,@DataCriacao)";
             var _cmdNovoId = "select last_insert_id();";
 
             using var _conexao = new MySqlConnection(this.GetConnecitonString());
@@ -156,7 +188,7 @@ namespace ProjetoControleCestas.Dados.Implementation
                                                   new
                                                   {
                                                       areaInteresseProfissional.CodPessoas,
-                                                      areaInteresseProfissional.AreaInteresse,
+                                                      areaInteresseProfissional.CodListaAreaInteresseProfissional,
                                                       SessaoSistema.UsuarioCorrente.CodigoUsuario,
                                                       DataCriacao
                                                   },

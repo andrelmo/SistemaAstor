@@ -33,9 +33,10 @@ namespace ProjetoControleCestas
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemTipoBeneficios = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemFamilia = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemFamilia = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@ namespace ProjetoControleCestas
             this.toolStripMenuItemTipoBeneficios,
             this.toolStripMenuItemFamilia,
             this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
             this.sairToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -64,35 +66,42 @@ namespace ProjetoControleCestas
             // usuáriosToolStripMenuItem
             // 
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
             this.usuáriosToolStripMenuItem.Text = "&Usuários";
             this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
             // 
             // toolStripMenuItemTipoBeneficios
             // 
             this.toolStripMenuItemTipoBeneficios.Name = "toolStripMenuItemTipoBeneficios";
-            this.toolStripMenuItemTipoBeneficios.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemTipoBeneficios.Size = new System.Drawing.Size(263, 22);
             this.toolStripMenuItemTipoBeneficios.Text = "Tipo de Benefícios";
             this.toolStripMenuItemTipoBeneficios.Click += new System.EventHandler(this.toolStripMenuItemTipoBeneficios_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sairToolStripMenuItem.Text = "&Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // toolStripMenuItemFamilia
             // 
             this.toolStripMenuItemFamilia.Name = "toolStripMenuItemFamilia";
-            this.toolStripMenuItemFamilia.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemFamilia.Size = new System.Drawing.Size(263, 22);
             this.toolStripMenuItemFamilia.Text = "Família";
             this.toolStripMenuItemFamilia.Click += new System.EventHandler(this.toolStripMenuItemFamilia_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(260, 6);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.sairToolStripMenuItem.Text = "&Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(263, 22);
+            this.toolStripMenuItem2.Text = "Lista de Área de Interesse Profissinal";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // FormPrincipal
             // 
@@ -121,6 +130,7 @@ namespace ProjetoControleCestas
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTipoBeneficios;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFamilia;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

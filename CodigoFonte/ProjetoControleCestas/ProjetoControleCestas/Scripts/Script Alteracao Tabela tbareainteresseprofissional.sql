@@ -1,0 +1,14 @@
+use mydb;
+
+alter table tbareainteresseprofissional
+drop areaInteresse;
+
+alter table tbareainteresseprofissional
+add codListaAreaInteresseProfissional integer;
+
+alter table tbareainteresseprofissional
+add constraint fk_ListaAreaInteresseProfissional_Area
+foreign key (codListaAreaInteresseProfissional)
+references tblistaareainteresseprofissional (codAreaInteresseProfissional);
+
+

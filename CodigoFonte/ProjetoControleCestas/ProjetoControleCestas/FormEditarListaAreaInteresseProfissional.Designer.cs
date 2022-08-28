@@ -1,7 +1,6 @@
-﻿
-namespace ProjetoControleCestas
+﻿namespace ProjetoControleCestas
 {
-    partial class FormEditarAreaInteresseProfissional
+    partial class FormEditarListaAreaInteresseProfissional
     {
         /// <summary>
         /// Required designer variable.
@@ -29,53 +28,64 @@ namespace ProjetoControleCestas
         /// </summary>
         private void InitializeComponent()
         {
+            this.panelFundo = new System.Windows.Forms.Panel();
             this.panelEdicao = new System.Windows.Forms.Panel();
-            this.comboBoxListaAreaInteresseProfissional = new System.Windows.Forms.ComboBox();
-            this.labelAreaInteresseProfissional = new System.Windows.Forms.Label();
+            this.textBoxAreaInteresse = new System.Windows.Forms.TextBox();
+            this.labelAreaInteresse = new System.Windows.Forms.Label();
             this.panelRodape = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
+            this.panelFundo.SuspendLayout();
             this.panelEdicao.SuspendLayout();
             this.panelRodape.SuspendLayout();
             this.SuspendLayout();
             // 
+            // panelFundo
+            // 
+            this.panelFundo.Controls.Add(this.panelEdicao);
+            this.panelFundo.Controls.Add(this.panelRodape);
+            this.panelFundo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFundo.Location = new System.Drawing.Point(0, 0);
+            this.panelFundo.Name = "panelFundo";
+            this.panelFundo.Size = new System.Drawing.Size(800, 167);
+            this.panelFundo.TabIndex = 1;
+            // 
             // panelEdicao
             // 
-            this.panelEdicao.Controls.Add(this.comboBoxListaAreaInteresseProfissional);
-            this.panelEdicao.Controls.Add(this.labelAreaInteresseProfissional);
+            this.panelEdicao.Controls.Add(this.textBoxAreaInteresse);
+            this.panelEdicao.Controls.Add(this.labelAreaInteresse);
             this.panelEdicao.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEdicao.Location = new System.Drawing.Point(0, 0);
             this.panelEdicao.Name = "panelEdicao";
-            this.panelEdicao.Size = new System.Drawing.Size(800, 100);
-            this.panelEdicao.TabIndex = 3;
+            this.panelEdicao.Size = new System.Drawing.Size(800, 102);
+            this.panelEdicao.TabIndex = 1;
             // 
-            // comboBoxListaAreaInteresseProfissional
+            // textBoxAreaInteresse
             // 
-            this.comboBoxListaAreaInteresseProfissional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxListaAreaInteresseProfissional.FormattingEnabled = true;
-            this.comboBoxListaAreaInteresseProfissional.Location = new System.Drawing.Point(16, 39);
-            this.comboBoxListaAreaInteresseProfissional.Name = "comboBoxListaAreaInteresseProfissional";
-            this.comboBoxListaAreaInteresseProfissional.Size = new System.Drawing.Size(745, 23);
-            this.comboBoxListaAreaInteresseProfissional.TabIndex = 1;
+            this.textBoxAreaInteresse.Location = new System.Drawing.Point(13, 39);
+            this.textBoxAreaInteresse.MaxLength = 200;
+            this.textBoxAreaInteresse.Name = "textBoxAreaInteresse";
+            this.textBoxAreaInteresse.Size = new System.Drawing.Size(748, 23);
+            this.textBoxAreaInteresse.TabIndex = 1;
             // 
-            // labelAreaInteresseProfissional
+            // labelAreaInteresse
             // 
-            this.labelAreaInteresseProfissional.AutoSize = true;
-            this.labelAreaInteresseProfissional.Location = new System.Drawing.Point(13, 20);
-            this.labelAreaInteresseProfissional.Name = "labelAreaInteresseProfissional";
-            this.labelAreaInteresseProfissional.Size = new System.Drawing.Size(163, 15);
-            this.labelAreaInteresseProfissional.TabIndex = 0;
-            this.labelAreaInteresseProfissional.Text = "Área de Interesse Profissional:";
+            this.labelAreaInteresse.AutoSize = true;
+            this.labelAreaInteresse.Location = new System.Drawing.Point(13, 20);
+            this.labelAreaInteresse.Name = "labelAreaInteresse";
+            this.labelAreaInteresse.Size = new System.Drawing.Size(99, 15);
+            this.labelAreaInteresse.TabIndex = 0;
+            this.labelAreaInteresse.Text = "Área de Interesse:";
             // 
             // panelRodape
             // 
             this.panelRodape.Controls.Add(this.buttonCancelar);
             this.panelRodape.Controls.Add(this.buttonSalvar);
             this.panelRodape.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelRodape.Location = new System.Drawing.Point(0, 100);
+            this.panelRodape.Location = new System.Drawing.Point(0, 102);
             this.panelRodape.Name = "panelRodape";
             this.panelRodape.Size = new System.Drawing.Size(800, 65);
-            this.panelRodape.TabIndex = 4;
+            this.panelRodape.TabIndex = 0;
             // 
             // buttonCancelar
             // 
@@ -97,19 +107,19 @@ namespace ProjetoControleCestas
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
-            // FormEditarAreaInteresseProfissional
+            // FormEditarListaAreaInteresseProfissional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 165);
-            this.Controls.Add(this.panelEdicao);
-            this.Controls.Add(this.panelRodape);
+            this.ClientSize = new System.Drawing.Size(800, 167);
+            this.Controls.Add(this.panelFundo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormEditarAreaInteresseProfissional";
+            this.Name = "FormEditarListaAreaInteresseProfissional";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Editar Área de Interesse Profissional";
+            this.Text = "Editar Lista de Área de Interesse Profissional";
+            this.panelFundo.ResumeLayout(false);
             this.panelEdicao.ResumeLayout(false);
             this.panelEdicao.PerformLayout();
             this.panelRodape.ResumeLayout(false);
@@ -119,11 +129,12 @@ namespace ProjetoControleCestas
 
         #endregion
 
+        private System.Windows.Forms.Panel panelFundo;
         private System.Windows.Forms.Panel panelEdicao;
-        private System.Windows.Forms.Label labelAreaInteresseProfissional;
+        private System.Windows.Forms.TextBox textBoxAreaInteresse;
+        private System.Windows.Forms.Label labelAreaInteresse;
         private System.Windows.Forms.Panel panelRodape;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonSalvar;
-        private System.Windows.Forms.ComboBox comboBoxListaAreaInteresseProfissional;
     }
 }
