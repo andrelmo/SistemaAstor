@@ -57,3 +57,7 @@ C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Release\net5.0-windows\ProjetoControleCestas.pdb
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Release\net5.0-windows\ProjetoControleCestas.genruntimeconfig.cache
 C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Release\net5.0-windows\ref\ProjetoControleCestas.dll
+C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Release\net5.0-windows\ProjetoControleCestas.FormEditarListaAreaInteresseProfissional.resources
+C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Release\net5.0-windows\ProjetoControleCestas.FormEditarListaAtividadeDesenvolvida.resources
+C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Release\net5.0-windows\ProjetoControleCestas.FormListarAreaInteresseProfissional.resources
+C:\Projetos\Astor\GitCodigoFonte\SistemaAstor\CodigoFonte\ProjetoControleCestas\ProjetoControleCestas\obj\Release\net5.0-windows\ProjetoControleCestas.FormListarAtividadeDesenvolvida.resources
