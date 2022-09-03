@@ -239,7 +239,7 @@ namespace ProjetoControleCestas.Dados.Implementation
             //Buscar todas as famílias
             var _cmdBuscar = @"select f.*
                                from tbFamilia f
-                               inner join tbPessoas p
+                               left join tbPessoas p
                                on f.codFamilia = p.codFamilia
                                order by f.codFamilia";
 
